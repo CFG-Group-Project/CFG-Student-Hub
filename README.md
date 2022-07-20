@@ -1,4 +1,4 @@
-# CFG Group Project #Software3 - Summer 2022 Cohort 
+# CFG Group Project - Summer 2022 Cohort 
 ## Team Members
 
  - [Samantha Colcough](https://github.com/samanthacolclough) 
