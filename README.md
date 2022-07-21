@@ -33,7 +33,5 @@ git clone https://github.com/CFG-Group-Project/CFG-Student-Hub.git
 python manage.py runserver localhost:8080
 ```
 
-Add Password to DATABASES in settings.py
-- 
 
     
