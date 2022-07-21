@@ -31,8 +31,11 @@ git clone https://github.com/CFG-Group-Project/CFG-Student-Hub.git
 
 3. Add your password to DATABASES Section in CFG-Student-Hub/setup/setup/settings.py 
 
-
-4. Run Server
+4. Change directory to setup
+```commandline
+cd setup
+```
+5. Run Server
 ```commandline
 python manage.py runserver localhost:8080
 ```
