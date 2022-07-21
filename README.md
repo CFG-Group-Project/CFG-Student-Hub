@@ -1,4 +1,6 @@
+<html>
 # CFG Group Project - Summer 2022 Cohort 
+
 ## Team Members
 
  - [Samantha Colcough](https://github.com/samanthacolclough) 
@@ -12,7 +14,9 @@
 ## Getting Started 
 
 ### Prerequisites
-Running the code below will download the relevant packages needed for this project
+Create an environment <em>(Optional)</em> - [How to create a virtual Environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
+
+Run the code below - This will install all the necessary Packages
 ```commandline
 pip install -r requirements.txt
 ```
@@ -34,4 +38,4 @@ python manage.py runserver localhost:8080
 ```
 
 
-    
+</html>
