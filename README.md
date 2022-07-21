@@ -14,19 +14,20 @@
 ## Getting Started 
 
 ### Prerequisites
-Create an environment <em>(Optional)</em> - [How to create a virtual Environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
-
-Run the code below - This will install all the necessary Packages
-```commandline
-pip install -r requirements.txt
-```
-
-### Installation
 1. Clone Repo 
 ```commandline
 git clone https://github.com/CFG-Group-Project/CFG-Student-Hub.git
 ```
-2. Copy contents of setup.sql and run in MySQL WORKBENCH
+
+### Installation
+1. Create an environment <em>(Optional)</em> - [How to create a virtual Environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
+
+2. Install Required Packages
+```commandline
+pip install -r requirements.txt
+```
+
+2. Copy contents of setup.sql and run in MySQL WORKBENCH (DONT FORGET to add your password)
 
 
 3. Add your password to DATABASES Section in CFG-Student-Hub/setup/setup/settings.py 
