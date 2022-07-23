@@ -1,0 +1,108 @@
+* {
+margin: 0;
+}
+
+body{
+background-color: black;
+color: white;
+}
+
+.content{
+max-width: max-content;
+margin: auto;
+margin-top: 150px;
+text-align:center;
+}
+
+/* LOGIN FROM */
+.login_form{
+display: flex;
+flex-direction:column;
+justify-content:center;
+align-items: flex-start;
+}
+
+.login_form .forgotten-pw{
+align-self:flex-end;
+text-decoration:none;
+color:white;
+}
+
+.login_form .forgotten-pw:hover{
+text-decoration:underline;
+}
+
+.login_form input{
+width:500px;
+height:50px;
+font-size:20px;
+}
+
+.login_form input[name="email"]{
+margin-bottom:15px;
+}
+
+.login_from label{
+float: left;
+}
+
+.login-btn{
+background-color: #F54996;
+color:white;
+border:none;
+margin-top:40px;
+}
+
+.signup-btn{
+text-decoration:none;
+background-color: #F54996;
+text-align:center;
+padding:15px 149px;
+color:white;
+margin-bottom:50px;
+}
+
+/*'OR' LINE */
+.or-txt{
+width:50%;
+margin:25px auto;
+}
+
+.line {
+  line-height: 0.5;
+  text-align: center;
+}
+
+.line span {
+  display: inline-block;
+  position: relative;
+}
+
+.line span:before,
+.line span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid white;
+  top: 0;
+  width: 220px;
+}
+
+.line span:before {
+  right: 100%;
+  margin-right: 20px;
+}
+
+.line span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+.login-btn, .signup-btn{
+font-weight:700;
+}
+
+.cfg-student-txt{
+font-style:italic;
+font-weight:500;
+}

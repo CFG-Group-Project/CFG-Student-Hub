@@ -1,0 +1,33 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+<head>
+	<meta charset="UFT-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+	<title>Login</title>
+</head>
+<body>
+<div class="content">
+    <div class="row justify-content-center">
+		<h1><img src="{% static 'images/cfg-logo.png' %}" alt="CodefirstGirls Logo" srcset=""></h1>
+		<form action="" method="POST" class="login_form">
+			{% csrf_token%}
+    		<label for="email">Email Address</label>
+    		<input type="email" name="email" id="email" placeholder="Enter your Email Address">
+    		<label for="password">Password</label>
+    		<input type="password" name="password" id="password" placeholder="Enter your password">
+			<a href="" class="forgotten-pw">Forgotten your password?</a>
+    		<input type="submit" value="LOGIN" class="login-btn">
+    		<p class="or-txt line"><span>OR</span></p>
+    		<a href="http://localhost:8080/register/" class="signup-btn">SIGN UP <span class="cfg-student-txt">(CFG Students Only)</span></a>
+</form>
+		<p class="text-center">If you already have an account, click <a href="/login">here</a>.</p>
+    </div>
+</div>
+</body>
+{% endblock content %}
