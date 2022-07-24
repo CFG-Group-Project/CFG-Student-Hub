@@ -21,6 +21,8 @@ urlpatterns = [
     path('', include('contact.urls')),
     path('', include('studyzone.urls')),
     path('', include('dashboard.urls')),
+    path('', include('resources.urls')),
+    path('',include('accounts.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),  # Authentication URL's - Built In
     path('admin/', admin.site.urls),
