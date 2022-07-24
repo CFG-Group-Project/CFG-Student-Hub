@@ -1,2 +1,121 @@
-HEADER
-FOOTER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Study Room{% endblock %}</title>
+        <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
+<style type="text/css">
+.topnav {
+    height:10%;
+    width:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: #000000;
+    overflow-x:hidden;
+    padding-top:20px}
+
+.topnav a {
+    text-align:right;
+    padding: 10px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+    }
+
+.topnav a:hover{
+    color: #F54996;
+
+}
+
+.sidenav {
+    height:90%;
+    width:160px;
+    position: fixed;
+    top:10%;
+    left:0;
+    background-color: #000000;
+    overflow-x:hidden;
+    padding-top:20px}
+
+.sidenav a {
+    text-align:center;
+    padding: 10px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+    }
+
+.sidenav a:hover {
+    color: #F54996;
+}
+
+.sidenav img {
+    position: absolute;
+    top:75%;
+    padding: 0px 10px;
+}
+
+.header {
+    font-family: 'Barlow';
+    font-size: 22px;
+    margin-left:180px;
+    margin-top:100px;
+    text-decoration: underline;
+    text-decoration-color: #F54996;
+}
+
+.body {
+    font-family: 'Barlow';
+    font-size: 22px;
+    margin-left:180px;
+}
+
+.button{
+  text-align:center;
+  text-decoration: none;
+  background-color:#000000;
+  width:200px;
+  height:60px;
+  line-height:60px;
+  color:white;
+  margin:20px auto;
+  position:relative;
+}
+
+
+
+</style>
+</head>
+
+<body style="font-family:barlow">
+
+    <div class="sidenav">
+        <a href="/myroom">My Room</a>
+        <a href="/resources">Resources</a>
+        <a href="/feedback">Feedback</a>
+        <a href="/studyzone">Study Zone</a>
+        <img src="https://codefirstgirls.com/wp-content/uploads/elementor/thumbs/White-Code-First-Girls-Logo-Transparent-p75th7g47zmtuf6o6zuyna1izwc77lixwo6bygc4gk.png" alt="logo">
+    </div>
+
+<!--    the log out button takes you back to the login page-->
+    <div class="topnav">
+        <a href="/login">Log out</a>
+    </div>
+
+    <div class="header">
+        <h1 style="font-weight:800">
+        {%block header %}
+        {% endblock %}
+        </h1>
+    </div>
+
+    <div class="body">
+
+    {% block body %}
+    {% endblock %}
+    </div>
+</body>
+</html>
