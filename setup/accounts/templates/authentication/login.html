@@ -15,7 +15,7 @@
 <div class="content">
     <div class="row justify-content-center">
 		<h1><img src="{% static 'images/cfg-logo.png' %}" alt="CodefirstGirls Logo" srcset=""></h1>
-		<form action="" method="POST" class="login_form">
+		<form action="login/" method="POST" class="login_form">
 			{% csrf_token%}
     		<label for="email">Email Address</label>
     		<input type="email" name="email" id="email" placeholder="Enter your Email Address">
