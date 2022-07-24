@@ -20,11 +20,13 @@ def register(request):
             print('worked')
             return redirect('/accounts/registered')
         else:
-            error = form.errors.as_data()
-            print(form.errors)
-            messages.success(request, error)
+            errors = form.errors.as_data()
+            for k, v in errors.items():
+                error = str(v[0]).strip("['']")
+
+                # Only printing one error
+                messages.success(request, error)
             form = NewUserForm()
-            print('didnt work')
 
 
     context = {'form': form}
