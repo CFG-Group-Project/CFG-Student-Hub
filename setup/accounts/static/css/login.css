@@ -113,5 +113,7 @@ font-weight:500;
 }
 
 .message {
-text-align:center;
+margin-top:20px;
+align-self:center;
+color:red;
 }
