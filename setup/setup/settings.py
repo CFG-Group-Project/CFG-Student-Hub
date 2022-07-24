@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cfgdatabase',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'tTyq178fighter2',
         'HOST': 'localhost',
         'PORT': '3306',
     }
