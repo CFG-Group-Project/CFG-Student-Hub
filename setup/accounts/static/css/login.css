@@ -5,6 +5,7 @@ margin: 0;
 body{
 background-color: black;
 color: white;
+font-family: Sans-Serif;
 }
 
 .content{
@@ -22,6 +23,11 @@ justify-content:center;
 align-items: flex-start;
 }
 
+.login_form label{
+font-size:20px;
+float: left;
+}
+
 .login_form .forgotten-pw{
 align-self:flex-end;
 text-decoration:none;
@@ -30,21 +36,20 @@ color:white;
 
 .login_form .forgotten-pw:hover{
 text-decoration:underline;
+margin-top:5px;
 }
 
 .login_form input{
+outline-color: #F54996;
 width:500px;
 height:50px;
 font-size:20px;
 }
 
-.login_form input[name="email"]{
-margin-bottom:15px;
+.login_form label[for="password"]{
+margin-top:15px;
 }
 
-.login_from label{
-float: left;
-}
 
 .login-btn{
 background-color: #F54996;
@@ -57,7 +62,7 @@ margin-top:40px;
 text-decoration:none;
 background-color: #F54996;
 text-align:center;
-padding:15px 149px;
+padding:15px 140px;
 color:white;
 margin-bottom:50px;
 }
@@ -105,4 +110,8 @@ font-weight:700;
 .cfg-student-txt{
 font-style:italic;
 font-weight:500;
+}
+
+.message {
+text-align:center;
 }
