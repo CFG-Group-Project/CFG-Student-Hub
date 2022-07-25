@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import NewUserForm
 
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib import messages  # In built flash messages for the user
+from django.contrib import messages, auth  # In built flash messages for the user
 
 
 # views
@@ -28,31 +28,33 @@ def register(request):
                 messages.success(request, error)
             form = NewUserForm()
 
-
     context = {'form': form}
-    return render(request, 'authentication/register.html', context)
+    return render(request, 'accounts/register.html', context)
 
 
 def registered(request):
     pass
     context = {}
-    return render(request, 'authentication/registered.html', context)
+    return render(request, 'accounts/registered.html', context)
 
 
-def login_user(request):
+def login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            login(request, user)
+            auth.login(request, user)
             # Redirect to a success page.
             return redirect('/')
         else:
             # Return an 'invalid login' error message.
-            messages.success(request, 'Email or password incorrect. Please try again.')
-            return redirect('/accounts/login_user')
+            messages.success(request, 'Email or password entered incorrectly. Please try again.')
+            return redirect('/accounts/login')
     context = {}
-    return render(request, 'authentication/login.html', context)
+    return render(request, 'accounts/login.html', context)
 
 
+def logout(request):
+    auth.logout(request)
+    return redirect('accounts/login')
