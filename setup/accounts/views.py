@@ -50,11 +50,11 @@ def login(request):
         else:
             # Return an 'invalid login' error message.
             messages.success(request, 'Email or password entered incorrectly. Please try again.')
-            return redirect('/accounts/login')
+            return redirect('login')
     context = {}
     return render(request, 'accounts/login.html', context)
 
 
 def logout(request):
     auth.logout(request)
-    return redirect('accounts/login')
+    return redirect('/login')
