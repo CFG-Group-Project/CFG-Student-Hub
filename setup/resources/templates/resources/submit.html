@@ -1,0 +1,18 @@
+{% extends 'dashboard/base.html' %}}
+
+{% block title %} Study Room │ Resources {% endblock %}
+
+{% block header %}
+Submit New Resource
+{% endblock %}
+
+{% block body %}
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" value="Submit">Save</button>
+</form>
+
+{% endblock %}

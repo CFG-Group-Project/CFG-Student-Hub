@@ -1,9 +1,16 @@
 from django import forms
+from django.forms import ModelForm
+from .models import Material
 
 
-
-class CreateNewResource(forms.Form):
-    title = forms.CharField(label="Title", max_length=200)
+class CreateNewResource(ModelForm):
+    lesson = forms.CharField(label='Lesson Title', max_length=50)
+    topic = forms.CharField(label='Topic', max_length=50)
     week = forms.CharField(label='Week', max_length=3)
-    show = forms.BooleanField(label='Is this ready for student view?', required=False)
-    prog = forms.CharField(label='Program',max_length=20)
+    slides = forms.FileField(label='Lesson Slide', max_length=None, allow_empty_file=False)
+    show = forms.BooleanField(label='Is this ready for study view?',initial=False,required=False)
+    rectutorial = forms.URLField(label='Recommended Tutorial', max_length=200,required=False)
+
+    class Meta:
+        model = Material
+        fields = ['lesson', 'topic', 'week', 'slides', 'show', 'rectutorial']
