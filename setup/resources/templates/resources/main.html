@@ -1,1 +1,31 @@
-{% extends 'dashboard/base.html' %}
+{% extends 'dashboard/base.html' %}}
+
+{% block title %} Study Room │ Resources {% endblock %}
+
+
+{% block header %}
+Class Resources
+{% endblock %}
+
+<body>
+{% block body %}
+Programs:
+<ul>
+
+    {% for item in list %}
+
+    <a href="/">{{item.pathway}}</a>
+    <br>
+    {% endfor %}
+
+</ul>
+
+<a href="/submit" class="button">Would you like to submit a resource?</a>
+{% endblock %}
+
+
+
+</body>
+
+
+</html>

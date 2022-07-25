@@ -5,4 +5,5 @@ app_name = 'resources'
 
 urlpatterns = [
     path('resources/', views.resources, name='resources'),
+    path('knowledge-bank/',views.knowbank,name='knowledge-bank')
 ]
