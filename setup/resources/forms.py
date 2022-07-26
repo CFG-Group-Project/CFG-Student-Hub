@@ -14,3 +14,5 @@ class CreateNewResource(ModelForm):
     class Meta:
         model = Material
         fields = ['lesson', 'topic', 'week', 'slides', 'show', 'rectutorial']
+
+
