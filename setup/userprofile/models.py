@@ -1,22 +1,23 @@
+from django.utils.translation import gettext as _
 from django.contrib.auth.models import User
 from django.db import models
 
-
 # Create your models here.
 from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profilepic = models.ImageField(default='images/default-profile-pic.jpg')
+class Profile(models.Model):
+    user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to="userprofile/static/avatars/", null=True, blank=True, default="default-profile-pic.jpg")
+    birthday = models.DateField(null=True, blank=True)
+    phone = models.CharField(max_length=32, null=True, blank=True)
+    city = models.CharField(max_length=50, null=True, blank=True)
 
-    def __str__(self):
-        return "%s's profile" % self.user
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
-            profile, created = UserProfile.objects.get_or_create(user=instance)
-
-    post_save.connect(create_user_profile, sender=User)
-
+    class Meta:
+        verbose_name = _('Profile')
+        verbose_name_plural = _('Profiles')
 
