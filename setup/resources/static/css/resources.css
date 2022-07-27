@@ -1,6 +1,39 @@
-. res-header {
+.header-res {
     text-decoration: underline;
     text-decoration-color: #F54996;
     text-align:center;
-    font-size:60px
+    font-size:60px;
+    text-transform: uppercase;
+}
+
+.container {
+  position: relative;
+  align:center
+}
+
+.text-block {
+  position: absolute;
+  top: 32%;
+  width: 30%;
+  text-decoration: none;
+  text-color: white;
+  background: #F54996;
+  background: 0%;
+  text-align: center;
+  font-size: 50px;
+}
+
+.text-block a {
+  text-decoration: none;
+  background: 0%;
+}
+
+.text-block a:hover {
+    font-color: black;
+}
+
+img {
+  width: 100%;
+  height: auto;
+
 }

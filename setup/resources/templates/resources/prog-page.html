@@ -1,10 +1,9 @@
-{% extends 'resources/main.html' %}}
+{% extends 'resources/base-res.html' %}}
 
-{% block title %} Study Room │ Resources {% endblock %}
 
 
 {% block header %}
-{{m}}
+
 {% endblock %}
 
 <head>
@@ -19,7 +18,7 @@
 
 <body>
 {% block body %}
-Programs:
+Topics:
 <ul>
 
     {% for item in list %}

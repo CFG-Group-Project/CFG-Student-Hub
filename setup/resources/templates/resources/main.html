@@ -1,36 +1,38 @@
-{% extends 'dashboard/base.html' %}}
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
 
 
 {% block title %} Resources {% endblock %}
-<head>
-    <style>
-        {% block css %}{% endblock
-    </style>
-</head>
 
 
-<div class="res-header">
 
+{% block body %}
+
+<div class="header-res">
+    Pathways
 </div>
 
-{% block body %} Class Resources
-Programs:
-<ul>
+
+    <ul>
 
     {% for item in list %}
+        <div class="container">
+            <img src="/static/images/box.png" alt="text box" style="width:30%">
+            <div class="text-block">
+                <a href="/resources/{{item.pathway}}" >/{{item.pathway}}</a>
+            </div>
+            </div>
 
-    <a href="/resources/{{item.pathway}}" >{{item.pathway}}</a>
+
     <br>
     {% endfor %}
+    </ul>
 
-</ul>
 
-<a href="/resources/submit" class="button" >-Would you like to submit a resource?-</a>
+
+
+
 {% endblock %}
-
-
-
-
 
 
 </html>
