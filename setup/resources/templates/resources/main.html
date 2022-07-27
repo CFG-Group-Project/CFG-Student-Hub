@@ -1,24 +1,19 @@
 {% extends 'dashboard/base.html' %}}
 
-{% block title %} Study Room │ Resources {% endblock %}
 
-
-{% block header %}
-Class Resources
-{% endblock %}
-
+{% block title %} Resources {% endblock %}
 <head>
-    <style type="texr/css">
-        .body a{
-        color: #000000
-        }
-
+    <style>
+        {% block css %}{% endblock
     </style>
 </head>
 
 
-<body>
-{% block body %}
+<div class="res-header">
+
+</div>
+
+{% block body %} Class Resources
 Programs:
 <ul>
 
@@ -35,7 +30,7 @@ Programs:
 
 
 
-</body>
+
 
 
 </html>

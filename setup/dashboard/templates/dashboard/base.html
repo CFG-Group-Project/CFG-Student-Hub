@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Dashboard{% endblock %}</title>
+    {% load static %}
     <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     {%block css%}{% endblock css%}
@@ -19,7 +20,7 @@
                 <a href="/">DASHBOARD</a>
                 <a href="http://localhost:8080/forum/">FORUM</a>
                 <a href="http://localhost:8080/study-zone/">STUDY ZONE</a>
-                <a href="">RESOURCES</a>
+                <a href="/resources">RESOURCES</a>
                 <a href="http://localhost:8080/contact-us/">CONTACT</a>
             </nav>
             </div>
