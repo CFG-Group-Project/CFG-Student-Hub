@@ -11,34 +11,36 @@
 </head>
 
 <body style="font-family:barlow">
-        <div class="sidenav">
-            <div class="logo">
-                <a href="/"><img src="{% static 'images/cfg-logo.png' %}" alt="logo"></a>
-            </div>
-            <div class="navbar">
-                <nav>
-                <a href="/">DASHBOARD</a>
-                <a href="http://localhost:8080/forum/">FORUM</a>
-                <a href="http://localhost:8080/study-zone/">STUDY ZONE</a>
-                <a href="">RESOURCES</a>
-                <a href="http://localhost:8080/contact-us/">CONTACT</a>
-            </nav>
-            </div>
+    <div class="sidenav">
+        <div class="logo">
+            <a href="/"><img src="{% static 'images/cfg-logo.png' %}" alt="logo"></a>
         </div>
-
-
-        <div class="topnav">
-            <a class="profile-icon" href="http://localhost:8080/profile/"><i class="fa-solid fa-user"></i></a>
-            <a class="logout-icon" href="{%url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
+        <div class="navbar">
+            <nav>
+            <a href="/">DASHBOARD</a>
+            <a href="http://localhost:8080/forum/">FORUM</a>
+            <a href="http://localhost:8080/study-zone/">STUDY ZONE</a>
+            <a href="">RESOURCES</a>
+            <a href="http://localhost:8080/contact-us/">CONTACT</a>
+        </nav>
         </div>
+    </div>
 
-    <main class="main body">
-    {% block body %}
+    <div class="topnav">
+        <a class="profile-icon" href="http://localhost:8080/profile/"><i class="fa-solid fa-user"></i></a>
+        <a class="logout-icon" href="{%url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
+    </div>
 
-    {% endblock %}
-    </main>
+    <div class="content">
+
+
+        <main class="main body">
+        {% block body %}{% endblock %}
+        </main>
+
+        <footer>
+            <p>&copy; WWW.CODEFIRSTGIRLSSTUDENTS.COM</p>
+        </footer>
+    </div>
 </body>
-<footer>
-    <p>&copy; WWW.CODEFIRSTGIRLSSTUDENTS.COM</p>
-</footer>
 </html>

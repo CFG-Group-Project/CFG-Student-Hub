@@ -6,7 +6,33 @@ background-color:#000000;
 color:white;
 }
 
-.profile-info{
+/*CONTAINER FOR ALL CONTENT ON PAGE*/
+.profile-container{
+    border:2px solid red;
+    width:80vw;
+    margin-top:20px;
 
+
+
+}
+
+.profile-info{
 display:flex;
+justify-content:space-around;
+width:100%;
+}
+
+.left-side{
+border:2px solid white;
+width:60%;
+}
+
+.right-side{
+border:2px solid white;
+width:30%;
+}
+
+.profile-info{
+display:flex;
+flex-wrap:2;
 }
