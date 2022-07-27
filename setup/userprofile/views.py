@@ -31,6 +31,7 @@ class ProfileView(View):
             profile.user.last_name = form.cleaned_data.get('last_name')
             profile.user.username = form.cleaned_data.get('username')
             profile.user.email = form.cleaned_data.get('email')
+            profile.user.avatar = form.cleaned_data.get('avatar')
             profile.user.save()
 
             messages.success(request, 'Profile saved successfully')
