@@ -2,124 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Study Room{% endblock %}</title>
-        <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
-<style type="text/css">
-.topnav {
-    height:10%;
-    width:100%;
-    position: fixed;
-    top:0;
-    left:0;
-    background-color: #000000;
-    overflow-x:hidden;
-    padding-top:20px}
-
-.topnav a {
-    text-align:right;
-    padding: 10px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #ffffff;
-    display: block;
-    }
-
-.topnav a:hover{
-    color: #F54996;
-
-}
-
-.sidenav {
-    height:90%;
-    width:160px;
-    position: fixed;
-    top:10%;
-    left:0;
-    background-color: #000000;
-    overflow-x:hidden;
-    padding-top:20px}
-
-.sidenav a {
-    text-align:center;
-    padding: 10px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #ffffff;
-    display: block;
-    }
-
-.sidenav a:hover {
-    color: #F54996;
-}
-
-.sidenav img {
-    position: absolute;
-    top:75%;
-    padding: 0px 10px;
-}
-
-.header {
-    font-family: 'Barlow',Sans-serif;
-    text-transform: uppercase;
-    font-size: 30px;
-    text-align:center;
-    font-weight:800;
-    margin-left:180px;
-    margin-top:100px;
-    text-decoration: underline;
-    text-decoration-color: #F54996;
-}
-
-.body {
-    font-family: 'Barlow';
-    font-size: 22px;
-    margin-left:180px;
-}
-
-.button{
-  text-align:center;
-  text-decoration: none;
-  background-color:#000000;
-  width:200px;
-  height:60px;
-  line-height:60px;
-  color:white;
-  margin:20px auto;
-  position:relative;
-}
-
-
-
-</style>
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    {%block css%}{% endblock css%}
+	<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
 </head>
 
 <body style="font-family:barlow">
+        <div class="sidenav">
+            <div class="logo">
+                <a href="/"><img src="{% static 'images/cfg-logo.png' %}" alt="logo"></a>
+            </div>
+            <div class="navbar">
+                <nav>
+                <a href="/">DASHBOARD</a>
+                <a href="http://localhost:8080/forum/">FORUM</a>
+                <a href="http://localhost:8080/study-zone/">STUDY ZONE</a>
+                <a href="">RESOURCES</a>
+                <a href="http://localhost:8080/contact-us/">CONTACT</a>
+            </nav>
+            </div>
+        </div>
 
-    <div class="sidenav">
-        <a href="/dashboard">Dashboard</a>
-        <a href="/resources">Resources</a>
-        <a href="/contact-us/">Contact Us</a>
-        <a href="/study-zone">Study Zone</a>
-        <a href="/forum">Forum</a>
-        <img src="https://codefirstgirls.com/wp-content/uploads/elementor/thumbs/White-Code-First-Girls-Logo-Transparent-p75th7g47zmtuf6o6zuyna1izwc77lixwo6bygc4gk.png" alt="logo">
-    </div>
 
-<!--    the log out button takes you back to the login page-->
-    <div class="topnav">
-        <a href="/login_user">Log out</a>
-    </div>
+        <div class="topnav">
+            <a class="profile-icon" href="http://localhost:8080/profile/"><i class="fa-solid fa-user"></i></a>
+            <a class="logout-icon" href="{%url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
 
-    <div class="header">
-        <h1>
-        {%block header %}
-        {% endblock %}
-        </h1>
-    </div>
-
-    <div class="body">
-
+    <main class="main body">
     {% block body %}
+
     {% endblock %}
-    </div>
+    </main>
 </body>
+<footer>
+    <p>&copy; WWW.CODEFIRSTGIRLSSTUDENTS.COM</p>
+</footer>
 </html>

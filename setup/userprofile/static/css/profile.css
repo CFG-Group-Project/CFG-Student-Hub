@@ -1,0 +1,12 @@
+*{
+margin: 0;
+padding:0;
+box-sizing:border;
+background-color:#000000;
+color:white;
+}
+
+.profile-info{
+
+display:flex;
+}
