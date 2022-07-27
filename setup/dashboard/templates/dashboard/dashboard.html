@@ -3,5 +3,8 @@
 {%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">{% endblock css%}
 
 {% block body %}
-<h1 class="header">Welcome Back, *Name*!</h1>
+<div class="dashboard-container">
+    <h1 class="header">Welcome back, {{ user.get_username }}!</h1>
+</div>
+
 {% endblock body %}
