@@ -8,7 +8,6 @@ color:white;
 
 /*CONTAINER FOR ALL CONTENT ON PAGE*/
 .dashboard-container{
-    border:2px solid red;
     width:80vw;
     height:90vh;
 }
