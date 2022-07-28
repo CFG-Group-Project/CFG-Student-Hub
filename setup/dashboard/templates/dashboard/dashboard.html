@@ -1,1 +1,10 @@
 {% extends 'dashboard/base.html' %}
+{% load static %}
+{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">{% endblock css%}
+
+{% block body %}
+<div class="dashboard-container">
+    <h1 class="header">Welcome back, {{ user.get_short_name }}!</h1>
+</div>
+
+{% endblock body %}
