@@ -1,1 +1,61 @@
-{% extends 'dashboard/base.html' %}
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+
+
+{% block title %} Resources {% endblock %}
+
+{% block body %}
+
+<div class="header-res">
+    Pathways
+</div>
+<section class="container text-center vertical-center">
+
+ <hr> <br>
+  <div class="row">
+    <div class="col-md-3">
+      <a href="/resources/data">
+        <div class="card">
+          <img class="card-img-top" src="/static/images/data.png" alt="data image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Resource Hub
+            </h5>
+            XXXXXXXXXXXXXXXX
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-3">
+      <a href="/resources/full-stack">
+        <div class="card">
+          <img class="card-img-top" src="/static/images/full-stack.png" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Resource Hub
+            </h5>
+            XXXXXX
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-3">
+      <a href="/resources/software-engineering">
+        <div class="card">
+          <img class="card-img-top" src="/static/images/software.png" alt="software image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Resource Hub
+            </h5>
+            XXXXXX
+          </div>
+        </div>
+      </a>
+    </div></div>
+
+{% endblock %}
+
+</section>
