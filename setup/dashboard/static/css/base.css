@@ -98,6 +98,9 @@ footer{
 /* SMALLER SCREENS */
 
 @media only screen and (max-width: 1250px) {
-    .profile-info{
-        width:95%;
+    .logo{
+        width:100px;
+        height:100px;
+        margin-bottom:100px;
+
     }

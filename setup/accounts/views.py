@@ -18,7 +18,7 @@ def register(request):
             password = form.cleaned_data.get('password1')
             form.save()
             print('worked')
-            return redirect('/accounts/registered')
+            return redirect('/registered')
         else:
             errors = form.errors.as_data()
             for k, v in errors.items():
