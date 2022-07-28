@@ -93,3 +93,11 @@ footer{
     text-align:center;
 
 }
+
+
+/* SMALLER SCREENS */
+
+@media only screen and (max-width: 1250px) {
+    .profile-info{
+        width:95%;
+    }
