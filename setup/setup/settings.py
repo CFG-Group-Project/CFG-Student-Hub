@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'accounts',
     'bootstrap5',
     'fontawesomefree',
+    'resources',
 
 ]
 
