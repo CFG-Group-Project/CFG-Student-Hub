@@ -8,7 +8,6 @@ color:white;
 
 /*CONTAINER FOR ALL CONTENT ON PAGE*/
 .profile-container{
-    border:2px solid red;
     width:80vw;
     margin-top:20px;
 }
@@ -21,13 +20,17 @@ margin-bottom:40px;
 .profile-info{
 display:flex;
 justify-content:space-around;
-width:100%;
+width:75%;
+margin:auto;
+
 }
 
 .left-side, .right-side{
 border:2px solid white;
 border-radius:10px;
 padding:10px;
+box-shadow: 5px 6px grey;
+min-height:400px;
 }
 
 .left-side{
@@ -36,10 +39,12 @@ flex-wrap:wrap;
 justify-content:space-around;
 width:60%;
 
+
 }
 
 .right-side{
 width:30%;
+
 
 }
 
