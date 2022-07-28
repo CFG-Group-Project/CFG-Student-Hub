@@ -49,4 +49,4 @@ class KnowledgeBank(ListView):
 class ProgBank(ListView):
     model = Program
     template_name = 'resources/prog-page.html'
-    # proglist = Material.objects.all()
+    proglist = Material.objects.all()
