@@ -1,9 +1,9 @@
 *{
-margin: 0;
-padding:0;
-box-sizing:border;
-background-color:#000000;
-color:white;
+    margin: 0;
+    padding:0;
+    box-sizing:border;
+    background-color:#000000;
+    color:white;
 }
 
 /*CONTAINER FOR ALL CONTENT ON PAGE*/
@@ -13,68 +13,65 @@ color:white;
 }
 
 .title{
-text-align:center;
-margin-bottom:40px;
+    text-align:center;
+    margin-bottom:40px;
 }
 
 .profile-info{
-display:flex;
-justify-content:space-around;
-width:75%;
-margin:auto;
-
+    display:flex;
+    justify-content:space-around;
+    max-width:75%;
+    margin:auto;
 }
 
 .left-side, .right-side{
-border:2px solid white;
-border-radius:10px;
-padding:10px;
-box-shadow: 5px 6px grey;
-min-height:400px;
+    border:2px solid white;
+    border-radius:10px;
+    padding:10px;
+    box-shadow: 5px 6px grey;
+    min-height:400px;
 }
 
 .left-side{
-display:flex;
-flex-wrap:wrap;
-justify-content:space-around;
-width:60%;
-
-
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    width:60%;
 }
 
 .right-side{
-width:30%;
-
-
+    width:30%;
 }
 
 .form-group{
-display:flex;
-flex-direction:column;
-margin-bottom:10px;
+    display:flex;
+    flex-direction:column;
+    margin-bottom:10px;
 }
 
 .form-group input{
-width:200px;
-padding:10px;
-border:1px solid white;
-border-radius:10px;
+    width:200px;
+    padding:10px;
+    border:1px solid white;
+    border-radius:10px;
 }
-.email{
-color:#828282;
-background-color:#020202;
 
+.email{
+    color:#828282;
+    background-color:#020202;
 }
+
 .avatar-title{
-margin-top:20px;
+    margin-top:20px;
 }
+
 .avatar-text{
-padding:10px;
-border:1px solid white;
-border-radius:10px;
-width:450px;
-display:flex;
-align-items:center;
+    padding:10px;
+    border:1px solid white;
+    border-radius:10px;
+    width:450px;
+    display:flex;
+    align-items:center;
 }
 
 input[type="file"] {
@@ -82,19 +79,56 @@ input[type="file"] {
 }
 
 .save-all-btn{
-border:1px solid #F54996;
-background-color:#F54996;
-padding:15px 40px;
-margin:10px;
-border-radius:10px;
+    border:1px solid #F54996;
+    background-color:#F54996;
+    padding:15px 40px;
+    margin:10px;
+    border-radius:10px;
 }
 
 /*RIGHT SIDE*/
 .preview-profile{
-text-align:center;
-margin-top:70px;
+    text-align:center;
+    margin-top:70px;
 }
 
 .avatar{
-border-radius:90px;
+    border-radius:90px;
+}
+
+/* SMALLER SCREENS */
+@media only screen and (max-width: 1000px) {
+    .profile-info{
+        width:95%;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    .profile-info{
+        width:95%;
+    }
+
+    .avatar-text{
+    width:250px;
+    font-size:10px;
+    align-self:center;
+    }
+
+    .save-all-btn{
+    width:80%;
+    }
+
+    .form-group input{
+    width:250px;
+    padding:10px;
+    border:1px solid white;
+    border-radius:10px;
+}
+}
+
+/* LARGER SCREENs */
+@media only screen and (min-width: 1550px) {
+    .profile-info{
+        width:60%;
+    }
 }
