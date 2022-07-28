@@ -55,6 +55,11 @@ padding:10px;
 border:1px solid white;
 border-radius:10px;
 }
+.email{
+color:#828282;
+background-color:#020202;
+
+}
 .avatar-title{
 margin-top:20px;
 }
@@ -77,4 +82,14 @@ background-color:#F54996;
 padding:15px 40px;
 margin:10px;
 border-radius:10px;
+}
+
+/*RIGHT SIDE*/
+.preview-profile{
+text-align:center;
+margin-top:70px;
+}
+
+.avatar{
+border-radius:90px;
 }
