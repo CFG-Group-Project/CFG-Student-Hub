@@ -182,4 +182,13 @@ const SetTimer = (props) => {
   );
 }
 
+// Toggle
+
+const chk = document.getElementById('chk');
+
+chk.addEventListener('change', () => {
+	document.body.classList.toggle('dark');
+});
+
+
 ReactDOM.render(<App/>, document.getElementById('app'));
