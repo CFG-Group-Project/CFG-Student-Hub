@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             name='Profile',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('avatar', models.ImageField(blank=True, default='default-profile-pic.jpg', null=True, upload_to='userprofile/static/avatars/')),
+                ('avatar', models.ImageField(blank=True, default='default.jpg', null=True, upload_to='userprofile/static/avatars/')),
                 ('birthday', models.DateField(blank=True, null=True)),
                 ('phone', models.CharField(blank=True, max_length=32, null=True)),
                 ('number', models.CharField(blank=True, max_length=32, null=True)),

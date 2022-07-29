@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>{% block title %}Dashboard{% endblock %}</title>
     {% load static %}
     <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
@@ -32,13 +34,13 @@
             <a class="logout-icon" href="{%url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>
 
-    <main class="main body">
-    {% block body %}
+        <main class="main body">
+        {% block body %}{% endblock %}
+        </main>
 
-    {% endblock %}
-    </main>
+        <footer>
+            <p>&copy; WWW.CODEFIRSTGIRLSSTUDENTS.COM</p>
+        </footer>
+    </div>
 </body>
-<footer>
-    <p>&copy; WWW.CODEFIRSTGIRLSSTUDENTS.COM</p>
-</footer>
 </html>

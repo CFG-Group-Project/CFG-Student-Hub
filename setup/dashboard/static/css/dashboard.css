@@ -1,11 +1,26 @@
+*{
+margin: 0;
+padding:0;
+box-sizing:border;
+background-color:#000000;
+color:white;
+}
+
+/*CONTAINER FOR ALL CONTENT ON PAGE*/
+.dashboard-container{
+    width:80vw;
+    height:90vh;
+}
+
 .header {
-    position: absolute;
-    width:80%;
-    right:0;
+
+    text-align:center;
+    width:500px;
+    margin: 0 auto;
     font-family: 'Barlow';
     font-size: 16px;
-    text-align:center;
     margin-top:100px;
+
     /*text-decoration: underline;*/
     /*text-decoration-color: #F54996;*/
 

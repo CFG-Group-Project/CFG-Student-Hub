@@ -1,69 +1,92 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
+
 {% block title %}Profile{% endblock %}
 {%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">{% endblock css%}
+
 {% block body %}
-<h2 class="title">Profile information</h2>
-<form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-     <div class="profile-info">
-         <div class="left-side">
-             <div class="form-group">
-                 <label for="first_name">First Name</label>
-                <input name="first_name" class="form-control" id="first_name" type="text" placeholder="Enter your first name" value="{{ profile.user.first_name }}" required>
-             </div>
+<div class="profile-container">
+    <h2 class="title">Profile information</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+         <div class="profile-info" style="font-family:sans-serif">
+             <div class="left-side">
+                 <div class="row">
+                     <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input name="first_name" class="form-control" id="first_name" type="text" placeholder="Enter your first name" value="{{ profile.user.first_name }}" required>
+                     </div>
 
-             <div class="form-group">
-                <label for="last_name">Last Name</label>
-                <input name="last_name" class="form-control" id="last_name" type="text" placeholder="Also your last name" value="{{ profile.user.last_name }}" required>
-             </div>
-
-             <div class="form-group">
-                 <label for="username">Username</label>
-                <input name="username" class="form-control" id="username" type="text" value="{{ profile.user.username }}" required>
-             </div>
-
-             <div class="form-group">
-                  <span class="input-group-text"><span class="far fa-calendar-alt"></span></span>
-                  <input name="birthday" data-datepicker="" class="form-control" id="birthday" type="text" placeholder="dd/mm/yyyy" value="{{ profile.birthday|date:'m/d/Y'|default:'' }}">
-             </div>
-             <div class="form-group">
-                <label for="email">Email</label>
-                <input name="email" class="form-control" id="email" type="email" value="{{ profile.user.email }}" readonly>
-             </div>
-
-             <div class="form-group">
-                 <label for="phone">Phone</label>
-                 <input name="phone" class="form-control" id="phone" type="number" placeholder="+44 123 456 7890" value="{{ profile.phone }}" >
-             </div>
-
-             <div class="form-group">
-                 <label for="city">City</label>
-                 <input name="city" class="form-control" id="city" type="text" placeholder="Enter your City" value="{{ profile.city|default:'' }}">
-             </div>
-
-              <div class="upload-avatar">
-                     <h3 class="avatar-title">Select profile photo</h3>
-                     <input name="avatar" type="file">
-                     <div class="avatar-text">
-                         <div class="font-weight-normal text-dark mb-1">Choose Image</div>
-                         <div class="text-gray small">JPG, GIF or PNG. Max size of 800K</div>
-                      </div>
-              </div>
-             <button type="submit" class="btn btn-primary">Save All</button>
-             </div>
-
-             <div class="right-side">
-                 <div class="preview-profile">
-                     <img src="{{ profile.user.avatar }}"
-                         class="user-avatar"
-                         alt="Student Portrait">
-                    <h4 class="h3">{{ profile.user.username }}</h4>
-                    <h4 class="display-username">{{ profile.user.get_full_name }}</h4>
-                    <h5 class="display-email">{{ request.user.email }}</h5>
+                     <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input name="last_name" class="form-control" id="last_name" type="text" placeholder="Also your last name" value="{{ profile.user.last_name }}" required>
+                     </div>
                  </div>
 
+                <div class="row">
+                     <div class="form-group">
+                        <label for="username">Username</label>
+                        <input name="username" class="form-control" id="username" type="text" value="{{ profile.user.username }}" required>
+                     </div>
+
+                     <div class="form-group">
+                         <label for="birthday">Birthday <i class="far fa-calendar-alt"></i></label>
+                          <input name="birthday" data-datepicker="" class="form-control" id="birthday" type="text" placeholder="dd/mm/yyyy" value="{{ profile.birthday|date:'m/d/Y'|default:'' }}">
+                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input name="email" class="form-control email" id="email" type="email" value="{{ profile.user.email }}" readonly>
+                     </div>
+
+                     <div class="form-group">
+                         <label for="phone">Phone</label>
+                         <input name="phone" class="form-control" id="phone" type="number" placeholder="+44 123 456 7890" value="{{ profile.phone }}" >
+                     </div>
+                </div>
+
+
+                 <div class="form-group">
+                     <label for="city">City</label>
+                     <input name="city" class="form-control" id="city" type="text" placeholder="Enter your City" value="{{ profile.city|default:'' }}">
+                 </div>
+
+                  <div class="upload-avatar">
+                         <h3 class="avatar-title">Select profile photo</h3>
+
+                         <div class="avatar-text">
+                             <div class="upload-avatar-icon">
+                                <span class="fas fa-3x fa-paperclip mr-3"></span>
+                             </div>
+                             <div class="inner-avatar-text">
+                                 <input name="avatar" type="file">
+                             <div class="text-gray small">JPG, GIF or PNG. Max size of 800K</div>
+                             </div>
+
+                          </div>
+                  </div>
+
+                 <button type="submit" class="save-all-btn">Save</button>
+                 </div>
+
+                 <div class="right-side">
+                     <div class="preview-profile">
+                         {% if user.profile.avatar %}
+                         <img class="avatar" src="{{ user.profile.avatar.url }}" alt="user avatar" width="150px" height="150px">
+                         {% else %}
+                         <img class="avatar" src="{% static 'avatars/default.jpg' %}" alt="user avatar" width="150px" height="150px">
+                         {% endif %}
+
+                        <h4 class="h3">{{ profile.user.username }}</h4>
+                        <h4 class="display-username">{{ profile.user.get_full_name }}</h4>
+                        <h5 class="display-email">{{ request.user.email }}</h5>
+
+                     </div>
+
+             </div>
          </div>
-     </div>
-</form>
+    </form>
+</div>
 {% endblock %}
