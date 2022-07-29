@@ -1,0 +1,16 @@
+{% extends 'resources/base-res.html' %}}
+
+{% block header %}
+Submit New Resource
+{% endblock %}
+
+{% block body %}
+
+
+<form action="/resources/submit-thanks" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value="Submit">Save</button>
+</form>
+
+{% endblock %}
