@@ -3,17 +3,7 @@
     text-decoration-color: #F54996;
     text-align:center;
     font-size:60px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    padding-left:20px
-    padding-top: 160px;
-=======
->>>>>>> parent of 03db3af (resource page final buttons)
-=======
->>>>>>> parent of 03db3af (resource page final buttons)
-=======
->>>>>>> parent of 03db3af (resource page final buttons)
+    padding-left:20px;
     text-transform: uppercase;
 }
 
@@ -24,27 +14,56 @@
 
 .text-block {
   position: absolute;
-  top: 32%;
-  width: 30%;
+  top: 28%;
+  left:7%;
   text-decoration: none;
-  text-color: white;
+  text-color: #000000;
   background: #F54996;
   background: 0%;
   text-align: center;
-  font-size: 50px;
+  font-size: 45px;
 }
 
 .text-block a {
+  text-color: #000000;
   text-decoration: none;
   background: 0%;
 }
 
 .text-block a:hover {
-    font-color: black;
+    font-color: #000000;
+    text-decoration: underline;
 }
 
-img {
+.img {
   width: 100%;
   height: auto;
 
+}
+
+.selector {
+  text-decoration: none;
+  text-color: #000000;
+  font-size: 45px;
+
+}
+
+.selector a {
+  text-decoration: none;
+  text-color: #000000;
+  font-size: 45px;
+
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
 }

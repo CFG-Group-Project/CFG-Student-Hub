@@ -1,20 +1,16 @@
 {% extends 'resources/base-res.html' %}}
 {% load bootstrap5 %}
+{% load static %}
 
 
 {% block title %} Resources {% endblock %}
 
-
-
 {% block body %}
 
 <div class="header-res">
-  Pathways
+    Pathways
 </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<section class="container">
+<section class="container text-center vertical-center">
 
  <hr> <br>
   <div class="row">
@@ -26,41 +22,40 @@
             <h5 class="card-title ">
               Resource Hub
             </h5>
+            XXXXXXXXXXXXXXXX
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-3">
+      <a href="/resources/full-stack">
+        <div class="card">
+          <img class="card-img-top" src="/static/images/full-stack.png" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Resource Hub
+            </h5>
             XXXXXX
           </div>
         </div>
       </a>
     </div>
-=======
 
->>>>>>> parent of 03db3af (resource page final buttons)
-=======
-
->>>>>>> parent of 03db3af (resource page final buttons)
-=======
-
->>>>>>> parent of 03db3af (resource page final buttons)
-
-    <ul>
-
-    {% for item in list %}
-        <div class="container">
-            <img src="/static/images/box.png" alt="text box" style="width:30%">
-            <div class="text-block">
-                <a href="/resources/{{item.pathway}}" >/{{item.pathway}}</a>
-            </div>
-            </div>
-
-
-    <br>
-    {% endfor %}
-    </ul>
-
-
-
-
+    <div class="col-md-3">
+      <a href="/resources/software-engineering">
+        <div class="card">
+          <img class="card-img-top" src="/static/images/software.png" alt="software image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Resource Hub
+            </h5>
+            XXXXXX
+          </div>
+        </div>
+      </a>
+    </div></div>
 
 {% endblock %}
 
-
-</html>
+</section>
