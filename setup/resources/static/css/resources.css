@@ -71,22 +71,18 @@ a {
 
 
 .card {
-    box-shadow: 15px 15px 10px rgb(78, 77, 77);
 
 }
 
 
-.card-header {
-    color: black !important;
-    background: rgb(152, 214, 230) !important;
-    transition: 0.3s ease-in;
-
-}
+.card-header a {
+    text-decoration: none
+    }
 
 .card-header:hover {
-    background: rgb(11, 22, 83) !important;
+    background: #F54996 !important;
     color: whitesmoke !important;
-    transition: 0.1s ease-in;
+    transition: 0.3s ease-in;
 }
 
 a {

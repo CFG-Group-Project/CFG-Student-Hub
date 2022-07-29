@@ -40,7 +40,7 @@ class NotesDetailView(DetailView):
 
 
 def ClassPage(request, name=None):
-    Program.objects.get(pathway=name)
+    Program.objects.get(path_code=name)
     # lessons = Material.objects.get(topc)
     form = SearchForm()
     context = {'form': form}
