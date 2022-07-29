@@ -23,8 +23,11 @@
             <p class="description m-5 p-5">
                 {{notes.content}}
             <div class="col text-center">
+            {% if notes.link %}
 <a href="{{notes.link}}" class="btn btn-light" target="_blank" rel="noopener noreferrer">External Resource Link</a>
 </div>
+            {% endif %}
+
             </p>
             <hr>
         </div>
