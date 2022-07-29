@@ -4,7 +4,12 @@
 
 {% block body %}
 <div class="dashboard-container">
+    {% if user.get_short_name %}
     <h1 class="header">Welcome back, {{ user.get_short_name }}!</h1>
+    {% else %}
+    <h1 class="header">Welcome back, {{ user.get_username }}!</h1>
+    {% endif %}
+
 </div>
 
 {% endblock body %}
