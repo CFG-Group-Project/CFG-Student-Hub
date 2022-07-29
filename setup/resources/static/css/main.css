@@ -46,8 +46,6 @@ a:hover {
     color: black;
 }
 
-
-
 .custom-header:hover {
     background: rgb(143, 189, 186) !important;
 }
@@ -55,6 +53,12 @@ a:hover {
 .card-header {
     color: black !important;
     background: rgb(152, 214, 230) !important;
+    transition: 0.3s ease-in;
+}
+
+
+.card-footer {
+    background: black !important;
     transition: 0.3s ease-in;
 
 }
@@ -211,3 +215,4 @@ footer .column a+a {
 .alert{
     background:white;
 }
+

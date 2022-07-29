@@ -11,6 +11,10 @@ def resources(request):
     return render(request, 'resources/main.html')
 
 
+def programs(request):
+    return render(request, 'resources/pathways.html')
+
+
 def notesview(request):
     return render(request, 'resources/user-notes.html')
 
@@ -32,7 +36,7 @@ def usernotes(request):
 
 def delete_note(request, pk=None):
     Notes.objects.get(id=pk).delete()
-    return HttpResponseRedirect('../mynotes')
+    return HttpResponseRedirect('/resources/mynotes')
 
 
 class NotesDetailView(DetailView):
@@ -42,10 +46,17 @@ class NotesDetailView(DetailView):
 def ClassPage(request, name=None):
     Program.objects.get(path_code=name)
     # lessons = Material.objects.get(topc)
-    form = SearchForm()
-    context = {'form': form}
+    if request.method == "POST":
+        form = SearchForm(request.POST)
+        text = request.POST['text']
+        result_list = []
+    else:
+        form = SearchForm()
+    context = {'search': form}
     return render(request, 'resources/prog-page.html', context)
 
+
+# https://learndjango.com/tutorials/django-search-tutorial
 
 # def materials(request):
 #     material = Material.objects.get(id=id)
@@ -63,14 +74,13 @@ def submit(request):
         form = CreateNewResource(request.POST)
         if form.is_valid():
             materials = Material(user=request.user, lesson=request.POST['lesson'],
-                             week=request.POST['week'],
-                             slides=request.POST['slides'],
-                             topics=request.POST['topics'],
-                             rectutorial=request.POST['rectutorial'])
+                                 week=request.POST['week'],
+                                 slides=request.POST['slides'],
+                                 topics=request.POST['topics'],
+                                 rectutorial=request.POST['rectutorial'])
             materials.save()
         messages.success(request, f"Your lesson have been saved!")
     else:
         form = CreateNewResource
     context = {'form': form}
     return render(request, 'resources/submit.html', {'form': form})
-

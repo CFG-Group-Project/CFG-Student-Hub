@@ -5,6 +5,7 @@ app_name = 'resources'
 
 urlpatterns = [
     path('resources/', views.resources, name='resources'),
+path('resources/programs', views.programs, name='programs'),
     path('resources/mynotes',views.usernotes,name='user-sub'),
     path('resources/mynotes/delete_note/<int:pk>',views.delete_note,name='delete_note'),
     path('resources/mynotes/<int:pk>',views.NotesDetailView.as_view(),name='notes-detail'),
