@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>{% block title %}Dashboard{% endblock %}</title>
-    {% load static %}
     <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     {%block css%}{% endblock css%}
@@ -13,26 +12,28 @@
 </head>
 
 <body style="font-family:barlow">
-        <div class="sidenav">
-            <div class="logo">
-                <a href="/"><img src="{% static 'images/cfg-logo.png' %}" alt="logo"></a>
-            </div>
-            <div class="navbar">
-                <nav>
-                <a href="/">DASHBOARD</a>
-                <a href="http://localhost:8080/forum/">FORUM</a>
-                <a href="http://localhost:8080/study-zone/">STUDY ZONE</a>
-                <a href="http://localhost:8080/resources/">RESOURCES</a>
-                <a href="http://localhost:8080/contact-us/">CONTACT</a>
-            </nav>
-            </div>
+    <div class="sidenav">
+        <div class="logo">
+            <a href="/"><img class="logo" src="{% static 'images/cfg-logo.png' %}" alt="logo"></a>
         </div>
-
-
-        <div class="topnav">
-            <a class="profile-icon" href="http://localhost:8080/profile/"><i class="fa-solid fa-user"></i></a>
-            <a class="logout-icon" href="{%url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
+        <div class="navbar">
+            <nav>
+            <a href="/">DASHBOARD</a>
+            <a href="/forum">FORUM</a>
+            <a href="/study-zone">STUDY ZONE</a>
+            <a href="/resources">RESOURCES</a>
+            <a href="/contact-us">CONTACT</a>
+        </nav>
         </div>
+    </div>
+
+    <div class="topnav">
+        <a class="profile-icon" href="/profile"><i class="fa-solid fa-user"></i></a>
+        <a class="logout-icon" href="{%url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
+    </div>
+
+    <div class="content">
+
 
         <main class="main body">
         {% block body %}{% endblock %}
