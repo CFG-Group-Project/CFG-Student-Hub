@@ -18,15 +18,18 @@
 
 <body>
 {% block body %}
-<section class="container text-center">
-  <h3>Welcome</h3>
+Topics:
+<ul>
 
+    {% for item in list %}
 
+    <a href="/resources/{{item.pathway}}" >{{item.pathway}}</a>
+    <br>
+    {% endfor %}
 
+</ul>
 
-</section>
-
-<a href="/resources/submit" class="btn btn-light" >-Would you like to submit a resource?-</a>
+<a href="/resources/submit" class="button" >-Would you like to submit a resource?-</a>
 {% endblock %}
 
 
