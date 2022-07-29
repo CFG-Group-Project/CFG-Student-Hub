@@ -11,7 +11,7 @@
 
     
     <link rel="stylesheet" type="text/css" href="{%static 'study.css' %}"/>
-    <!-- <script src="study.js" type="text/javascript"></script> -->
+     <script src="{%static 'study.js' %}" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 
 </head>
@@ -24,6 +24,16 @@
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
 <script type="text/babel" src="{%static 'study.js' %}"></script>
+
+<!-- Toggle -->
+<div>
+	<input type="checkbox" class="checkbox" id="chk" />
+	<label class="label" for="chk">
+		<i class="fas fa-moon"></i>
+		<div class="ball"></div>
+	</label>
+</div>
+<!-- Toggle -->
 
 </body>
 </html>
