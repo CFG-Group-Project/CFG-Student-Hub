@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'bootstrap5',
     'fontawesomefree',
     'resources',
-
 ]
 
 
