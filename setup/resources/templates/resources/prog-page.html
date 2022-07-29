@@ -1,5 +1,5 @@
 {% extends 'resources/base-res.html' %}}
-
+{% load crispy_forms_tags %}
 
 
 {% block header %}
@@ -19,10 +19,45 @@
 <body>
 {% block body %}
 <section class="container text-center">
-  <h3>Welcome</h3>
+  <h3>{{Program}}</h3>
 
 
 
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <br>
+        <input class="btn btn-light" type="submit" value="Submit">
+    </form><br>
+
+
+<a href="#" target="_blank">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img class="img-fluid" src="#" alt="">
+
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="p-0 m-0">title</h3>
+                        <b>
+                            <u>
+                                <h5 class="p-0 m-0">channel</h5>
+                            </u>
+                        </b>
+                        <h6 class="p-0 m-1">description</h6>
+                        <b>
+                            <h6 class="ml-0 mt-3">duration</h6>
+                            <h6 class="ml-0 mt-1">views</h6>
+                            <h6 class="ml-0 mt-1">published</h6>
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    <br>
 
 </section>
 <div class="col text-center">

@@ -67,3 +67,34 @@ a {
   display: flex;
   align-items: center;
 }
+
+
+
+.card {
+    box-shadow: 15px 15px 10px rgb(78, 77, 77);
+
+}
+
+
+.card-header {
+    color: black !important;
+    background: rgb(152, 214, 230) !important;
+    transition: 0.3s ease-in;
+
+}
+
+.card-header:hover {
+    background: rgb(11, 22, 83) !important;
+    color: whitesmoke !important;
+    transition: 0.1s ease-in;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}

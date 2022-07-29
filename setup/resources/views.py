@@ -1,20 +1,50 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Material, Program, Notes
 from django.http import Http404, HttpResponseRedirect
 from .forms import *
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView, ListView
+from django.contrib import messages
 
 
 # Create your views here.
 def resources(request):
     return render(request, 'resources/main.html')
 
-def usernotes(request):
-    form = NotesForm()
-    notes = Notes.objects.filter(user=request.user)
-    context = {'notes':notes,'form':form}
-    return render(request,'resources/user-resources.html',context)
 
+def notesview(request):
+    return render(request, 'resources/user-notes.html')
+
+
+def usernotes(request):
+    if request.method == 'POST':
+        form = NotesForm(request.POST)
+        if form.is_valid():
+            notes = Notes(user=request.user, title=request.POST['title'], content=request.POST['content'],
+                          link=request.POST['link'])
+            notes.save()
+        messages.success(request, f"Your notes have been saved!")
+    else:
+        form = NotesForm()
+    notes = Notes.objects.filter(user=request.user)
+    context = {'notes': notes, 'form': form}
+    return render(request, 'resources/user-notes.html', context)
+
+
+def delete_note(request, pk=None):
+    Notes.objects.get(id=pk).delete()
+    return HttpResponseRedirect('../mynotes')
+
+
+class NotesDetailView(DetailView):
+    model = Notes
+
+
+def ClassPage(request, name=None):
+    Program.objects.get(pathway=name)
+    # lessons = Material.objects.get(topc)
+    form = SearchForm()
+    context = {'form': form}
+    return render(request, 'resources/prog-page.html', context)
 
 
 # def materials(request):
@@ -29,29 +59,18 @@ def submit_thanks(request):
 
 
 def submit(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = CreateNewResource(request.POST)
         if form.is_valid():
-            lesson = form.cleaned_data['lesson']
-            topic = form.cleaned_data['topic']
-            week = form.cleaned_data['week']
-            show = form.cleaned_data['show']
-            rectutorial = form.cleaned_data['rectutorial']
-            sub = Material(lesson=lesson, topic=topic, week=week, show=show, rectutorial=rectutorial)
-            sub.save()
-            return HttpResponseRedirect('resources/submit-thanks.hml')
-        else:
-            pass
+            materials = Material(user=request.user, lesson=request.POST['lesson'],
+                             week=request.POST['week'],
+                             slides=request.POST['slides'],
+                             topics=request.POST['topics'],
+                             rectutorial=request.POST['rectutorial'])
+            materials.save()
+        messages.success(request, f"Your lesson have been saved!")
     else:
-        form = CreateNewResource()
+        form = CreateNewResource
+    context = {'form': form}
     return render(request, 'resources/submit.html', {'form': form})
 
-
-class KnowledgeBank(ListView):
-    model = Material
-    template_name = 'material-page.html'
-
-class ProgBank(ListView):
-    model = Program
-    template_name = 'resources/prog-page.html'
-    # proglist = Material.objects.all()

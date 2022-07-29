@@ -21,3 +21,6 @@ class NotesForm(forms.ModelForm):
     class Meta:
         model = Notes
         fields = ['title','content','link']
+
+class SearchForm(forms.Form):
+    text = forms.CharField(max_length=100,label='What would you like to search for?',required=False)

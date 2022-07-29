@@ -12,16 +12,20 @@
 <div class="header-res">
     my notes
 </div>
-
+{% if messages %}
+    {% for msg in messages %}
+<div class="alert alert-{{msg.tags}}">{{msg}}</div>
+{% endfor %}
+{% endif %}
 <div class="container">
     <div class="row">
         {% for note in notes %}
         <div class="col-md-3">
-            <a href="#">
+            <a href="{% url 'resources:notes-detail' note.id %}">
                 <div class="card">
                     <div class="card-header">{{note.title}}}</div>
                     <div class="card-body">{{note.content|slice:":55"}}</div>
-                    <div class="card-footer mt-auto "><a href="#">
+                    <div class="card-footer mt-auto "><a href="{% url 'resources:delete_note' note.id %}">
                         <i class="fa-solid fa-trash"></i></a>
                     </div>
                 </div>
@@ -34,6 +38,7 @@
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Create Notes</legend>
         </fieldset>
+        {% csrf_token %}
         {{form|crispy}}
         <div class="form-group">
             <button href="" class="btn btn-light" type="submit">

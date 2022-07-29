@@ -7,7 +7,7 @@ class Notes(models.Model):
     user = models.ForeignKey(User,on_delete=models.SET_DEFAULT,default='CFG Grad')
     title = models.CharField(max_length=50)
     content = models.TextField(max_length=1000)
-    link = models.URLField(max_length=250)
+    link = models.URLField(max_length=250, blank=True)
 
     class Meta:
         verbose_name = "Student Submission"
@@ -15,10 +15,6 @@ class Notes(models.Model):
 
     def __str__(self):
         return self.title
-
-
-
-
 
 
 class Program(models.Model):
