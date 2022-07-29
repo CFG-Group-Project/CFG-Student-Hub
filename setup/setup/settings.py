@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'fontawesomefree',
     'resources',
+    'crispy_forms'
 ]
 
 
@@ -88,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cfgdatabase',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -137,3 +138,5 @@ AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 
 # Database Models
 AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

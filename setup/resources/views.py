@@ -1,14 +1,20 @@
 from django.shortcuts import render
-from .models import Material, Program
+from .models import Material, Program, Notes
 from django.http import Http404, HttpResponseRedirect
-from .forms import CreateNewResource
+from .forms import *
 from django.views.generic import ListView, DetailView
 
 
 # Create your views here.
 def resources(request):
-    proglist = Program.objects.all()
-    return render(request, 'resources/main.html', {'list': proglist})
+    return render(request, 'resources/main.html')
+
+def usernotes(request):
+    form = NotesForm()
+    notes = Notes.objects.filter(user=request.user)
+    context = {'notes':notes,'form':form}
+    return render(request,'resources/user-resources.html',context)
+
 
 
 # def materials(request):
@@ -17,7 +23,6 @@ def resources(request):
 #         return render(request, 'resources/material-page.html', {'material': material})
 #     else:
 #         raise Http404('This lesson is unavailable')
-
 
 def submit_thanks(request):
     return render(request, 'resources/submit-thanks.html')

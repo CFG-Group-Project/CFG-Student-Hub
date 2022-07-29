@@ -1,16 +1,24 @@
 {% extends 'resources/base-res.html' %}}
 
-{% block header %}
-Submit New Resource
-{% endblock %}
 
 {% block body %}
+<div class="header-res">
+    submit new resource
+</div>
 
+<div class="container-fluid">
 
-<form action="/resources/submit-thanks" method="post" enctype="multipart/form-data">
+<form class="form-group" action="/resources/submit-thanks" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" value="Submit">Save</button>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+                {{ form.as_p }}
+            <button type="submit" value="Submit">Save</button>
+</div>
+</div>
 </form>
+
+</div>
+
 
 {% endblock %}

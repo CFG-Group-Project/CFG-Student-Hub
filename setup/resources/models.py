@@ -3,6 +3,24 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Notes(models.Model):
+    user = models.ForeignKey(User,on_delete=models.SET_DEFAULT,default='CFG Grad')
+    title = models.CharField(max_length=50)
+    content = models.TextField(max_length=1000)
+    link = models.URLField(max_length=250)
+
+    class Meta:
+        verbose_name = "Student Submission"
+        verbose_name_plural = "Student Submissions"
+
+    def __str__(self):
+        return self.title
+
+
+
+
+
+
 class Program(models.Model):
     pathway = models.CharField(max_length=50)
     path_code = models.CharField(max_length=4, primary_key=True)
