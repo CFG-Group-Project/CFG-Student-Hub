@@ -1,1 +1,14 @@
-{% extends 'dashboard/base.html' %}}
+{% extends 'dashboard/base.html' %}
+
+{% block body %}
+<h1>Hi</h1>
+
+{% for post in posts %}
+    <p>{{post.title}}</p>
+    <p>{{profile.post.user}}</p>
+    <p>{{post.categories}}</p>
+    <p>{{post.timestamp}}</p>
+{% endfor %}
+{% endblock body %}
+
+

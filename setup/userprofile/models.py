@@ -27,7 +27,6 @@ class Profile(models.Model):
         verbose_name_plural = _('Profiles')
 
 
-
 class Category(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
