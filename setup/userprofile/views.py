@@ -38,3 +38,16 @@ class ProfileView(View):
         else:
             messages.error(request, form_validation_error(form))
         return redirect('/profile')
+
+
+#  FORUM
+def forum(request):
+    return render(request, 'forum/forum.html')
+
+
+def discussion(request):
+    return render(request, 'forum/discussion.html')
+
+
+def create_post(request):
+    return render(request, 'forum/create_post.html')

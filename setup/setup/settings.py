@@ -40,12 +40,13 @@ INSTALLED_APPS = [
     'userprofile',
     'contact',
     'studyzone',
-    'forum',
     'dashboard',
     'accounts',
     'bootstrap5',
     'fontawesomefree',
     'resources',
+    'tinymce',
+    'hitcount',
 
 ]
 
