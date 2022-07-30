@@ -26,4 +26,6 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('django.contrib.auth.urls')),  # Authentication URL's - Built In
     path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
+    path('hitcount/'), include('hitcount.urls', namespace='hitcount'),
 ]
