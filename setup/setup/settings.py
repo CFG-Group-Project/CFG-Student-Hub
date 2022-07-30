@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'userprofile',
     'contact',
     'studyzone',
-    'forum',
     'dashboard',
     'accounts',
     'bootstrap5',
