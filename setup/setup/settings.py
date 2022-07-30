@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'resources',
     'tinymce',
     'hitcount',
-    "taggit",
 
 ]
 
