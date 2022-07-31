@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'fontawesomefree',
     'resources',
-    'crispy_forms'
+    'crispy_forms',
     'tinymce',
     'hitcount',
 
