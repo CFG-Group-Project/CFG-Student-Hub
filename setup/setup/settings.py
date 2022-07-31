@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'resources',
     'crispy_forms'
+    'tinymce',
+    'hitcount',
+
 ]
 
 
@@ -137,6 +140,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 
 # Database Models
-AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
+AUTH_PROFILE_MODULE = 'userprofile.Profile'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

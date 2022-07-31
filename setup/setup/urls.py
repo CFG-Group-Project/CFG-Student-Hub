@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 urlpatterns = [
     path('', include('userprofile.urls')),
-    path('', include('forum.urls')),
+    # path('', include('forum.urls')),
     path('', include('contact.urls')),
     path('', include('studyzone.urls')),
     path('', include('dashboard.urls')),
@@ -26,4 +26,6 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('django.contrib.auth.urls')),  # Authentication URL's - Built In
     path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
+    path('hitcount/', include('hitcount.urls', namespace='hitcount')),
 ]
