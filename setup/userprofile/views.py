@@ -50,7 +50,8 @@ def forum(request):
 
 
 def discussion(request, slug):
-    post = get_object_or_404(Post)
+    post = Post.objects.get(slug=slug)
+
     context = {'post': post}
     return render(request, 'forum/discussion.html', context)
 

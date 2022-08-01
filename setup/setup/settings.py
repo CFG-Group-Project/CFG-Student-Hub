@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'fontawesomefree',
     'resources',
+    'crispy_forms',
     'tinymce',
     'hitcount',
 
@@ -139,3 +140,5 @@ AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 
 # Database Models
 AUTH_PROFILE_MODULE = 'userprofile.Profile'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
