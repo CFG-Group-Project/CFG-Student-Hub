@@ -21,13 +21,13 @@
 
             <hr class="p-0 m-0">
             <p class="description m-5 p-5">
-                {{notes.content}}
+                {{material.topics}}
             <div class="col text-center">
 
-            <iframe rm=minimal width='800' height='700' frameborder='0'
-src={{material.lesson_slide}}></iframe>
-            {% if notes.link %}
-<a href="{{notes.link}}" class="btn btn-light" target="_blank" rel="noopener noreferrer">External Resource Link</a>
+            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRRwbTFAneTJuwkjmBdwdL6pBqcuxdms4LIUe48uvBR2K_Gj2lRBBAOeaJR0Fp10GQknq45II234M_4/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            <br>
+            {% if material.rectutorial %}
+<a href="{{material.rectutorial}}" class="btn btn-light" target="_blank" rel="noopener noreferrer">Recommended Tutorial</a>
 </div>
             {% endif %}
 
