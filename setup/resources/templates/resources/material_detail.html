@@ -1,0 +1,41 @@
+{% extends 'resources/base-res.html' %}}
+
+
+
+
+{% block title %} Resources {% endblock %}
+
+
+
+{% block body %}
+
+<section class='text-center container'>
+
+    <div class="container">
+
+        <div class="content-section p-0 mt-5">
+
+            <div class="m-3">
+                <h1>{{material.lesson}}</h1>
+            </div>
+
+            <hr class="p-0 m-0">
+            <p class="description m-5 p-5">
+                {{notes.content}}
+            <div class="col text-center">
+
+            <iframe width='800' height='700' frameborder='0'
+src={{material.lesson_slide}}></iframe>
+            {% if notes.link %}
+<a href="{{notes.link}}" class="btn btn-light" target="_blank" rel="noopener noreferrer">External Resource Link</a>
+</div>
+            {% endif %}
+
+            </p>
+            <hr>
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

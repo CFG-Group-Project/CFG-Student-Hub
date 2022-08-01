@@ -65,7 +65,7 @@ class LessonDetailView(DetailView):
 # def materials(request):
 #     material = Material.objects.get(id=id)
 #     if material is not None:
-#         return render(request, 'resources/material-page.html', {'material': material})
+#         return render(request, 'resources/material_detail.html', {'material': material})
 #     else:
 #         raise Http404('This lesson is unavailable')
 
