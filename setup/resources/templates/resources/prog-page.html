@@ -24,7 +24,8 @@
     </form><br>
 
 
-<a href="#" target="_blank">
+{% for lesson in lessons %}
+<a href="{% url 'resources:lesson-detail' lesson.id %}" >
         <div class="card">
             <div class="card-header">
                 <div class="row">
@@ -33,24 +34,22 @@
 
                     </div>
                     <div class="col-md-7">
-                        <h3 class="p-0 m-0">title</h3>
+                        <h3 class="p-0 m-0">{{lesson.lesson}}</h3>
                         <b>
                             <u>
-                                <h5 class="p-0 m-0">channel</h5>
+                                <h5 class="p-0 m-0">{{lesson.topics}}</h5>
                             </u>
                         </b>
-                        <h6 class="p-0 m-1">description</h6>
-                        <b>
-                            <h6 class="ml-0 mt-3">duration</h6>
-                            <h6 class="ml-0 mt-1">views</h6>
-                            <h6 class="ml-0 mt-1">published</h6>
-                        </b>
+                        <h6 class="p-0 m-1">Week {{lesson.week}}</h6>
+
                     </div>
                 </div>
             </div>
         </div>
     </a>
     <br>
+
+    {% endfor %}
 
 </section>
 <!--<div class="col text-center">-->

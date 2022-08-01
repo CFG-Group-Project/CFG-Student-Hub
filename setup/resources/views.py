@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Material, Program, Notes
+from . import models
 from django.http import Http404, HttpResponseRedirect
 from .forms import *
 from django.views.generic import DetailView, ListView
@@ -26,7 +26,7 @@ def usernotes(request):
             notes = Notes(user=request.user, title=request.POST['title'], content=request.POST['content'],
                           link=request.POST['link'])
             notes.save()
-        messages.success(request, f"Your notes have been saved!")
+        messages.success(request, "Your notes have been saved!")
     else:
         form = NotesForm()
     notes = Notes.objects.filter(user=request.user)
@@ -45,15 +45,19 @@ class NotesDetailView(DetailView):
 
 def ClassPage(request, name=None):
     Program.objects.get(path_code=name)
-    # lessons = Material.objects.get(topc)
+    lessons = Material.objects.filter(show=True)
     if request.method == "POST":
         form = SearchForm(request.POST)
         text = request.POST['text']
         result_list = []
     else:
         form = SearchForm()
-    context = {'search': form}
+    context = {'search': form,'lessons':lessons}
     return render(request, 'resources/prog-page.html', context)
+
+
+class LessonDetailView(DetailView):
+    model = Material
 
 
 # https://learndjango.com/tutorials/django-search-tutorial
@@ -75,7 +79,7 @@ def submit(request):
         if form.is_valid():
             materials = Material(user=request.user, lesson=request.POST['lesson'],
                                  week=request.POST['week'],
-                                 slides=request.POST['slides'],
+                                 slides=request.POST['code'],
                                  topics=request.POST['topics'],
                                  rectutorial=request.POST['rectutorial'])
             materials.save()
