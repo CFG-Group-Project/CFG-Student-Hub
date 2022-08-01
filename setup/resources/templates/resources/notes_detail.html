@@ -1,0 +1,33 @@
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+
+
+{% block title %} Resources {% endblock %}
+
+
+{% block body %}
+
+
+<section class='text-center container'>
+
+    <div class="container">
+
+        <div class="content-section p-0 mt-5">
+
+            <div class="m-3">
+                <h1>{{notes.title}}</h1>
+            </div>
+
+            <hr class="p-0 m-0">
+            <p class="description m-5 p-5">
+                {{notes.content}}
+                {{notes.link}}
+            </p>
+            <hr>
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

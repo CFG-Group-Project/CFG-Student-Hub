@@ -111,74 +111,6 @@ class App extends React.Component {
     }
   }
 
-//   handleBreakDecrease = () => {
-//     const { breakCount, isPlaying, currentTimer } = this.state;
-
-//     if(breakCount > 1) {
-//       if(!isPlaying && currentTimer === 'Break') {
-//         this.setState({
-//           breakCount: breakCount - 1,
-//           clockCount: (breakCount - 1) * 60
-//         });
-//       } else {
-//         this.setState({
-//           breakCount: breakCount - 1,
-//         });
-//       }
-//     }
-//   }
-
-//   handleBreakIncrease = () => {
-//     const { breakCount, isPlaying, currentTimer } = this.state;
-
-//     if(breakCount < 60) {
-//       if(!isPlaying && currentTimer === 'Break') {
-//         this.setState({
-//           breakCount: breakCount + 1,
-//           clockCount: (breakCount + 1) * 60
-//         });
-//       } else {
-//         this.setState({
-//           breakCount: breakCount + 1,
-//         });
-//       }
-//     }
-//   }
-
-//   handleSessionDecrease = () => {
-//     const { sessionCount, isPlaying, currentTimer } = this.state;
-
-//     if(sessionCount > 1) {
-//       if(!isPlaying && currentTimer === 'Session') {
-//         this.setState({
-//           sessionCount: sessionCount - 1,
-//           clockCount: (sessionCount - 1) * 60
-//         });
-//       } else {
-//         this.setState({
-//           sessionCount: sessionCount - 1,
-//         });
-//       }
-//     }
-//   }
-
-//   handleSessionIncrease = () => {
-//     const { sessionCount, isPlaying, currentTimer } = this.state;
-
-//     if(sessionCount < 60) {
-//       if(!isPlaying && currentTimer === 'Session') {
-//         this.setState({
-//           sessionCount: sessionCount + 1,
-//           clockCount: (sessionCount + 1) * 60
-//         });
-//       } else {
-//         this.setState({
-//           sessionCount: sessionCount + 1,
-//         });
-//       }
-//     }
-//   }
-
   render() {
     const {
       breakCount,
@@ -249,5 +181,14 @@ const SetTimer = (props) => {
     </div>
   );
 }
+
+// Toggle
+
+const chk = document.getElementById('chk');
+
+chk.addEventListener('change', () => {
+	document.body.classList.toggle('dark');
+});
+
 
 ReactDOM.render(<App/>, document.getElementById('app'));

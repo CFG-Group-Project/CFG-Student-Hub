@@ -108,5 +108,6 @@ venv.bak/
 
 
 # REFERENCE : https://github.com/github/gitignore/blob/main/Python.gitignore
+/setup/setup/config.py
 setup/setup/config.py
 setup/setup/settings.py

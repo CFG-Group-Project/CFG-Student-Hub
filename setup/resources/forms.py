@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Material
+from .models import *
 
 
 class CreateNewResource(ModelForm):
@@ -16,3 +16,11 @@ class CreateNewResource(ModelForm):
         fields = ['lesson', 'topic', 'week', 'slides', 'show', 'rectutorial']
 
 
+
+class NotesForm(forms.ModelForm):
+    class Meta:
+        model = Notes
+        fields = ['title','content','link']
+
+class SearchForm(forms.Form):
+    text = forms.CharField(max_length=100,label='What would you like to search for?',required=False)

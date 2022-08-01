@@ -1,0 +1,55 @@
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title %} Resources {% endblock %}
+
+
+{% block body %}
+
+<div class="header-res">
+    my notes
+</div>
+{% if messages %}
+    {% for msg in messages %}
+<div class="alert alert-{{msg.tags}}">{{msg}}</div>
+{% endfor %}
+{% endif %}
+<div class="container">
+    <div class="row">
+        {% for note in notes %}
+        <div class="col-md-3">
+            <a href="{% url 'resources:notes-detail' note.id %}">
+                <div class="card">
+                    <div class="card-header">{{note.title}}</div>
+                    <div class="card-body white" style="font-color: white">{{note.content|slice:":55"}}</div>
+                    <div class="card-footer mt-auto"><a href="{% url 'resources:delete_note' note.id %}">
+                        <i class="fa-solid fa-trash"></i></a>
+                    </div>
+                </div>
+            </a>
+        </div>
+{% endfor %}
+        <br><br>
+<div class="container">
+    <form method="POST">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create Notes</legend>
+        </fieldset>
+        {% csrf_token %}
+        {{form|crispy}}
+        <div class="form-group">
+            <button href="" class="btn btn-light" type="submit">
+                Create
+            </button>
+        </div>
+    </form>
+</div>
+    </div>
+</div>
+
+
+
+{% endblock %}

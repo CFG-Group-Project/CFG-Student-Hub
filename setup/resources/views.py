@@ -1,15 +1,62 @@
-from django.shortcuts import render
-from .models import Material, Program
+from django.shortcuts import render, redirect
+from .models import Material, Program, Notes
 from django.http import Http404, HttpResponseRedirect
-from .forms import CreateNewResource
-from django.views.generic import ListView, DetailView
+from .forms import *
+from django.views.generic import DetailView, ListView
+from django.contrib import messages
 
 
 # Create your views here.
 def resources(request):
-    proglist = Program.objects.all()
-    return render(request, 'resources/main.html', {'list': proglist})
+    return render(request, 'resources/main.html')
 
+
+def programs(request):
+    return render(request, 'resources/pathways.html')
+
+
+def notesview(request):
+    return render(request, 'resources/user-notes.html')
+
+
+def usernotes(request):
+    if request.method == 'POST':
+        form = NotesForm(request.POST)
+        if form.is_valid():
+            notes = Notes(user=request.user, title=request.POST['title'], content=request.POST['content'],
+                          link=request.POST['link'])
+            notes.save()
+        messages.success(request, f"Your notes have been saved!")
+    else:
+        form = NotesForm()
+    notes = Notes.objects.filter(user=request.user)
+    context = {'notes': notes, 'form': form}
+    return render(request, 'resources/user-notes.html', context)
+
+
+def delete_note(request, pk=None):
+    Notes.objects.get(id=pk).delete()
+    return HttpResponseRedirect('/resources/mynotes')
+
+
+class NotesDetailView(DetailView):
+    model = Notes
+
+
+def ClassPage(request, name=None):
+    Program.objects.get(path_code=name)
+    # lessons = Material.objects.get(topc)
+    if request.method == "POST":
+        form = SearchForm(request.POST)
+        text = request.POST['text']
+        result_list = []
+    else:
+        form = SearchForm()
+    context = {'search': form}
+    return render(request, 'resources/prog-page.html', context)
+
+
+# https://learndjango.com/tutorials/django-search-tutorial
 
 # def materials(request):
 #     material = Material.objects.get(id=id)
@@ -18,35 +65,22 @@ def resources(request):
 #     else:
 #         raise Http404('This lesson is unavailable')
 
-
 def submit_thanks(request):
     return render(request, 'resources/submit-thanks.html')
 
 
 def submit(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = CreateNewResource(request.POST)
         if form.is_valid():
-            lesson = form.cleaned_data['lesson']
-            topic = form.cleaned_data['topic']
-            week = form.cleaned_data['week']
-            show = form.cleaned_data['show']
-            rectutorial = form.cleaned_data['rectutorial']
-            sub = Material(lesson=lesson, topic=topic, week=week, show=show, rectutorial=rectutorial)
-            sub.save()
-            return HttpResponseRedirect('resources/submit-thanks.hml')
-        else:
-            pass
+            materials = Material(user=request.user, lesson=request.POST['lesson'],
+                                 week=request.POST['week'],
+                                 slides=request.POST['slides'],
+                                 topics=request.POST['topics'],
+                                 rectutorial=request.POST['rectutorial'])
+            materials.save()
+        messages.success(request, f"Your lesson have been saved!")
     else:
-        form = CreateNewResource()
+        form = CreateNewResource
+    context = {'form': form}
     return render(request, 'resources/submit.html', {'form': form})
-
-
-class KnowledgeBank(ListView):
-    model = Material
-    template_name = 'material-page.html'
-
-class ProgBank(ListView):
-    model = Program
-    template_name = 'resources/prog-page.html'
-    proglist = Material.objects.all()
