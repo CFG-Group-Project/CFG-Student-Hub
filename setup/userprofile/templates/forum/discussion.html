@@ -1,1 +1,20 @@
-{% extends 'dashboard/base.html' %}}
+{% extends 'dashboard/base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block body %}
+
+<h2>{{post.title}}</h2>
+<p>{{post.user}}</p>
+<img src="{{user.profile.avatar.url}}" width="50px" height="50px">
+<div>{{post.content}}</div>
+<!--BACK BUTTON TO GO BACK TO ALL FORUMS-->
+<!-- COMMENT SECTION -->
+<!--TEXT AREA TO COMMENT-->
+<!--HEART TO LIKE IT -->
+
+
+
+
+{% endblock body %}

@@ -13,6 +13,7 @@ from django.dispatch import receiver
 
 
 class Profile(models.Model):
+    objects = models.Manager()
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to="static/avatars/", null=True, blank=True, default="default.jpg")
     birthday = models.DateField(null=True, blank=True)
@@ -22,12 +23,16 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"{self.user}"
+
     class Meta:
         verbose_name = _('Profile')
         verbose_name_plural = _('Profiles')
 
 
 class Category(models.Model):
+
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
 
@@ -44,6 +49,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
+    objects = models.Manager()
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)

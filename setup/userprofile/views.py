@@ -1,11 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views import View
 
 from .forms import ProfileForm, form_validation_error
-from .models import Profile
+from .models import Profile, Category, Post
 
 
 # Create your views here.
@@ -42,12 +42,19 @@ class ProfileView(View):
 
 #  FORUM
 def forum(request):
-    return render(request, 'forum/forum.html')
+
+    posts = Post.objects.all()
+
+    context = {'posts': posts}
+    return render(request, 'forum/forum.html', context)
 
 
-def discussion(request):
-    return render(request, 'forum/discussion.html')
+def discussion(request, slug):
+    post = get_object_or_404(Post)
+    context = {'post': post}
+    return render(request, 'forum/discussion.html', context)
 
 
 def create_post(request):
-    return render(request, 'forum/create_post.html')
+    context = {}
+    return render(request, 'forum/create_post.html', context)
