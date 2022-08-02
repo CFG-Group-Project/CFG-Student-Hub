@@ -9,7 +9,7 @@ color:white;
 /*CONTAINER FOR ALL CONTENT ON PAGE*/
 .dashboard-container{
     width:80vw;
-    height:90vh;
+    height:70vh;
 }
 
 .header {
@@ -18,8 +18,8 @@ color:white;
     width:500px;
     margin: 0 auto;
     font-family: 'Barlow';
-    font-size: 16px;
-    margin-top:100px;
+    font-size: 25px;
+    margin-top:50px;
 
     /*text-decoration: underline;*/
     /*text-decoration-color: #F54996;*/
