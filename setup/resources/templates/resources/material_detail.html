@@ -1,0 +1,41 @@
+{% extends 'resources/base-res.html' %}}
+
+
+
+
+{% block title %} Resources {% endblock %}
+
+
+
+{% block body %}
+
+<section class='text-center container'>
+
+    <div class="container">
+
+        <div class="content-section p-0 mt-5">
+
+            <div class="m-3">
+                <h1>{{material.lesson}}</h1>
+            </div>
+
+            <hr class="p-0 m-0">
+            <p class="description m-5 p-5">
+                {{material.topics}}
+            <div class="col text-center">
+
+            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRRwbTFAneTJuwkjmBdwdL6pBqcuxdms4LIUe48uvBR2K_Gj2lRBBAOeaJR0Fp10GQknq45II234M_4/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            <br>
+            {% if material.rectutorial %}
+<a href="{{material.rectutorial}}" class="btn btn-light" target="_blank" rel="noopener noreferrer">Recommended Tutorial</a>
+</div>
+            {% endif %}
+
+            </p>
+            <hr>
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

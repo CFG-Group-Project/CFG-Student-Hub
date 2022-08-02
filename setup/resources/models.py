@@ -35,17 +35,14 @@ class Topic(models.Model):
 class Material(models.Model):
     lesson = models.CharField(max_length=50,null=True)
     week = models.CharField(max_length=3)
-    slides = models.FileField(upload_to='resources/slides')
+    lesson_slide = models.URLField(max_length=300)
+    code_file = models.FileField(upload_to='resources/code', null=True)
     show = models.BooleanField(null=True)
     topics = models.CharField(max_length=50, null=True)
+    pathway = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True)
     sub_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     rectutorial = models.URLField(max_length=200, unique=True)
 
     def __str__(self):
         return self.lesson
 
-
-
-Topic_Choice = (
-    (1,'')
-)
