@@ -6,6 +6,7 @@ from django.utils.text import slugify
 from django.utils.timezone import now
 from tinymce.models import HTMLField
 from hitcount.models import HitCountMixin, HitCount
+from taggit.managers import TaggableManager
 
 # Create your models here.
 from django.db.models.signals import post_save
@@ -48,6 +49,30 @@ class Category(models.Model):
         verbose_name_plural = 'categories'
 
 
+class Reply(models.Model):
+    objects = models.Manager()
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.content[:100]
+
+    class Meta:
+        verbose_name_plural = 'replies'
+
+
+class Comment(models.Model):
+    objects = models.Manager()
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    replies = models.ManyToManyField(Reply, blank=True)
+
+    def __str__(self):
+        return self.content[:100]
+
+
 class Post(models.Model):
     objects = models.Manager()
     title = models.CharField(max_length=200)
@@ -55,8 +80,9 @@ class Post(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     content = HTMLField()
     categories = models.ManyToManyField(Category)
-    timestamp = models.DateTimeField(default=now)
     date = models.DateTimeField(auto_now_add=True)
+    comments = models.ManyToManyField(Comment, blank=True)
+    #likes = models.ManyToManyField(Profile, related_name='discussion_post')
     hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
                                         related_query_name='hit_count_generic_relation')
 
@@ -70,3 +96,5 @@ class Post(models.Model):
 
     class Meta:
         verbose_name_plural = 'posts'
+
+

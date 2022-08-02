@@ -4,8 +4,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views import View
 
-from .forms import ProfileForm, form_validation_error
-from .models import Profile, Category, Post
+
+from .forms import ProfileForm, form_validation_error, PostForm
+from .models import Profile, Category, Post, Comment, Reply
 
 
 # Create your views here.
@@ -51,11 +52,41 @@ def forum(request):
 
 def discussion(request, slug):
     post = Post.objects.get(slug=slug)
+    author = Profile.objects.get(user=request.user)
 
-    context = {'post': post}
+    if "comment-form" in request.POST:
+        comment = request.POST.get("comment")
+        new_comment, created = Comment.objects.get_or_create(user=author, content=comment)
+        post.comments.add(new_comment.id)
+
+    if "reply-form" in request.POST:
+        reply = request.POST.get("reply")
+        comment_id = request.POST.get("comment-id")
+        comment_obj = Comment.objects.get(id=comment_id)
+        new_reply, created = Reply.objects.get_or_create(user=author, content=reply)
+        comment_obj.replies.add(new_reply.id)
+
+    context = {'post': post,
+               "title": "OZONE: "+post.title,
+               }
+
     return render(request, 'forum/discussion.html', context)
 
 
 def create_post(request):
     context = {}
+    form = PostForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            print("\n\n its valid")
+            author = Profile.objects.get(user=request.user)
+            new_post = form.save(commit=False)
+            new_post.user = author
+            new_post.save()
+            form.save_m2m()
+            return redirect("home")
+        context.update({
+            "form": form,
+            "title": "OZONE: Create New Post"
+        })
     return render(request, 'forum/create_post.html', context)

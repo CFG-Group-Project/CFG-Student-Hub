@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'tinymce',
     'hitcount',
+    "taggit",
 
 ]
 
@@ -142,3 +143,5 @@ AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 AUTH_PROFILE_MODULE = 'userprofile.Profile'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js'
+TINYMCE_COMPRESSOR = False

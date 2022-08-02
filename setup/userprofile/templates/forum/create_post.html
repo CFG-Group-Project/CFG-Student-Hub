@@ -1,9 +1,12 @@
 {% extends 'dashboard/base.html' %}
-{% load static %}
+{% load crispy_forms_tags %}
 
 
 {% block body %}
-
-
-
+<h1 style="text-align:center; margin-block:50px; color:red;">Create Post</h1>
+<form method="POST" style="margin-left:150px;">
+    {% csrf_token %}
+    {{crispy}}
+    <input type="submit" value="Save"  style="margin-block:50px;">
+</form>
 {% endblock %}

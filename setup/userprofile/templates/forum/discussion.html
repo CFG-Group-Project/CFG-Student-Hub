@@ -1,20 +1,65 @@
 {% extends 'dashboard/base.html' %}
-{% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+{% load hitcount_tags %}
+{% load static %}
+<!--{% load bootstrap5 %}-->
+<!--{% bootstrap_css %}-->
+<!--{% bootstrap_javascript %}-->
 
+{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/discussion.css' %}">{% endblock css%}
+{%block js%}<script src="{static 'js/forum.js'}"></script>{% endblock js%}
 {% block body %}
 
-<h2>{{post.title}}</h2>
-<p>@{{post.user}}</p>
-<img src="{{user.profile.avatar.url}}" alt="user avatar" width="50px" height="50px">
-<div>{{post.content}}</div>
-<!--BACK BUTTON TO GO BACK TO ALL FORUMS-->
+
 <!-- COMMENT SECTION -->
 <!--TEXT AREA TO COMMENT-->
 <!--HEART TO LIKE IT -->
 
+ <div class="container">
+        <!--Navigation-->
+        <div class="navigate">
+            <span><a href="/forum">All Discussions</a> >> <a href="{{post.get_url}}">{{post.title}}</a></span>
+        </div>
+
+        <!--Topic Section-->
+        <h1>{{post.title}}</h1>
+        <div class="discussion-details">
+            <img class="avatar" src="{{post.user.avatar.url}}" alt="user avatar" width="50px" height="50px">
+            <div class="username-content">
+                <div class="username">@{{post.user}}</div>
+                <div class="discussion-content">{{post.content|safe}}</div>
+            </div>
+
+        </div>
+
+
+        <!--Comments Section-->
+
+        {% for comment in post.comments.all %}
+        <div class="comments-container">
+            <div class="body">
+                <div class="authors">
+                    <div class="username">@{{comment.user}}</div>
+                    <img class="avatar"  src="{{comment.user.avatar.url}}" alt="user avatar" width="25px" height="25px">
+                </div>
+                <div class="comment-content">
+                    {{comment.content}}
+                    <br>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+      <form action="." method="post">
+            {% csrf_token %}
+            <div class="comment-area hide" id="comment-area">
+                <textarea name="comment" id="default-editor" placeholder="comment here ... "></textarea>
+                <input type="submit" value="submit" name="comment-form">
+            </div>
+        </form>
 
 
 
+
+ </div>
 {% endblock body %}
