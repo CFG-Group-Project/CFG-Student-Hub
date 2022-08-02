@@ -55,7 +55,8 @@ def discussion(request, slug):
     author = Profile.objects.get(user=request.user)
 
     if "comment-form" in request.POST:
-        comment = request.POST.get("comment")
+        comment = request.POST.get("content")
+
         new_comment, created = Comment.objects.get_or_create(user=author, content=comment)
         post.comments.add(new_comment.id)
 

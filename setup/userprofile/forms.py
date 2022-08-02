@@ -24,8 +24,7 @@ def form_validation_error(form):
     return msg
 
 
-class NewDiscussion(forms.ModelForm):
-    title = forms.CharField(max_length=255)
+
 
 
 class PostForm(forms.ModelForm):

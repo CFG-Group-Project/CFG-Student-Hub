@@ -3,10 +3,26 @@
 
 
 {% block body %}
-<h1 style="text-align:center; margin-block:50px; color:red;">Create Post</h1>
-<form method="POST" style="margin-left:150px;">
-    {% csrf_token %}
-    {{crispy}}
-    <input type="submit" value="Save"  style="margin-block:50px;">
-</form>
+<h1 style="text-align:center; margin-block:50px; color:white;">Create Post</h1>
+<section class='text-center container'>
+
+    <div class="container">
+
+        <div class="content-section p-0 mt-5">
+
+            <div class="m-3">
+                <h1>{{post.title}}</h1>
+            </div>
+
+            <hr class="p-0 m-0">
+            <p class="description m-5 p-5">
+                {{post.content}}
+                {{post.categories}}
+            </p>
+            <hr>
+        </div>
+
+    </div>
+
+</section>
 {% endblock %}

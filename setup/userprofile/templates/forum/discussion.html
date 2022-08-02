@@ -5,8 +5,9 @@
 <!--{% bootstrap_css %}-->
 <!--{% bootstrap_javascript %}-->
 
-{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/discussion.css' %}">{% endblock css%}
-{%block js%}<script src="{static 'js/forum.js'}"></script>{% endblock js%}
+{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/discussion.css' %}" xmlns="http://www.w3.org/1999/html">{% endblock css%}
+{%block tinymce%}<script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>{% endblock tinymce%}
+{%block js%}{% endblock js%}
 {% block body %}
 
 
@@ -21,40 +22,70 @@
         </div>
 
         <!--Topic Section-->
-        <h1>{{post.title}}</h1>
-        <div class="discussion-details">
-            <img class="avatar" src="{{post.user.avatar.url}}" alt="user avatar" width="50px" height="50px">
-            <div class="username-content">
-                <div class="username">@{{post.user}}</div>
-                <div class="discussion-content">{{post.content|safe}}</div>
+        <div class="content-section p-0">
+            <div class="m-3">
+               <h1>{{post.title}}</h1>
             </div>
 
+            <hr class="p-0 m-0">
+            <div class="discussion-details m-1 p-1">
+                <div>
+                    <img class="avatar" src="{{post.user.avatar.url}}" alt="user avatar" width="50px" height="50px">
+                </div>
+
+                <div class="username-content">
+                    <div class="username"><strong>@{{post.user}}</strong></div>
+                    <div class="discussion-content">{{post.content|safe}}</div>
+                </div>
+            </div>
+            <hr>
         </div>
+
+
 
 
         <!--Comments Section-->
+     <div class="comments-container">
+         <div class="comments-content">
+             {% if post.comments.all %}
+             {% for comment in post.comments.all %}
+                <div class="comment-details">
+                    <div>
+                        <img class="avatar" src="{{post.user.avatar.url}}" alt="user avatar" width="25px" height="25px">
+                    </div>
+                    <div class="username-comment-content">
+                        <div class="username"><strong>@{{post.user}}</strong></div>
+                        <div class="discussion-content">{{comment.content|safe}}</div>
+                    </div>
 
-        {% for comment in post.comments.all %}
-        <div class="comments-container">
-            <div class="body">
-                <div class="authors">
-                    <div class="username">@{{comment.user}}</div>
-                    <img class="avatar"  src="{{comment.user.avatar.url}}" alt="user avatar" width="25px" height="25px">
                 </div>
-                <div class="comment-content">
-                    {{comment.content}}
-                    <br>
+                <hr>
+                {% endfor %}
+             {% else %}
+             <div class="empty-comment-details" style="font-style: italic;color:#F54996">
+                 <p>Empty! be the first to comment</p>
+             </div>
+                {% for comment in post.comments.all %}
+                <div class="comment-details">
+                    <div>
+                        <img class="avatar" src="{{post.user.avatar.url}}" alt="user avatar" width="25px" height="25px">
+                    </div>
+                    <div class="username-comment-content">
+                        <div class="username"><strong>@{{post.user}}</strong></div>
+                        <div class="discussion-content">{{comment.content|safe}}</div>
+                    </div>
 
                 </div>
-            </div>
-        </div>
-        {% endfor %}
-
-      <form action="." method="post">
+                <hr>
+                {% endfor %}
+             {% endif %}
+         </div>
+     </div>
+      <form id="comment-form-container" action="." method="post">
             {% csrf_token %}
             <div class="comment-area hide" id="comment-area">
-                <textarea name="comment" id="default-editor" placeholder="comment here ... "></textarea>
-                <input type="submit" value="submit" name="comment-form">
+                <textarea class="ck-content" name="content" id="editor" placeholder="comment here ... " rows="10"></textarea>
+                <button id="submit" type="submit" value="submit" name="comment-form">SUBMIT</button>
             </div>
         </form>
 
@@ -62,4 +93,5 @@
 
 
  </div>
+<script src="{% static 'js/forum.js' %}"></script>
 {% endblock body %}
