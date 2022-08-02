@@ -2,9 +2,7 @@
 display:flex;
 align-items:flex-start;
 }
-.m-3{
-font-size:;
-}
+
 .avatar{
 border-radius:100%;
 }
@@ -19,7 +17,9 @@ display:flex;
 flex-direction:column;
 }
 
-
+.username{
+color:#F54996;
+}
 
 .username-content{
 font-size:20px;
@@ -34,7 +34,7 @@ overflow:auto;
 }
 
 .comment-details{
-margin-left:50px;
+margin-left:70px;
 }
 
 .username-comment-content{

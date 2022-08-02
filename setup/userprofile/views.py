@@ -52,20 +52,13 @@ def forum(request):
 
 def discussion(request, slug):
     post = Post.objects.get(slug=slug)
-    author = Profile.objects.get(user=request.user)
+
 
     if "comment-form" in request.POST:
+        author = Profile.objects.get(user=request.user)
         comment = request.POST.get("content")
-
         new_comment, created = Comment.objects.get_or_create(user=author, content=comment)
         post.comments.add(new_comment.id)
-
-    if "reply-form" in request.POST:
-        reply = request.POST.get("reply")
-        comment_id = request.POST.get("comment-id")
-        comment_obj = Comment.objects.get(id=comment_id)
-        new_reply, created = Reply.objects.get_or_create(user=author, content=reply)
-        comment_obj.replies.add(new_reply.id)
 
     context = {'post': post,
                "title": "OZONE: "+post.title,

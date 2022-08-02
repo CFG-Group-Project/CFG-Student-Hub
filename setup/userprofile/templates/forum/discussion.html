@@ -10,9 +10,6 @@
 {%block js%}{% endblock js%}
 {% block body %}
 
-
-<!-- COMMENT SECTION -->
-<!--TEXT AREA TO COMMENT-->
 <!--HEART TO LIKE IT -->
 
  <div class="container">
@@ -36,6 +33,7 @@
                 <div class="username-content">
                     <div class="username"><strong>@{{post.user}}</strong></div>
                     <div class="discussion-content">{{post.content|safe}}</div>
+                     <p class="text-right text-muted"><small>{{ comment.date }}</small></p>
                 </div>
             </div>
             <hr>
@@ -51,10 +49,10 @@
              {% for comment in post.comments.all %}
                 <div class="comment-details">
                     <div>
-                        <img class="avatar" src="{{post.user.avatar.url}}" alt="user avatar" width="25px" height="25px">
+                        <img class="avatar" src="{{comment.user.avatar.url}}" alt="user avatar" width="25px" height="25px">
                     </div>
                     <div class="username-comment-content">
-                        <div class="username"><strong>@{{post.user}}</strong></div>
+                        <div class="username"><strong>@{{comment.user}}</strong></div>
                         <div class="discussion-content">{{comment.content|safe}}</div>
                     </div>
 
