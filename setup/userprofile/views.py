@@ -42,6 +42,7 @@ class ProfileView(View):
 
 
 #  FORUM
+@login_required(login_url='login')
 def forum(request):
 
     posts = Post.objects.all()
@@ -50,9 +51,9 @@ def forum(request):
     return render(request, 'forum/forum.html', context)
 
 
+@login_required(login_url='login')
 def discussion(request, slug):
     post = Post.objects.get(slug=slug)
-
 
     if "comment-form" in request.POST:
         author = Profile.objects.get(user=request.user)
@@ -67,6 +68,7 @@ def discussion(request, slug):
     return render(request, 'forum/discussion.html', context)
 
 
+@login_required(login_url='login')
 def create_post(request):
     context = {}
     form = PostForm(request.POST or None)
