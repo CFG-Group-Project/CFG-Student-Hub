@@ -19,28 +19,19 @@
 
 .profile-info{
     display:flex;
-    justify-content:space-around;
-    max-width:75%;
+    justify-content:center;
+    max-width:80%;
     margin:auto;
 }
 
-.left-side, .right-side{
+.right-side{
     border:2px solid white;
     border-radius:10px;
     padding:10px;
     box-shadow: 5px 6px grey;
-    min-height:400px;
-}
+    width:70%;
+    height: 400px;
 
-.left-side{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-around;
-    width:60%;
-}
-
-.right-side{
-    width:30%;
 }
 
 .form-group{
@@ -50,7 +41,7 @@
 }
 
 .form-group input{
-    width:200px;
+    width:450px;
     padding:10px;
     border:1px solid white;
     border-radius:10px;
@@ -59,6 +50,7 @@
 .email{
     color:#828282;
     background-color:#020202;
+    font-style:italic;
 }
 
 .avatar-title{
@@ -82,8 +74,9 @@ input[type="file"] {
     border:1px solid #F54996;
     background-color:#F54996;
     padding:15px 40px;
-    margin:10px;
+    margin-top:10px;
     border-radius:10px;
+    width:450px;
 }
 
 /*RIGHT SIDE*/
@@ -97,38 +90,6 @@ input[type="file"] {
 }
 
 /* SMALLER SCREENS */
-@media only screen and (max-width: 1000px) {
-    .profile-info{
-        width:95%;
-    }
-}
 
-@media only screen and (max-width: 1250px) {
-    .profile-info{
-        width:95%;
-    }
-
-    .avatar-text{
-    width:250px;
-    font-size:10px;
-    align-self:center;
-    }
-
-    .save-all-btn{
-    width:80%;
-    }
-
-    .form-group input{
-    width:250px;
-    padding:10px;
-    border:1px solid white;
-    border-radius:10px;
-}
-}
 
 /* LARGER SCREENs */
-@media only screen and (min-width: 1550px) {
-    .profile-info{
-        width:60%;
-    }
-}
