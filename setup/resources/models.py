@@ -39,14 +39,10 @@ class Material(models.Model):
     code_file = models.FileField(upload_to='resources/code', null=True)
     show = models.BooleanField(null=True)
     topics = models.CharField(max_length=50, null=True)
+    pathway = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True)
     sub_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     rectutorial = models.URLField(max_length=200, unique=True)
 
     def __str__(self):
         return self.lesson
 
-
-
-Topic_Choice = (
-    (1,'')
-)

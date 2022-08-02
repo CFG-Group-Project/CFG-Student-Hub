@@ -4,22 +4,33 @@ from django.http import Http404, HttpResponseRedirect
 from .forms import *
 from django.views.generic import DetailView, ListView
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
 
 
-# Create your views here.
+@login_required(login_url='/login/')
 def resources(request):
     return render(request, 'resources/main.html')
 
 
+@login_required(login_url='/login/')
 def programs(request):
     return render(request, 'resources/pathways.html')
 
 
+@login_required(login_url='/login/')
 def notesview(request):
     return render(request, 'resources/user-notes.html')
 
 
+@login_required(login_url='/login/')
 def usernotes(request):
+    if request.method == "POST":
+        search = SearchForm(request.POST)
+        text = request.POST['text']
+        result_list = []
+    else:
+        search = SearchForm()
+
     if request.method == 'POST':
         form = NotesForm(request.POST)
         if form.is_valid():
@@ -30,10 +41,11 @@ def usernotes(request):
     else:
         form = NotesForm()
     notes = Notes.objects.filter(user=request.user)
-    context = {'notes': notes, 'form': form}
+    context = {'notes': notes, 'form': form, 'search': search}
     return render(request, 'resources/user-notes.html', context)
 
 
+@login_required(login_url='/login/')
 def delete_note(request, pk=None):
     Notes.objects.get(id=pk).delete()
     return HttpResponseRedirect('/resources/mynotes')
@@ -43,16 +55,17 @@ class NotesDetailView(DetailView):
     model = Notes
 
 
+@login_required(login_url='/login/')
 def ClassPage(request, name=None):
     Program.objects.get(path_code=name)
-    lessons = Material.objects.filter(show=True)
+    lessons = Material.objects.filter(show=True, pathway=name)
     if request.method == "POST":
         form = SearchForm(request.POST)
         text = request.POST['text']
         result_list = []
     else:
         form = SearchForm()
-    context = {'search': form,'lessons':lessons}
+    context = {'search': form, 'lessons': lessons,}
     return render(request, 'resources/prog-page.html', context)
 
 
@@ -69,10 +82,12 @@ class LessonDetailView(DetailView):
 #     else:
 #         raise Http404('This lesson is unavailable')
 
+@login_required(login_url='/login/')
 def submit_thanks(request):
     return render(request, 'resources/submit-thanks.html')
 
 
+@login_required(login_url='/login/')
 def submit(request):
     if request.method == 'POST':
         form = CreateNewResource(request.POST)

@@ -12,6 +12,14 @@
 <div class="header-res">
     my notes
 </div>
+
+<form action="" method="post">
+        {% csrf_token %}
+        {{search|crispy}}
+        <br>
+        <input class="btn btn-light" type="submit" value="Submit">
+    </form><br>
+
 {% if messages %}
     {% for msg in messages %}
 <div class="alert alert-{{msg.tags}}">{{msg}}</div>
