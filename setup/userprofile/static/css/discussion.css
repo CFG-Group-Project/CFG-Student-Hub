@@ -2,7 +2,9 @@
 display:flex;
 align-items:flex-start;
 }
-
+.m-3{
+font-size:;
+}
 .avatar{
 border-radius:100%;
 }
@@ -31,18 +33,14 @@ overflow:auto;
 
 }
 
-
 .comment-details{
 margin-left:50px;
-
 }
 
 .username-comment-content{
 margin-left:10px;
 font-size:15px;
 }
-
-
 
 /*FOR THE TEXT EDITOR*/
 .ck-rounded-corners .ck.ck-editor__editable:not(.ck-editor__nested-editable), .ck.ck-editor__editable.ck-rounded-corners:not(.ck-editor__nested-editable) {

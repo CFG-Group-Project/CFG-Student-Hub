@@ -14,7 +14,6 @@ from django.dispatch import receiver
 
 
 class Profile(models.Model):
-    objects = models.Manager()
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to="static/avatars/", null=True, blank=True, default="default.jpg")
     birthday = models.DateField(null=True, blank=True)
