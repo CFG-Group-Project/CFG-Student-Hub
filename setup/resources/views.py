@@ -59,17 +59,21 @@ class NotesDetailView(DetailView):
 def ClassPage(request, name=None):
     Program.objects.get(path_code=name)
     lessons = Material.objects.filter(show=True, pathway=name)
+    foundation = Material.objects.filter(show=True, pathway='FOND')
     if request.method == "POST":
         form = SearchForm(request.POST)
         text = request.POST['text']
         result_list = []
     else:
         form = SearchForm()
-    context = {'search': form, 'lessons': lessons,}
+    context = {'search': form, 'lessons': lessons,'foundation':foundation}
     return render(request, 'resources/prog-page.html', context)
 
 
 class LessonDetailView(DetailView):
+    model = Material
+
+class FoundationDetailView(DetailView):
     model = Material
 
 
