@@ -56,17 +56,16 @@ class NotesDetailView(DetailView):
 
 
 @login_required(login_url='/login/')
-def ClassPage(request, name=None):
-    Program.objects.get(path_code=name)
+def ClassPage(request, name=None, prog=None):
+    prog = Program.objects.get(path_code=name)
     lessons = Material.objects.filter(show=True, pathway=name)
-    foundation = Material.objects.filter(show=True, pathway='FOND')
     if request.method == "POST":
         form = SearchForm(request.POST)
         text = request.POST['text']
         result_list = []
     else:
         form = SearchForm()
-    context = {'search': form, 'lessons': lessons,'foundation':foundation}
+    context = {'search': form, 'lessons': lessons,'prog': prog}
     return render(request, 'resources/prog-page.html', context)
 
 

@@ -35,7 +35,7 @@ class Topic(models.Model):
 class Material(models.Model):
     lesson = models.CharField(max_length=50,null=True)
     week = models.CharField(max_length=3)
-    lesson_slide = models.URLField(max_length=300)
+    slides = models.CharField(max_length=400)
     code_file = models.FileField(upload_to='resources/code', null=True)
     show = models.BooleanField(null=True)
     topics = models.CharField(max_length=50, null=True)

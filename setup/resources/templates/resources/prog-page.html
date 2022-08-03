@@ -6,6 +6,13 @@
 
 
 {% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
+    <li class="breadcrumb-item"><a href="/resources/programs">CFG Materials</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{material.pathway}}</li>
+  </ol>
+</nav>
 <div class="header-res">Course Materials
 </div>
 
@@ -36,6 +43,7 @@
 
                     </div>
                     <div class="col-md-7">
+                        <h5 class="p-0 m-0">{{lesson.pathway}}</h5>
                         <h3 class="p-0 m-0">{{lesson.lesson}}</h3>
                         <b>
                             <u>
@@ -43,7 +51,7 @@
                             </u>
                         </b>
                         <h6 class="p-0 m-1">Week {{lesson.week}}</h6>
-
+                        <br>
                     </div>
                 </div>
             </div>
