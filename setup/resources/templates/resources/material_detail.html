@@ -8,30 +8,37 @@
 
 
 {% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
+    <li class="breadcrumb-item"><a href="/resources/programs">CFG Materials</a></li>
+      <li class="breadcrumb-item"><a href="/resources/programs/{{material.pathway.path_code}}">{{material.pathway}}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
+  </ol>
+</nav>
 
 <section class='text-center container'>
 
     <div class="container">
 
-        <div class="content-section p-0 mt-5">
+        <div class="content-section p-0 mt-1">
 
             <div class="m-3">
                 <h1>{{material.lesson}}</h1>
             </div>
 
             <hr class="p-0 m-0">
-            <p class="description m-5 p-5">
+            <p class="description m-1 p-1">
                 {{material.topics}}
             <div class="col text-center">
 
-            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRRwbTFAneTJuwkjmBdwdL6pBqcuxdms4LIUe48uvBR2K_Gj2lRBBAOeaJR0Fp10GQknq45II234M_4/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            <iframe src="{{material.slides}}" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
             <br>
             {% if material.rectutorial %}
 <a href="{{material.rectutorial}}" class="btn btn-light" target="_blank" rel="noopener noreferrer">Recommended Tutorial</a>
 </div>
             {% endif %}
 
-            </p>
             <hr>
         </div>
 

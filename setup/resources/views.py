@@ -4,7 +4,7 @@ from django.http import Http404, HttpResponseRedirect
 from .forms import *
 from django.views.generic import DetailView, ListView
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 @login_required(login_url='/login/')
@@ -24,12 +24,12 @@ def notesview(request):
 
 @login_required(login_url='/login/')
 def usernotes(request):
-    if request.method == "POST":
-        search = SearchForm(request.POST)
-        text = request.POST['text']
-        result_list = []
-    else:
-        search = SearchForm()
+    # if request.method == "POST":
+    #     search = SearchForm(request.POST)
+    #     text = request.POST['text']
+    #     result_list = []
+    # else:
+    #     search = SearchForm()
 
     if request.method == 'POST':
         form = NotesForm(request.POST)
@@ -41,7 +41,7 @@ def usernotes(request):
     else:
         form = NotesForm()
     notes = Notes.objects.filter(user=request.user)
-    context = {'notes': notes, 'form': form, 'search': search}
+    context = {'notes': notes, 'form': form, }  # 'search': search
     return render(request, 'resources/user-notes.html', context)
 
 
@@ -56,8 +56,9 @@ class NotesDetailView(DetailView):
 
 
 @login_required(login_url='/login/')
-def ClassPage(request, name=None):
-    Program.objects.get(path_code=name)
+def ClassPage(request, name=None, prog=None):
+    # addash =
+    prog = Program.objects.get(path_code=name)
     lessons = Material.objects.filter(show=True, pathway=name)
     if request.method == "POST":
         form = SearchForm(request.POST)
@@ -65,11 +66,15 @@ def ClassPage(request, name=None):
         result_list = []
     else:
         form = SearchForm()
-    context = {'search': form, 'lessons': lessons,}
+    context = {'search': form, 'lessons': lessons, 'prog': prog}
     return render(request, 'resources/prog-page.html', context)
 
 
 class LessonDetailView(DetailView):
+    model = Material
+
+
+class FoundationDetailView(DetailView):
     model = Material
 
 
@@ -103,3 +108,12 @@ def submit(request):
         form = CreateNewResource
     context = {'form': form}
     return render(request, 'resources/submit.html', {'form': form})
+
+
+@login_required(login_url='/login/')
+@user_passes_test(lambda u: u.is_staff)
+def admin_dash(request):
+    dashcon = Material.objects.all
+    context = {'dashcon': dashcon}
+    return render(request, 'resources/admin-dash.html', context)
+# currently, the student accounts redirect to a 404 page. this might be rectified by Ayisha's 404 redirect API but remember to check
