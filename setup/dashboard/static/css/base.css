@@ -11,7 +11,12 @@ box-sizing:border;
     top:0;
     z-index:5;
     display:flex;
-    justify-content:flex-end;
+    justify-content:space-between;
+    align-items:;
+}
+
+.topnav .right-side-nav{
+display:flex;
 }
 
 .topnav a {
@@ -21,6 +26,10 @@ box-sizing:border;
     font-size: 20px;
     color: #ffffff;
     display: block;
+}
+
+.hidden-nav{
+    display:none;
 }
 
 .fa-solid:hover{
@@ -59,17 +68,30 @@ box-sizing:border;
     color: #F54996;
 }
 
+.fa-bars{
+    color:black;
+    font-size:25px;
+    padding: 10px;
+}
+
+.fa-bars:hover{
+    background-color: #F54996;
+}
+
+.right-side-nav a i{
+    color:#F54996;
+}
 
 .button{
-  text-align:center;
-  text-decoration: none;
-  background-color:#000000;
-  width:200px;
-  height:60px;
-  line-height:60px;
-  color:white;
-  margin:20px auto;
-  position:relative;
+    text-align:center;
+    text-decoration: none;
+    background-color:#000000;
+    width:200px;
+    height:60px;
+    line-height:60px;
+    color:white;
+    margin:20px auto;
+    position:relative;
 }
 
 /*Main Body and footer content container - so the footer remains at the bottom */
@@ -93,11 +115,106 @@ footer{
 }
 
 
-/* SMALLER SCREENS */
 
-@media only screen and (max-width: 1250px) {
-    .logo{
-        width:100px;
-        height:100px;
-        margin-bottom:100px;
+/* SMALLER SCREENS */
+@media only screen and (max-width: 1205px) {
+    .sidenav {
+    width:20%;
     }
+
+    .content{
+    width:80%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .sidenav {
+    width:23%;
+    }
+
+    .content{
+    width:77%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .sidenav {
+    width:25%;
+    }
+
+    .content{
+    width:75%;
+    }
+}
+
+/*DROP DOWN MENU*/
+@media only screen and (max-width: 830px) {
+    .sidenav {
+    width:27%;
+    }
+
+    .content{
+    width:73%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .sidenav {
+    width:30%;
+    }
+
+    .content{
+    width:70%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .sidenav {
+    width:30%;
+    }
+
+    .logo{
+    width:110px;
+    height:120px;
+    }
+
+    .content{
+    width:70%;
+    }
+}
+
+
+
+@media only screen and (max-width: 650px) {
+    .topnav {
+    z-index:15;
+    flex-wrap:wrap;
+    }
+
+    .sidenav{
+    display:none;
+    }
+
+    .hidden-nav{
+    width:100%;
+    flex-direction:column;
+    }
+
+    .hidden-nav a{
+    color:white;
+    text-align:center;
+    line-height:1px;
+    }
+
+    .hidden-nav a:hover{
+    color: #F54996;
+    }
+
+    .content{
+    width:100%;
+    }
+
+    .show{
+    display:flex;
+    }
+}

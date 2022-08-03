@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>{% block title %}Dashboard{% endblock %}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/base.js' %}"></script>
     <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     {%block css%}{% endblock css%}
@@ -31,8 +33,23 @@
     </div>
 
     <div class="topnav">
-        <a class="profile-icon" href="/profile"><i class="fa-solid fa-user"></i></a>
-        <a class="logout-icon" href="{%url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
+        <div class="left-side-nav">
+            <i id="bars" class="fa-solid fa-bars" onclick="myFunction()"></i>
+        </div>
+
+        <div class="right-side-nav">
+            <a class="profile-icon" href="/profile"><i class="fa-solid fa-user"></i></a>
+            <a class="logout-icon" href="{%url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
+        <div id="hidden-nav" class="middle hidden-nav">
+            <nav>
+            <a href="/">DASHBOARD</a><hr>
+            <a href="/forum">FORUM</a><hr>
+            <a href="/study-zone">STUDY ZONE</a><hr>
+            <a href="/resources">RESOURCES</a><hr>
+            <a href="/contact-us">CONTACT</a><hr>
+        </nav>
+        </div>
     </div>
 
     <div class="content">
