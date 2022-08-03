@@ -2,16 +2,23 @@
 margin: 0;
 padding:0;
 box-sizing:border;
+
 }
 
 .discussion-details, .comment-details{
 display:flex;
 align-items:flex-start;
+
 }
+.discussion-content{
+font-size:15px;
+}
+
 .title{
 font-size:25px;
 font-weight:bold;
 }
+
 .avatar{
 border-radius:100%;
 }
@@ -40,7 +47,6 @@ margin-left:10px;
 height:350px;
 margin-bottom:10px;
 overflow:auto;
-
 }
 
 .comment-details{
@@ -55,7 +61,7 @@ font-size:15px;
 /*FOR THE TEXT EDITOR*/
 .ck-rounded-corners .ck.ck-editor__editable:not(.ck-editor__nested-editable), .ck.ck-editor__editable.ck-rounded-corners:not(.ck-editor__nested-editable) {
 min-height:200px;
-background-color:white;
+
 line-height:14px;
 
 }

@@ -27,10 +27,10 @@
             <hr>
             <div class="discussion-details m-1 p-1">
                 <div>
-                    <img class="avatar" src="{{post.user.avatar.url}}" alt="user avatar" width="50px" height="50px">
+                    <img class="avatar" src="{{post.user.avatar.url}}" alt="user avatar" width="60px" height="60px">
                 </div>
 
-                <div class="username-content" style="background-color:white;">
+                <div class="username-content">
                     <div class="username">@{{post.user}}</div>
                     <div class="discussion-content">{{post.content|safe}}</div>
                      <p class="text-right text-muted"><small>{{ comment.date }}</small></p>
@@ -49,7 +49,7 @@
              {% for comment in post.comments.all %}
                 <div class="comment-details">
                     <div>
-                        <img class="avatar" src="{{comment.user.avatar.url}}" alt="user avatar" width="25px" height="25px">
+                        <img class="avatar" src="{{comment.user.avatar.url}}" alt="user avatar" width="30px" height="30px">
                     </div>
                     <div class="username-comment-content">
                         <div class="username"><strong>@{{comment.user}}</strong></div>

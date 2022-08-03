@@ -22,7 +22,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('userprofile.urls')),
-    # path('', include('forum.urls')),
     path('', include('contact.urls')),
     path('', include('studyzone.urls')),
     path('', include('dashboard.urls')),

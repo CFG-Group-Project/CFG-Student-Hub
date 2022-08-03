@@ -20,7 +20,7 @@ class Profile(models.Model):
     birthday = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=32, null=True, blank=True)
     city = models.CharField(max_length=50, null=True, blank=True)
-    stream = models.CharField(max_length=255, null=True)
+    # stream = models.CharField(max_length=255, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
