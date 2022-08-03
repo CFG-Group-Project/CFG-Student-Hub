@@ -79,7 +79,7 @@ def create_post(request):
             new_post.user = author
             new_post.save()
             form.save_m2m()
-            return redirect("/")
+            return redirect("/forum/my-posts")
         context.update({
             "form": form,
             "title": "OZONE: Create New Post"
