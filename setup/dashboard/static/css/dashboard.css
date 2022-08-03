@@ -3,11 +3,12 @@ margin: 0;
 padding:0;
 box-sizing:border;
 background-color:#000000;
-color:white;
+
 }
 
 /*CONTAINER FOR ALL CONTENT ON PAGE*/
 .dashboard-container{
+    color:white;
     width:80vw;
     height:70vh;
 }

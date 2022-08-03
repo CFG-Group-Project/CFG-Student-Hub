@@ -24,10 +24,10 @@ def form_validation_error(form):
     return msg
 
 
-
-
-
 class PostForm(forms.ModelForm):
+    title = forms.CharField(max_length=255)
+    content = forms.CharField(max_length=255)
+
     class Meta:
         model = Post
         fields = ["title", "content", "categories"]

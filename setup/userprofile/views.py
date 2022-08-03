@@ -1,9 +1,9 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template import RequestContext
 from django.utils.decorators import method_decorator
 from django.views import View
-
 
 from .forms import ProfileForm, form_validation_error, PostForm
 from .models import Profile, Category, Post, Comment, Reply
@@ -44,7 +44,6 @@ class ProfileView(View):
 #  FORUM
 @login_required(login_url='login')
 def forum(request):
-
     posts = Post.objects.all()
 
     context = {'posts': posts}
@@ -53,7 +52,7 @@ def forum(request):
 
 @login_required(login_url='login')
 def discussion(request, slug):
-    post = Post.objects.get(slug=slug)
+    post = get_object_or_404(Post, slug=slug)
 
     if "comment-form" in request.POST:
         author = Profile.objects.get(user=request.user)
@@ -62,7 +61,7 @@ def discussion(request, slug):
         post.comments.add(new_comment.id)
 
     context = {'post': post,
-               "title": "OZONE: "+post.title,
+               "title": "OZONE: " + post.title,
                }
 
     return render(request, 'forum/discussion.html', context)
@@ -86,3 +85,15 @@ def create_post(request):
             "title": "OZONE: Create New Post"
         })
     return render(request, 'forum/create_post.html', context)
+
+
+# def handler404(request, exception, template_name='404.html'):
+#     response = render(template_name)
+#     response.status_code = 404
+#     return response
+#
+#
+# def handler500(request, template_name='500.html'):
+#     response = render(request, template_name)
+#     response.status_code = 500
+#     return response

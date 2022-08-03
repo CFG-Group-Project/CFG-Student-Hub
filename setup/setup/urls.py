@@ -16,6 +16,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+
+# handler404 = 'userprofile.views.handler404'
+# handler500 = 'userprofile.views.handler500'
+
 urlpatterns = [
     path('', include('userprofile.urls')),
     # path('', include('forum.urls')),

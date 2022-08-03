@@ -2,8 +2,6 @@
 margin: 0;
 padding:0;
 box-sizing:border;
-background-color:#000000;
-color:white;
 }
 
 .topnav {
@@ -14,7 +12,6 @@ color:white;
     z-index:5;
     display:flex;
     justify-content:flex-end;
-    min-height:10vh;
 }
 
 .topnav a {
@@ -77,8 +74,8 @@ color:white;
 
 /*Main Body and footer content container - so the footer remains at the bottom */
 .content{
-z-index:15;
-    min-height: 92vh;
+    z-index:4;
+    min-height: 95vh;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -91,7 +88,8 @@ z-index:15;
 footer{
     bottom:0;
     text-align:center;
-
+    color:#F54996;
+    font-weight:bold;
 }
 
 
