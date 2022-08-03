@@ -25,9 +25,33 @@ def form_validation_error(form):
 
 
 class PostForm(forms.ModelForm):
-    title = forms.CharField(max_length=255)
-    content = forms.CharField(max_length=255)
-
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs.update({
+            'required': '',
+            'name': 'username',
+            'id': 'title',
+            'type': 'text',
+            'placeholder': 'enter title of post',
+            'maxlength': 200,
+        })
+        self.fields['content'].widget.attrs.update({
+            'required': '',
+            'name': 'username',
+            'id': 'content',
+            'class': 'content',
+            'type': 'text',
+            'placeholder': 'What would you like to ask?',
+            'minlength': 5
+        })
+        self.fields['categories'].widget.attrs.update({
+            'required': '',
+            'name': 'categories',
+            'id': 'categories',
+            'type': 'text',
+            'maxlength': 16,
+            'minlength': 5
+        })
     class Meta:
         model = Post
         fields = ["title", "content", "categories"]

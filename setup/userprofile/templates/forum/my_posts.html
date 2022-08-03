@@ -1,0 +1,43 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/forum.css' %}">{% endblock css%}
+
+{% block body %}
+<!--Navigation-->
+<div class="navigate">
+    <span><a href="/forum">All Discussions</a></span>
+</div>
+<h1>My Posts</h1>
+<!--The amount of views and/or likes-->
+<!--Maybe a preview of the paragraph ? -->
+<body>
+        <!--Posts table-->
+        <div class="posts-table">
+            <div class="table-head">
+                <div class="Topic">Topic</div>
+                <div class="comments">Comments</div>
+                <div class="started">Started</div>
+            </div>
+            <span class="line"></span>
+            {% for post in posts %}
+
+            <div class="table-row">
+                <div class="Topic">
+                <a href="{{post.slug}}"><p>{{post.title}}</p></a>
+                </div>
+                <div class="comments">
+                    22
+                </div>
+                <div class="started">
+                    29 June 2022
+                </div>
+                <div class="delete" style="padding-right: 10px;">
+                    x
+                </div>
+            </div>
+            <span class="line"></span>
+{% endfor %}
+        </div>
+
+</body>
+{% endblock body %}

@@ -11,4 +11,5 @@ urlpatterns = [
     path('forum/', views.forum),
     path('forum/<slug>/', views.discussion),
     path('forum/create-post', views.create_post),
+    path('forum/my-posts', views.my_posts),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

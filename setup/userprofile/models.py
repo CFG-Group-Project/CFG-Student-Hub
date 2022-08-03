@@ -28,6 +28,10 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.user}"
 
+    @property
+    def num_posts(self):
+        return Post.objects.filter(user=self).count()
+
     class Meta:
         verbose_name = _('Profile')
         verbose_name_plural = _('Profiles')

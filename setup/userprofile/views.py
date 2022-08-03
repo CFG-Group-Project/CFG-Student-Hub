@@ -69,8 +69,8 @@ def discussion(request, slug):
 
 @login_required(login_url='login')
 def create_post(request):
-    context = {}
     form = PostForm(request.POST or None)
+    context = {'form': form}
     if request.method == "POST":
         if form.is_valid():
             print("\n\n its valid")
@@ -79,7 +79,7 @@ def create_post(request):
             new_post.user = author
             new_post.save()
             form.save_m2m()
-            return redirect("home")
+            return redirect("/")
         context.update({
             "form": form,
             "title": "OZONE: Create New Post"
@@ -87,13 +87,11 @@ def create_post(request):
     return render(request, 'forum/create_post.html', context)
 
 
-# def handler404(request, exception, template_name='404.html'):
-#     response = render(template_name)
-#     response.status_code = 404
-#     return response
-#
-#
-# def handler500(request, template_name='500.html'):
-#     response = render(request, template_name)
-#     response.status_code = 500
-#     return response
+def my_posts(request):
+    user = request.user.profile
+    posts = Post.objects.all().filter(user=user)
+    context = {
+        "posts": posts,
+        "title": "OZONE: Latest 10 Posts"
+    }
+    return render(request, "forum/my_posts.html", context)
