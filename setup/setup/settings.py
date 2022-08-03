@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-from .config import DBP
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'userprofile',
     'contact',
     'studyzone',
-    'forum',
     'dashboard',
     'accounts',
     'bootstrap5',
@@ -49,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'tinymce',
     'hitcount',
+    "taggit",
 
 ]
 
@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cfgdatabase',
         'USER': 'root',
-        'PASSWORD': DBP,
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -143,3 +143,4 @@ AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 AUTH_PROFILE_MODULE = 'userprofile.Profile'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+

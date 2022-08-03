@@ -9,19 +9,33 @@ color:white;
 /*CONTAINER FOR ALL CONTENT ON PAGE*/
 .dashboard-container{
     width:80vw;
-    height:90vh;
+    height:70vh;
 }
 
 .header {
-
     text-align:center;
     width:500px;
     margin: 0 auto;
     font-family: 'Barlow';
-    font-size: 16px;
-    margin-top:100px;
+    font-size: 25px;
+    margin-top:50px;
+    margin-bottom:50px;
+}
 
-    /*text-decoration: underline;*/
-    /*text-decoration-color: #F54996;*/
+.card-container{
+margin-top:100px;
 
+margin:auto;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.dashboard-card{
+width:300px;
+height:250px;
+border:5px solid #F54996;
+border-radius:20px;
+background-color:#F54996;
+margin:50px 10px;
 }

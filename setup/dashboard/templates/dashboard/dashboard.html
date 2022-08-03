@@ -1,4 +1,3 @@
-<<<<<<<<< Temporary merge branch 1
 {% extends 'dashboard/base.html' %}
 {% load static %}
 {%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">{% endblock css%}
@@ -10,7 +9,11 @@
     {% else %}
     <h1 class="header">Welcome back, {{ user.get_username }}!</h1>
     {% endif %}
-
+    <div class="card-container">
+        <div class="dashboard-card"></div>
+        <div class="dashboard-card"></div>
+        <div class="dashboard-card"></div>
+    </div>
 </div>
 
 {% endblock body %}

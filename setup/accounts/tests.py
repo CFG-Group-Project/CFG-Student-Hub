@@ -9,6 +9,7 @@ class LogInTest(TestCase):
             'password': 'secret'
         }
         User.objects.create_user(**self.credentials)
+
     def test_login(self):
         # send login data
         response = self.client.post('/login/', self.credentials, follow=True)

@@ -1,11 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views import View
 
-from .forms import ProfileForm, form_validation_error
-from .models import Profile
+
+from .forms import ProfileForm, form_validation_error, PostForm
+from .models import Profile, Category, Post, Comment, Reply
 
 
 # Create your views here.
@@ -41,13 +42,47 @@ class ProfileView(View):
 
 
 #  FORUM
+@login_required(login_url='login')
 def forum(request):
-    return render(request, 'forum/forum.html')
+
+    posts = Post.objects.all()
+
+    context = {'posts': posts}
+    return render(request, 'forum/forum.html', context)
 
 
-def discussion(request):
-    return render(request, 'forum/discussion.html')
+@login_required(login_url='login')
+def discussion(request, slug):
+    post = Post.objects.get(slug=slug)
+
+    if "comment-form" in request.POST:
+        author = Profile.objects.get(user=request.user)
+        comment = request.POST.get("content")
+        new_comment, created = Comment.objects.get_or_create(user=author, content=comment)
+        post.comments.add(new_comment.id)
+
+    context = {'post': post,
+               "title": "OZONE: "+post.title,
+               }
+
+    return render(request, 'forum/discussion.html', context)
 
 
+@login_required(login_url='login')
 def create_post(request):
-    return render(request, 'forum/create_post.html')
+    context = {}
+    form = PostForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            print("\n\n its valid")
+            author = Profile.objects.get(user=request.user)
+            new_post = form.save(commit=False)
+            new_post.user = author
+            new_post.save()
+            form.save_m2m()
+            return redirect("home")
+        context.update({
+            "form": form,
+            "title": "OZONE: Create New Post"
+        })
+    return render(request, 'forum/create_post.html', context)

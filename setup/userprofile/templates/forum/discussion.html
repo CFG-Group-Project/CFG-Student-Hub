@@ -1,1 +1,95 @@
-{% extends 'dashboard/base.html' %}}
+{% extends 'dashboard/base.html' %}
+{% load hitcount_tags %}
+{% load static %}
+<!--{% load bootstrap5 %}-->
+<!--{% bootstrap_css %}-->
+<!--{% bootstrap_javascript %}-->
+
+{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/discussion.css' %}" xmlns="http://www.w3.org/1999/html">{% endblock css%}
+{%block tinymce%}<script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>{% endblock tinymce%}
+{%block js%}{% endblock js%}
+{% block body %}
+
+<!--HEART TO LIKE IT -->
+
+ <div class="container">
+        <!--Navigation-->
+        <div class="navigate">
+            <span><a href="/forum">All Discussions</a> >> <a href="{{post.get_url}}">{{post.title}}</a></span>
+        </div>
+
+        <!--Topic Section-->
+        <div class="content-section p-0">
+            <div class="m-3">
+               <h2>{{post.title}}</h2>
+            </div>
+
+            <hr class="p-0 m-0">
+            <div class="discussion-details m-1 p-1">
+                <div>
+                    <img class="avatar" src="{{post.user.avatar.url}}" alt="user avatar" width="50px" height="50px">
+                </div>
+
+                <div class="username-content">
+                    <div class="username"><strong>@{{post.user}}</strong></div>
+                    <div class="discussion-content">{{post.content|safe}}</div>
+                     <p class="text-right text-muted"><small>{{ comment.date }}</small></p>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+
+
+
+        <!--Comments Section-->
+     <div class="comments-container">
+         <div class="comments-content">
+             {% if post.comments.all %}
+             {% for comment in post.comments.all %}
+                <div class="comment-details">
+                    <div>
+                        <img class="avatar" src="{{comment.user.avatar.url}}" alt="user avatar" width="25px" height="25px">
+                    </div>
+                    <div class="username-comment-content">
+                        <div class="username"><strong>@{{comment.user}}</strong></div>
+                        <div class="discussion-content">{{comment.content|safe}}</div>
+                    </div>
+
+                </div>
+                <hr>
+                {% endfor %}
+             {% else %}
+             <div class="empty-comment-details" style="font-style: italic;color:#F54996">
+                 <p>Empty! be the first to comment</p>
+             </div>
+                {% for comment in post.comments.all %}
+                <div class="comment-details">
+                    <div>
+                        <img class="avatar" src="{{post.user.avatar.url}}" alt="user avatar" width="25px" height="25px">
+                    </div>
+                    <div class="username-comment-content">
+                        <div class="username"><strong>@{{post.user}}</strong></div>
+                        <div class="discussion-content">{{comment.content|safe}}</div>
+                    </div>
+
+                </div>
+                <hr>
+                {% endfor %}
+             {% endif %}
+         </div>
+     </div>
+      <form id="comment-form-container" action="." method="post">
+            {% csrf_token %}
+            <div class="comment-area hide" id="comment-area">
+                <textarea class="ck-content" name="content" id="editor" placeholder="comment here ... " rows="10"></textarea>
+                <button id="submit" type="submit" value="submit" name="comment-form">SUBMIT</button>
+            </div>
+        </form>
+
+
+
+
+ </div>
+<script src="{% static 'js/forum.js' %}"></script>
+{% endblock body %}

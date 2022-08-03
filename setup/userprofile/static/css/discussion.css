@@ -1,0 +1,64 @@
+.discussion-details, .comment-details{
+display:flex;
+align-items:flex-start;
+}
+
+.avatar{
+border-radius:100%;
+}
+
+.empty-comment-details p{
+color:#F54996;
+text-align:center;
+}
+
+.username-content, .username-comment-content{
+display:flex;
+flex-direction:column;
+}
+
+.username{
+color:#F54996;
+}
+
+.username-content{
+font-size:20px;
+margin-left:10px;
+}
+
+.comments-container{
+height:350px;
+margin-bottom:10px;
+overflow:auto;
+
+}
+
+.comment-details{
+margin-left:70px;
+}
+
+.username-comment-content{
+margin-left:10px;
+font-size:15px;
+}
+
+/*FOR THE TEXT EDITOR*/
+.ck-rounded-corners .ck.ck-editor__editable:not(.ck-editor__nested-editable), .ck.ck-editor__editable.ck-rounded-corners:not(.ck-editor__nested-editable) {
+min-height:200px;
+background-color:black;
+line-height:14px;
+}
+.ck.ck-toolbar.ck-toolbar_grouping{
+background-color:#F54996;
+}
+
+
+
+#submit{
+color:#F54996;
+float:right;
+}
+
+#submit:hover{
+color:white;
+}
