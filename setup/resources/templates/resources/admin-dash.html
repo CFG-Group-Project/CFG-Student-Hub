@@ -1,0 +1,56 @@
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
+      <li class="breadcrumb-item"><a href="/resources/programs">CFG Materials</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
+  </ol>
+</nav>
+<div class="body">
+    <table class="table ">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Week</th>
+                <th scope="col">Lesson</th>
+                <th scope="col">Pathway</th>
+                <th scope="col">Visible</th>
+                {% if user.is_superuser %}
+                <th scope="col">Delete</th> {% endif %}
+
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for each in dashcon %}
+            <tr>
+                <th scope="row">{{each.week}}</th>
+                <td>{{each.lesson}}</td>
+                <td>{{each.pathway}}</td>
+
+                <td>
+                    <a href="#">
+                        <div class="form-check">
+                            {% if each.show == True %}
+                            <input class="form-check-input" type="checkbox" value="" checked>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" value="">
+                            {% endif %}
+                        </div>
+                    </a>
+                </td>
+                {% if user.is_superuser %}
+                <td><a href="#"><i class="fa fa-trash fa-2x"></i></a></td>
+                {% endif %}
+         </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+{% endblock %}

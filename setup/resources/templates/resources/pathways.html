@@ -9,7 +9,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
-    <li class="breadcrumb-item active" aria-current="page">CFG Materials</li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
   </ol>
 </nav>
 <div class="header-res">
@@ -20,7 +20,7 @@
  <hr> <br>
   <div class="row">
     <div class="col">
-      <a href="/resources/program/data">
+      <a href="/resources/programs/data">
         <div class="card">
           <img class="card-img-top" src="/static/images/data.png" alt="data image">
           <div class="card-body">
@@ -34,9 +34,9 @@
     </div>
 
     <div class="col">
-      <a href="/resources/program/FLST">
+      <a href="/resources/programs/FLST">
         <div class="card">
-          <img class="card-img-top" src="/static/images/full-stack.png" alt="Notes image">
+          <img class="card-img-top" src="/static/images/full-stack.png" alt="full stack image">
           <div class="card-body">
             <h5 class="card-title ">
               Resource Hub
@@ -48,7 +48,7 @@
     </div>
 
     <div class="col">
-      <a href="/resources/program/SFEN">
+      <a href="/resources/programs/SFEN">
         <div class="card">
           <img class="card-img-top" src="/static/images/software.png" alt="software image">
           <div class="card-body">
@@ -61,6 +61,12 @@
       </a>
     </div></div>
 
-{% endblock %}
+<br><br>
+
+    {% if user.is_staff %}
+    <a href="admin-dash" class="btn btn-light btn-lg active" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
+
+{% endif %}
+    {% endblock %}
 
 </section>
