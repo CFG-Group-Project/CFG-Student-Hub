@@ -95,12 +95,12 @@ def create_post(request):
 def my_posts(request):
     user = request.user.profile
     post_list = Post.objects.all().filter(user=user)
-    paginator = Paginator(post_list, 10)
+    paginator = Paginator(post_list, 6)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     context = {
         "post_list": post_list,
-        "title": "OZONE: Latest 10 Posts",
+        "title": "OZONE: My Posts",
         "posts": posts,
     }
     return render(request, "forum/my_posts.html", context)

@@ -1,6 +1,6 @@
 <html>
 
-# CFG Group porject - Summer '22 Cohort
+# CFG Group project - Summer '22 Cohort
 ## Team Members
 
  - [Samantha Colcough](https://github.com/samanthacolclough) 
@@ -9,7 +9,17 @@
  - [Victoria ](https://github.com/vixbc)
  - [Elham Hagi](https://github.com/ellehagi)
 
+## About 
+A web app for CFG nano degree students. 
+This space is made for students (by students!) and can be utilised on a number of different levels. 
+There are a number of different features that can be used for effective learning to ensure that students are getting the most while completing the course with Code First Girls. 
 
+## Features
+1. Login/Registration System
+2. Functional forum  (stackOverflow type of vibe)
+3. Resources page 
+4. Profile Page 
+5. Studyzone (Pomodoro timer with music)
 
 ## Getting Started 
 
@@ -53,4 +63,10 @@ python manage.py test app-name.tests
 
 ```
 
+## Acknowledgments 
+Our instructors: 
+- [Carlo]()
+- [Alex]()
+
+Thank you for supporting us throughout this whole course! We've had a blast!
 </html>
