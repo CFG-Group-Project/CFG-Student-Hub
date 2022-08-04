@@ -10,9 +10,22 @@
     <h1 class="header">Welcome back, {{ user.get_username }}!</h1>
     {% endif %}
     <div class="card-container">
-        <div class="dashboard-card"></div>
-        <div class="dashboard-card"></div>
-        <div class="dashboard-card"></div>
+        <div class="dashboard-card">
+            <h3>Notification Center</h3>
+            <a href=""><span>5</span> New Posts <i class="fa-solid fa-flag-pennant"></i></a><hr>
+            <a href=""><span>2</span> New Comments <i class="fa-solid fa-comment-dots"></i></a><hr>
+            <a href=""><span>4</span> New Likes <i class="fa-solid fa-thumbs-up"></i></a>
+        </div>
+        <a href="/forum/create-post"><div class="dashboard-card">
+            <h3>Create New Post</h3>
+            <i class="fa-solid fa-8x fa-plus"></i>
+        </div></a>
+        <div class="dashboard-card">
+            <h3>Create Notes?</h3>
+        </div>
+        <a href="/contact-us"><div class="dashboard-card">
+            <h3>Give us feedback!🤗</h3>
+        </div></a>
     </div>
 </div>
 
