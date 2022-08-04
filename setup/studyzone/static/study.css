@@ -127,3 +127,75 @@ body.dark {
 .fa-moon {
 	color: #f54996;
 }
+.audio-player {
+    width: 430px;
+    padding: 35px 20px;
+    background-color: white;
+    border: 1px solid black;
+     position: absolute; bottom: 0px;
+
+}
+.audio-player .player-controls {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.audio-player #radioIcon {
+    width: 30px;
+    height: 30px;
+    background: url("https://img.icons8.com/ios/50/000000/microphone.png") no-repeat center;
+    background-size: contain;
+}
+.audio-player #playAudio {
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    width: 30px;
+    height: 30px;
+    background: url("https://img.icons8.com/play") no-repeat center;
+    background-size: contain;
+}
+.audio-player #playAudio.pause {
+    background: url("https://img.icons8.com/pause") no-repeat center;
+    background-size: contain;
+}
+.audio-player p {
+    margin: 0 0 0 5px;
+    line-height: 1;
+    display: inline-flex;
+}
+.audio-player p small {
+    font-size: 15px;
+}
+.audio-player #seekObjContainer {
+    position: relative;
+    width: 300px;
+    margin: 0 5px;
+    height: 10px;
+}
+.audio-player #seekObjContainer #seekObj {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #e3e3e3;
+    border: 1px solid black;
+}
+.audio-player #seekObjContainer #seekObj #percentage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: #f54996;
+}
+#currentTime{
+color: #f54996;
+}
+
+.whiteiconcolor {
+color:white;
+position: absolute;
+right: 1380px;
+ top: 15px;
+}
