@@ -27,10 +27,10 @@
                 <a href="{{post.slug}}"><p class="post-title">{{post.title}}</p></a>
                 </div>
                 <div class="comments">
-                    22
+                    {{post.comments.count}}
                 </div>
                 <div class="started">
-                    29 June 2022
+                    {{post.date}}
                 </div>
                 <div class="delete">
                     <a href="my-posts/delete/{{post.id}}" onclick="return confirm('Are you sure you want to delete this? This step is irreversible!')"><i class="fa-solid fa-trash"></i></a>

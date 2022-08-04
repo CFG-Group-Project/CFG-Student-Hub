@@ -68,6 +68,9 @@ def discussion(request, slug):
 
     return render(request, 'forum/discussion.html', context)
 
+def like_comment(request, slug):
+    return redirect('/forum/')
+
 
 @login_required(login_url='login')
 def create_post(request):
@@ -98,7 +101,7 @@ def my_posts(request):
     context = {
         "post_list": post_list,
         "title": "OZONE: Latest 10 Posts",
-        "posts": posts
+        "posts": posts,
     }
     return render(request, "forum/my_posts.html", context)
 
