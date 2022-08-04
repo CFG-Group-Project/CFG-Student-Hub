@@ -1,24 +1,25 @@
 {% extends 'resources/base-res.html' %}}
-
+{% load crispy_forms_tags %}
 
 {% block body %}
 <div class="header-res">
-    submit new lesson
-</div>
-
-<div class="container-fluid">
-
-<form class="form-group" action="/resources/submit-thanks" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-                {{ form.as_p }}
-            <button type="submit" value="Submit">Save</button>
-</div>
-</div>
-</form>
-
+    submit new resource pack
 </div>
 
 
+<div class="container">
+    <form method="POST">
+        <fieldset class="form-group">
+        </fieldset>
+        {% csrf_token %}
+        {{form|crispy}}
+        <div class="form-group">
+            <button href="/resources/mynotes" class="btn btn-light" type="submit">
+                Create
+            </button>
+        </div>
+    </form>
+</div>
+    </div>
+</div>
 {% endblock %}

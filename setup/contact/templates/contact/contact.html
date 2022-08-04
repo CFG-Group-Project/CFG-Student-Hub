@@ -1,1 +1,47 @@
-{% extends 'dashboard/base.html' %}
+{% extends 'resources/base-res.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title %} Resources {% endblock %}
+
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+  </ol>
+</nav>
+<div class="header-res">
+    contact us
+</div>
+<div class="container">
+    <div style="text-align-last: center">
+We always want to know what we can do to help!
+<br>
+If you have any concerns, tech issues or points for clarification, let us know below.
+    </div>
+{% if messages %}
+    {% for msg in messages %}
+<div class="alert alert-{{msg.tags}}">{{msg}}</div>
+{% endfor %}
+{% endif %}
+    <form method="POST">
+<br>
+        {% csrf_token %}
+        {{form|crispy}}
+        <br>
+        <div class="form-group">
+            <button href="/contact-us" class="btn btn-light" type="submit">
+                Send
+            </button>
+        </div>
+    </form>
+</div>
+    </div>
+</div></div>
+
+
+
+{% endblock %}

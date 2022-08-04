@@ -9,7 +9,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
-    <li class="breadcrumb-item"><a href="/resources/programs">CFG Materials</a></li>
+    <li class="breadcrumb-item"><a href="/resources/programs">Programs</a></li>
     <li class="breadcrumb-item active" aria-current="page">Here</li>
   </ol>
 </nav>
@@ -21,19 +21,6 @@
 
 
 <section class="container text-center">
-
-
-
-
-    <form action="" method="post">
-        {% csrf_token %}
-        {{search|crispy}}
-        <br>
-        <input class="btn btn-light" type="submit" value="Submit">
-    </form><br>
-
-
-
 
 {% for lesson in lessons %}
 <a href="{% url 'resources:lesson-detail' lesson.id %}" >
@@ -62,11 +49,12 @@
     <br>
 
     {% endfor %}
+    {% if user.is_staff %}
+    <a href="admin-dash" class="btn btn-light btn-lg active" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
 
+{% endif %}
 </section>
-<!--<div class="col text-center">-->
-<!--<a href="/resources/submit" class="btn btn-light" >Would you like to submit a resource?</a>-->
-<!--</div>-->
+
 
     {% endblock %}
 
