@@ -1,6 +1,6 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
-{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/forum.css' %}">{% endblock css%}
+{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/my_posts.css' %}">{% endblock css%}
 
 {% block body %}
 <!--Navigation-->
@@ -11,37 +11,42 @@
 <!--The amount of views and/or likes-->
 <!--Maybe a preview of the paragraph ? -->
 <body>
-        <!--Posts table-->
-        <div class="posts-table">
-            <div class="table-head">
-                <div class="Topic">Topic</div>
-                <div class="comments">Comments</div>
-                <div class="started">Started</div>
+    <!--Posts table-->
+    <div class="posts-table">
+        <div class="table-head">
+            <div class="Topic">Topic</div>
+            <div class="comments">Comments</div>
+            <div class="started">Started</div>
+        </div>
+        <span class="line"></span>
+        {% if posts.all %}
+            {% for post in posts %}
+
+            <div class="table-row">
+                <div class="Topic">
+                <a href="{{post.slug}}"><p class="post-title">{{post.title}}</p></a>
+                </div>
+                <div class="comments">
+                    22
+                </div>
+                <div class="started">
+                    29 June 2022
+                </div>
+                <div class="delete">
+                    <a href="my-posts/delete/{{post.id}}" onclick="return confirm('Are you sure you want to delete this? This step is irreversible!')"><i class="fa-solid fa-trash"></i></a>
+                </div>
             </div>
             <span class="line"></span>
-            {% if posts.all %}
-                {% for post in posts %}
-
-                <div class="table-row">
-                    <div class="Topic">
-                    <a href="{{post.slug}}"><p>{{post.title}}</p></a>
-                    </div>
-                    <div class="comments">
-                        22
-                    </div>
-                    <div class="started">
-                        29 June 2022
-                    </div>
-                    <div class="delete" style="padding-right: 10px;">
-                        x
-                    </div>
-                </div>
-                <span class="line"></span>
-                {% endfor %}
-            {% else %}
-            <p class="m-5" style="text-align:center;">You have no Posts! Create one <a href="/forum/create-post" style="color:#F54996; text-decoration:underline;" >here</a></p>
-            {% endif %}
-        </div>
-
+            {% endfor %}
+        <form method="POST" >
+            {% csrf_token %}
+            Are you want to delete this post ?
+            <input type="submit" value="Yes" />
+            <a href="/forum/my-posts">Cancel</a>
+        </form>
+        {% else %}
+        <p class="m-5" style="text-align:center;">You have no Posts! Create one <a href="/forum/create-post" style="color:#F54996; text-decoration:underline;" >here</a></p>
+        {% endif %}
+    </div>
 </body>
 {% endblock body %}

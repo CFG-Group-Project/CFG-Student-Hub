@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import RequestContext
 from django.utils.decorators import method_decorator
@@ -95,3 +96,9 @@ def my_posts(request):
         "title": "OZONE: Latest 10 Posts"
     }
     return render(request, "forum/my_posts.html", context)
+
+def delete_post(request, id):
+    context = {}
+    obj = get_object_or_404(Post, id=id)
+    Post.objects.get(id=id).delete()
+    return HttpResponseRedirect('/forum/my-posts')
