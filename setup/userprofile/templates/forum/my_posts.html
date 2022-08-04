@@ -5,7 +5,7 @@
 {% block body %}
 <!--Navigation-->
 <div class="navigate">
-    <span><a href="/forum">All Discussions</a></span>
+    <span><a class="navigation" href="/forum">All Discussions</a> &laquo</span>
 </div>
 <h1>My Posts</h1>
 <!--The amount of views and/or likes-->
@@ -43,15 +43,15 @@
         {% endif %}
     </div>
 
-    <div style="text-align:center; margin-top:20px; ">
+    <div class="myposts-pagination" style="text-align:center; margin-top:20px; ">
     {% if posts.has_previous%}
-    <a href="?page=1">&laquo First</a>
-    <a href="?page={{posts.previous_page_number}}">Previous</a>
+    <a class="pag-link" href="?page=1">&laquo First</a>
+    <a  class="pag-link" href="?page={{posts.previous_page_number}}">Previous</a>
      {%endif %}
     Page {{posts.number}} of {{posts.paginator.num_pages}}
     {% if posts.has_next%}
-    <a href="?page={{posts.next_page_number}}">Next</a>
-    <a href="?page={{posts.paginator.num_pages}}">Last &raquo</a>
+    <a class="pag-link" href="?page={{posts.next_page_number}}">Next</a>
+    <a class="pag-link" href="?page={{posts.paginator.num_pages}}">Last &raquo</a>
      {%endif %}
     </div>
 </body>

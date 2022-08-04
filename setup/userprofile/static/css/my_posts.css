@@ -105,3 +105,11 @@ flex: 5%;
 margin:10px;
 }
 
+.myposts-pagination .pag-link{
+color:#F54996;
+}
+
+.navigation:hover{
+text-decoration:underline;
+}
+
