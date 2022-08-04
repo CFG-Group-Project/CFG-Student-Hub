@@ -6,23 +6,30 @@
 
 {% block title %} Resources {% endblock %}
 
-
 {% block body %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
+      <li class="breadcrumb-item"><a href="/resources/mynotes">My Notes</a></li>
     <li class="breadcrumb-item active" aria-current="page">Here</li>
   </ol>
 </nav>
 <div class="header-res">
     my notes
 </div>
-<a href="mynotes/search" class="btn btn-light" role="button">Search Through Your Notes</a>
-{% if messages %}
-    {% for msg in messages %}
-<div class="alert alert-{{msg.tags}}">{{msg}}</div>
-{% endfor %}
-{% endif %}
+
+<form action="{% url 'resources:user-search' %}" method="post">
+        {% csrf_token %}
+
+    <input class="form-control" type="search" placeholder="Search Your Notes" aria-label="Search" name="searched">
+        <br>
+        <input class="btn btn-light" type="submit" value="Submit">
+    </form><br>
+
+
+ {% if searched %}
+<h4>Here are your notes containing "{{searched}}" </h4>
+
 <div class="container">
     <div class="row">
         {% for note in notes %}
@@ -38,24 +45,9 @@
             </a>
         </div>
 {% endfor %}
-        <br><br>
-<div class="container">
-    <form method="POST">
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Create Notes</legend>
-        </fieldset>
-        {% csrf_token %}
-        {{form|crispy}}
-        <div class="form-group">
-            <button href="/resources/mynotes" class="btn btn-light" type="submit">
-                Create
-            </button>
-        </div>
-    </form>
-</div>
-    </div>
-</div>
 
+{% else %}
+<h4>Please enter a search term</h4>
 
-
-{% endblock body%}
+{% endif %}
+{% endblock %}

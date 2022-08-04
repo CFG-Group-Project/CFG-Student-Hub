@@ -11,7 +11,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
-    <li class="breadcrumb-item"><a href="/resources/programs">CFG Materials</a></li>
+    <li class="breadcrumb-item"><a href="/resources/programs">Programs</a></li>
       <li class="breadcrumb-item"><a href="/resources/programs/{{material.pathway.path_code}}">{{material.pathway}}</a></li>
     <li class="breadcrumb-item active" aria-current="page">Here</li>
   </ol>
@@ -43,6 +43,9 @@
         </div>
 
     </div>
+    {% if user.is_staff %}
+    <a href="admin-dash" class="btn btn-light btn-lg active" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
 
+{% endif %}
 </section>
 {% endblock %}
