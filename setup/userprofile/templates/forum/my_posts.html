@@ -19,24 +19,28 @@
                 <div class="started">Started</div>
             </div>
             <span class="line"></span>
-            {% for post in posts %}
+            {% if posts.all %}
+                {% for post in posts %}
 
-            <div class="table-row">
-                <div class="Topic">
-                <a href="{{post.slug}}"><p>{{post.title}}</p></a>
+                <div class="table-row">
+                    <div class="Topic">
+                    <a href="{{post.slug}}"><p>{{post.title}}</p></a>
+                    </div>
+                    <div class="comments">
+                        22
+                    </div>
+                    <div class="started">
+                        29 June 2022
+                    </div>
+                    <div class="delete" style="padding-right: 10px;">
+                        x
+                    </div>
                 </div>
-                <div class="comments">
-                    22
-                </div>
-                <div class="started">
-                    29 June 2022
-                </div>
-                <div class="delete" style="padding-right: 10px;">
-                    x
-                </div>
-            </div>
-            <span class="line"></span>
-{% endfor %}
+                <span class="line"></span>
+                {% endfor %}
+            {% else %}
+            <p class="m-5" style="text-align:center;">You have no Posts! Create one <a href="/forum/create-post" style="color:#F54996; text-decoration:underline;" >here</a></p>
+            {% endif %}
         </div>
 
 </body>

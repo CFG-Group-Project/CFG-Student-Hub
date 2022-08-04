@@ -1,0 +1,97 @@
+*{
+    box-sizing: border-box;
+    color:#ffffff;
+    background-color:black;
+    font-size: 16px;
+}
+
+a{
+    color:#ffffff;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+h1{
+    font-size:16px;
+    font-weight: bolder;
+}
+
+.header{
+    color: white;
+    font-weight: bold;
+
+}
+
+
+/* posts table's head  */
+
+.table-head{
+    display: flex;
+}
+
+.table-head div{
+    padding: 5px;
+    margin: 2px;
+    background-color: #000000;
+    font-weight: bold;
+}
+
+.table-head .status{
+    flex: 5%;
+}
+
+.table-head .Topic{
+    flex: 70%;
+}
+
+.table-head .comments{
+    flex: 10%;
+}
+
+.table-head .started{
+    flex: 15%;
+}
+
+.line{
+    border-bottom: 2px solid #ffffff;
+    opacity: 0.2;
+    display: block;
+}
+
+/* posts table's body  */
+
+.table-row{
+    display: flex;
+}
+
+.table-row .status, .table-row .Topic, .table-row .comments, .table-row .started{
+    padding: 5px;
+    margin: 2px;
+    background-color: #000000;
+}
+
+.table-row .status{
+    flex: 5%;
+    font-size: 100px;
+    text-align: center;
+}
+
+.table-row .Topic{
+    flex: 70%;
+}
+
+.table-row .comments{
+    flex: 10%;
+}
+
+.table-row .started{
+    flex: 15%;
+}
+
+
+
+
