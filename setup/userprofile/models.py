@@ -68,12 +68,16 @@ class Comment(models.Model):
     objects = models.Manager()
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     content = models.TextField()
+    likes = models.ManyToManyField(Profile, default=None, blank=True, related_name='likes')
     date = models.DateTimeField(auto_now_add=True)
-
     replies = models.ManyToManyField(Reply, blank=True)
 
     def __str__(self):
         return self.content[:100]
+
+    @property
+    def num_likes(self):
+        return self.likes.all().count()
 
 
 class Post(models.Model):
@@ -100,3 +104,14 @@ class Post(models.Model):
         verbose_name_plural = 'posts'
 
 
+class Like(models.Model):
+    LIKE_CHOICES = (
+        ('Like', 'Like'),
+        ('unlike', 'unlike'),
+    )
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    value = models.CharField(LIKE_CHOICES,default='Like', max_length=10)
+
+    def __str__(self):
+        return str(self.post)
