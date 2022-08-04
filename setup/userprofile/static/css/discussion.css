@@ -53,6 +53,14 @@ overflow:auto;
 margin-left:70px;
 }
 
+.like-button{
+text-align:right;
+padding:10px;
+}
+.fa-thumbs-up:hover{
+color:#F54996;
+}
+
 .username-comment-content{
 margin-left:10px;
 font-size:15px;
@@ -61,10 +69,9 @@ font-size:15px;
 /*FOR THE TEXT EDITOR*/
 .ck-rounded-corners .ck.ck-editor__editable:not(.ck-editor__nested-editable), .ck.ck-editor__editable.ck-rounded-corners:not(.ck-editor__nested-editable) {
 min-height:200px;
-
 line-height:14px;
-
 }
+
 .ck.ck-toolbar.ck-toolbar_grouping{
 background-color:#F54996;
 

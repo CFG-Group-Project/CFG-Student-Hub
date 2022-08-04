@@ -44,6 +44,7 @@
          <div class="comments-content">
              {% if post.comments.all %}
              {% for comment in post.comments.all %}
+             <div class="comment-structure">
                 <div class="comment-details">
                     <div>
                         <img class="avatar" src="{{comment.user.avatar.url}}" alt="user avatar" width="30px" height="30px">
@@ -52,8 +53,11 @@
                         <div class="username"><strong>@{{comment.user}}</strong></div>
                         <div class="discussion-content">{{comment.content|safe}}</div>
                     </div>
-
                 </div>
+                 <div class="like-button">
+                    <i class="fa-solid fa-thumbs-up"></i> 2
+                 </div>
+             </div>
                 <hr>
                 {% endfor %}
              {% else %}
@@ -69,7 +73,6 @@
                         <div class="username"><strong>@{{post.user}}</strong></div>
                         <div class="discussion-content">{{comment.content|safe}}</div>
                     </div>
-
                 </div>
                 <hr>
                 {% endfor %}
@@ -82,7 +85,7 @@
                 <textarea class="ck-content" name="content" id="editor" placeholder="comment here ... " rows="10"></textarea>
                 <button id="submit" type="submit" value="submit" name="comment-form">SUBMIT</button>
             </div>
-        </form>
+      </form>
 
 
 

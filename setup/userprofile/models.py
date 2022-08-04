@@ -69,6 +69,7 @@ class Comment(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+
     replies = models.ManyToManyField(Reply, blank=True)
 
     def __str__(self):
@@ -84,7 +85,6 @@ class Post(models.Model):
     categories = models.ManyToManyField(Category)
     date = models.DateTimeField(auto_now_add=True)
     comments = models.ManyToManyField(Comment, blank=True)
-    #likes = models.ManyToManyField(Profile, related_name='discussion_post')
     hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
                                         related_query_name='hit_count_generic_relation')
 
