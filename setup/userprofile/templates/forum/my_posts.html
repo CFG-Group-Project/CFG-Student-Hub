@@ -19,7 +19,7 @@
             <div class="started">Started</div>
         </div>
         <span class="line"></span>
-        {% if posts.all %}
+        {% if post_list.all %}
             {% for post in posts %}
 
             <div class="table-row">
@@ -38,15 +38,21 @@
             </div>
             <span class="line"></span>
             {% endfor %}
-        <form method="POST" >
-            {% csrf_token %}
-            Are you want to delete this post ?
-            <input type="submit" value="Yes" />
-            <a href="/forum/my-posts">Cancel</a>
-        </form>
         {% else %}
         <p class="m-5" style="text-align:center;">You have no Posts! Create one <a href="/forum/create-post" style="color:#F54996; text-decoration:underline;" >here</a></p>
         {% endif %}
+    </div>
+
+    <div style="text-align:center; margin-top:20px; ">
+    {% if posts.has_previous%}
+    <a href="?page=1">&laquo First</a>
+    <a href="?page={{posts.previous_page_number}}">Previous</a>
+     {%endif %}
+    Page {{posts.number}} of {{posts.paginator.num_pages}}
+    {% if posts.has_next%}
+    <a href="?page={{posts.next_page_number}}">Next</a>
+    <a href="?page={{posts.paginator.num_pages}}">Last &raquo</a>
+     {%endif %}
     </div>
 </body>
 {% endblock body %}
