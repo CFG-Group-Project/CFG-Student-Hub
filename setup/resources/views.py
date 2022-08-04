@@ -74,19 +74,6 @@ class LessonDetailView(DetailView):
     model = Material
 
 
-class FoundationDetailView(DetailView):
-    model = Material
-
-
-# https://learndjango.com/tutorials/django-search-tutorial
-
-# def materials(request):
-#     material = Material.objects.get(id=id)
-#     if material is not None:
-#         return render(request, 'resources/material_detail.html', {'material': material})
-#     else:
-#         raise Http404('This lesson is unavailable')
-
 @login_required(login_url='/login/')
 def submit_thanks(request):
     return render(request, 'resources/submit-thanks.html')
@@ -127,7 +114,7 @@ def admin_dash(request):
     else:
         return render(request, 'resources/admindash.html', {'dashcon': dashcon})
 
-
+# https://youtu.be/llbtoQTt4qw?t=2785 update and create options for the dashboard
 
 # currently, the student accounts redirect to a 404 page. this might be rectified by Ayisha's 404 redirect API but remember to check
 
