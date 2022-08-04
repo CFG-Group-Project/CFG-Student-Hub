@@ -7,7 +7,9 @@ class CreateNewResource(ModelForm):
     lesson = forms.CharField(label='Lesson Title', max_length=50, )
     topics = forms.CharField(label='Topic', max_length=50, )
     week = forms.CharField(label='Week', max_length=3)
-    lesson_slide = forms.URLField(label='Lesson Slides', max_length=200)
+    lesson_slide = forms.URLField(label='Lesson Slides', max_length=200,widget= forms.TextInput
+                           (attrs={'placeholder':'Publish your Google Slide and then copy the link in the first set '
+                                                 'of quotation marks ONLY'}))
     code = forms.CharField(label='Code File Link', max_length=400, required=False)
     show = forms.BooleanField(label='Is this ready for students to view?', initial=False, required=False)
     rectutorial = forms.URLField(label='Recommended Tutorial', max_length=200, required=False)
