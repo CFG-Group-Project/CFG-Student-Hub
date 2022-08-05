@@ -17,13 +17,15 @@
 <div class="header-res">
     my notes
 </div>
-<a href="mynotes/search" class="btn btn-light" role="button">Search Through Your Notes</a>
+<div class="container">
+    <div class="row p-3">
+        <a href="mynotes/search" class="btn btn-light" role="button">Search Through Your Notes</a></div>
 {% if messages %}
     {% for msg in messages %}
 <div class="alert alert-{{msg.tags}}">{{msg}}</div>
 {% endfor %}
 {% endif %}
-<div class="container">
+
     <div class="row">
         {% for note in notes %}
         <div class="col-md-3">
