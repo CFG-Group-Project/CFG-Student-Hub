@@ -10,9 +10,9 @@
 {% block body %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
-    <li class="breadcrumb-item"><a href="/resources/programs">Programs</a></li>
-      <li class="breadcrumb-item"><a href="/resources/programs/{{material.pathway.path_code}}">{{material.pathway}}</a></li>
+    <li class="breadcrumb-item"><a href="/resources"style="color:#F54996">Resources</a></li>
+    <li class="breadcrumb-item"><a href="/resources/programs"style="color:#F54996">Programs</a></li>
+      <li class="breadcrumb-item"><a href="/resources/programs/{{material.program}}" style="color:#F54996">{{material.program}}</a></li>
     <li class="breadcrumb-item active" aria-current="page">Here</li>
   </ol>
 </nav>
@@ -35,7 +35,7 @@
             <iframe src="{{material.slides}}" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
             <br>
             {% if material.rectutorial %}
-<a href="{{material.rectutorial}}" class="btn btn-light" target="_blank" rel="noopener noreferrer">Recommended Tutorial</a>
+<a href="{{material.rectutorial}}" class="btn btn-dark" target="_blank" rel="noopener noreferrer">Recommended Tutorial</a>
 </div>
             {% endif %}
 
@@ -44,7 +44,7 @@
 
     </div>
     {% if user.is_staff %}
-    <a href="admin-dash" class="btn btn-light btn-lg active" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
+    <a href="../admin-dash" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
 
 {% endif %}
 </section>

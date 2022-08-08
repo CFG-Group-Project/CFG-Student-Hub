@@ -9,13 +9,16 @@
 {% block body %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
-    <li class="breadcrumb-item"><a href="/resources/mynotes">My Notes</a></li>
+    <li class="breadcrumb-item"><a href="/resources"style="color:#F54996">Resources</a></li>
+    <li class="breadcrumb-item"><a href="/resources/mynotes"style="color:#F54996">My Notes</a></li>
     <li class="breadcrumb-item active" aria-current="page">Here</li>
   </ol>
 </nav>
 
 <section class='text-center container'>
+    <div class="col text-center">
+<a href="{% url 'resources:notes-update' notes.id %}" class="btn btn-dark">Edit your note</a>
+</div>
 
     <div class="container">
 
@@ -30,7 +33,7 @@
                 {{notes.content}}
             <div class="col text-center">
             {% if notes.link %}
-<a href="{{notes.link}}" class="btn btn-light" target="_blank" rel="noopener noreferrer">External Resource Link</a>
+<a href="{{notes.link}}" class="btn btn-dark" target="_blank" rel="noopener noreferrer">External Resource Link</a>
 </div>
             {% endif %}
 

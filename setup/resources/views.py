@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
-from . import models
+from .models import Material,Program,Notes
+from django.db.models import Q
 from django.http import Http404, HttpResponseRedirect
+from django.urls import reverse_lazy
 from .forms import *
 from django.views.generic import DetailView, ListView
 from django.contrib import messages
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth import get_user_model
+
 
 
 @login_required(login_url='/login/')
@@ -33,14 +38,18 @@ def usernotes(request):
     context = {'notes': notes, 'form': form}
     return render(request, 'resources/user-notes.html', context)
 
+
 def notes_search(request):
     if request.method == "POST":
         searched = request.POST['searched']
-        notes = Notes.objects.filter(content__contains=searched)
-        context = {'searched':searched,'notes':notes}
-        return render(request, 'resources/notes-search.html',context)
+        # searches title and content but only for current user
+        notes = Notes.objects.filter(Q(title__contains=searched) | Q(content__contains=searched)).filter(
+            user=request.user)
+        context = {'searched': searched, 'notes': notes}
+        return render(request, 'resources/notes-search.html', context)
     else:
         return render(request, 'resources/notes-search.html', {})
+
 
 @login_required(login_url='/login/')
 def delete_note(request, pk=None):
@@ -51,6 +60,11 @@ def delete_note(request, pk=None):
 class NotesDetailView(DetailView):
     model = Notes
 
+class NotesUpdateView(UpdateView):
+    model = Notes
+    fields = ['title','content','link']
+    success_url = '/resources/mynotes'
+
 
 @login_required(login_url='/login/')
 def programs(request):
@@ -59,7 +73,8 @@ def programs(request):
 
 @login_required(login_url='/login/')
 def ClassPage(request, name=None):
-    lessons = Material.objects.filter(show=True, program=name)
+    fnd = 'Foundation'
+    lessons = Material.objects.filter(show=True).filter(Q(program=name) | Q(program=fnd))
     if request.method == "POST":
         form = SearchForm(request.POST)
         text = request.POST['text']
@@ -80,28 +95,9 @@ def submit_thanks(request):
 
 
 @login_required(login_url='/login/')
-def submit(request):
-    if request.method == 'POST':
-        form = CreateNewResource(request.POST)
-        if form.is_valid():
-            materials = Material(lesson=request.POST['lesson'], week=request.POST['week'],
-                                 slides=request.POST['code'],
-                                 topics=request.POST['topics'],
-                                 program='program',
-                                 show='show',
-                                 rectutorial=request.POST['rectutorial'])
-            materials.save()
-        messages.success(request, f"Your lesson has been saved!")
-    else:
-        form = CreateNewResource
-    context = {'form': form}
-    return render(request, 'resources/submit.html', {'form': form})
-
-
-@login_required(login_url='/login/')
 @user_passes_test(lambda u: u.is_staff)
 def admin_dash(request):
-    dashcon = Material.objects.all()
+    dashcon = Material.objects.all().order_by('week')
     if request.method == 'POST':
         id_list = request.POST.getlist('boxes')
         for x in id_list:
@@ -109,12 +105,37 @@ def admin_dash(request):
                 Material.objects.filter(pk=int(x)).update(show=True)
             elif not Material.objects.filter(pk=int(x)):
                 Material.objects.filter(pk=int(x)).update(show=False)
-        messages.success(request,"The selected lessons have been updated")
+        messages.success(request, "The selected lessons have been updated")
         return render(request, 'resources/admindash.html', {'dashcon': dashcon})
     else:
         return render(request, 'resources/admindash.html', {'dashcon': dashcon})
 
+
 # https://youtu.be/llbtoQTt4qw?t=2785 update and create options for the dashboard
 
 # currently, the student accounts redirect to a 404 page. this might be rectified by Ayisha's 404 redirect API but remember to check
+
+
+class CreateResource(CreateView):
+    model = Material
+    fields = ['lesson','week','slides','code_file','show','topics','program','rectutorial']
+    success_url = '/resources/admin-dash'
+
+    def form_valid(self, form):
+        form.instance.sub_by = self.request.user
+        return super().form_valid(form)
+
+
+
+class UpdateResource(UpdateView):
+    model = Material
+    fields = ['lesson','week','slides','code_file','show','topics','program','rectutorial']
+    success_url = '/resources/admin-dash'
+
+class DeleteResource(DeleteView):
+    model = Material
+    fields = ['lesson','week','slides','code_file','show','topics','program','rectutorial']
+    context_object_name = 'material'
+    success_url = '/resources/admin-dash'
+
 

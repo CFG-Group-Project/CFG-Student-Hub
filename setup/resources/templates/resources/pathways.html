@@ -8,7 +8,7 @@
 {% block body %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
+    <li class="breadcrumb-item" ><a href="/resources"style="color:#F54996">Resources</a></li>
     <li class="breadcrumb-item active" aria-current="page">Here</li>
   </ol>
 </nav>
@@ -23,7 +23,7 @@
       <a href="/resources/programs/Data">
         <div class="card">
           <img class="card-img-top" src="/static/images/data.png" alt="data image">
-          <div class="card-body">
+          <div class="card-body" style="color:white">
             <h5 class="card-title ">
               Resource Hub
             </h5>
@@ -37,7 +37,7 @@
       <a href="/resources/programs/Full-Stack">
         <div class="card">
           <img class="card-img-top" src="/static/images/full-stack.png" alt="full stack image">
-          <div class="card-body">
+          <div class="card-body" style="color:white">
             <h5 class="card-title ">
               Resource Hub
             </h5>
@@ -51,7 +51,7 @@
       <a href="/resources/programs/Software">
         <div class="card">
           <img class="card-img-top" src="/static/images/software.png" alt="software image">
-          <div class="card-body">
+          <div class="card-body"style="color:white">
             <h5 class="card-title ">
               Resource Hub
             </h5>
@@ -64,7 +64,7 @@
 <br><br>
 
     {% if user.is_staff %}
-    <a href="admin-dash" class="btn btn-light btn-lg active" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
+    <a href="admin-dash" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
 
 {% endif %}
     {% endblock %}
