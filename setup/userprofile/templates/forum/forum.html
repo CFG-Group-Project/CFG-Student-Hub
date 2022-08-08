@@ -18,7 +18,7 @@
             {% for post in posts %}
             <div class="table-row">
                 <div class="Topic">
-                <a href="{{post.slug}}"><p>{{post.title}}</p></a>
+                <a href="{{post.id}}"><p>{{post.title}}</p></a>
                 </div>
                 <div class="comments">
                     {{post.comments.count}}

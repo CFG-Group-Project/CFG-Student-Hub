@@ -1,7 +1,6 @@
 from django import forms
 
-from .models import Profile
-from .models import Post
+from .models import Profile, Post, Comment
 
 
 class ProfileForm(forms.ModelForm):
@@ -55,3 +54,16 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ["title", "content", "categories"]
+
+class CommentForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['content'].widget.attrs.update({
+            'required': '',
+            'name': 'content',
+
+        })
+
+    class Meta:
+        model = Comment
+        fields = ['content']
