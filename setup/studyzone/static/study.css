@@ -132,7 +132,7 @@ body.dark {
     padding: 35px 20px;
     background-color: white;
     border: 1px solid black;
-     position: absolute; bottom: 0px;
+    position: absolute; bottom: 0px;
 
 }
 .audio-player .player-controls {
@@ -196,6 +196,6 @@ color: #f54996;
 .whiteiconcolor {
 color:white;
 position: absolute;
-right: 1380px;
- top: 15px;
+left: 0px;
+top: 0px;
 }
