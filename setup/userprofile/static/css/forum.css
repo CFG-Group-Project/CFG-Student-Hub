@@ -20,6 +20,19 @@ h1{
     font-weight: bolder;
 }
 
+/* Button */
+
+button{
+
+  background-color: #f54996;
+  border: none;
+  color: white;
+  position: relative;
+  left: 1200px;
+  border-radius: 25px;
+  border: 10px solid #f54996;
+}
+
 .header{
     color: white;
     font-weight: bold;
@@ -90,7 +103,3 @@ h1{
 .table-row .started{
     flex: 15%;
 }
-
-
-
-
