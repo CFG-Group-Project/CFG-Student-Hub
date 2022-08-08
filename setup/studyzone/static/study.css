@@ -133,7 +133,7 @@ body.dark {
     background-color: white;
     border: 1px solid black;
     position: absolute; bottom: 0px;
-
+    margin-bottom: 5px;
 }
 .audio-player .player-controls {
     position: relative;
@@ -141,12 +141,7 @@ body.dark {
     justify-content: space-between;
     align-items: center;
 }
-.audio-player #radioIcon {
-    width: 30px;
-    height: 30px;
-    background: url("https://img.icons8.com/ios/50/000000/microphone.png") no-repeat center;
-    background-size: contain;
-}
+
 .audio-player #playAudio {
     -webkit-appearance: none;
     outline: none;
@@ -198,4 +193,6 @@ color:white;
 position: absolute;
 left: 0px;
 top: 0px;
+padding-top: 10px;
+padding-left: 10px;
 }
