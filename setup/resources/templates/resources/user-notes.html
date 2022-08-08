@@ -10,7 +10,7 @@
 {% block body %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
+    <li class="breadcrumb-item"><a href="/resources" style="color:#F54996">Resources</a></li>
     <li class="breadcrumb-item active" aria-current="page">Here</li>
   </ol>
 </nav>
@@ -19,7 +19,7 @@
 </div>
 <div class="container">
     <div class="row p-3">
-        <a href="mynotes/search" class="btn btn-light" role="button">Search Through Your Notes</a></div>
+        <a href="mynotes/search" class="btn btn-dark" role="button">Search Through Your Notes</a></div>
 {% if messages %}
     {% for msg in messages %}
 <div class="alert alert-{{msg.tags}}">{{msg}}</div>
@@ -34,7 +34,7 @@
                     <div class="card-header">{{note.title}}</div>
                     <div class="card-body white" style="font-color: white">{{note.content|slice:":55"}}</div>
                     <div class="card-footer mt-auto"><a href="{% url 'resources:delete_note' note.id %}">
-                        <i class="fa-solid fa-trash"></i></a>
+                        <i class="fa-solid fa-trash" style='color: #000000'></i></a>
                     </div>
                 </div>
             </a>
@@ -49,7 +49,7 @@
         {% csrf_token %}
         {{form|crispy}}
         <div class="form-group">
-            <button href="/resources/mynotes" class="btn btn-light" type="submit">
+            <button href="/resources/mynotes" class="btn btn-dark" type="submit">
                 Create
             </button>
         </div>
