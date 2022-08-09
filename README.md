@@ -63,7 +63,7 @@ python manage.py migrate
 ```commandline
 python manage.py runserver localhost:8080
 ```
-### Testing 
+## Testing 
 Replace 'app-name' with the name of the app you want to test
 ```commandline
 python manage.py test app-name.tests
