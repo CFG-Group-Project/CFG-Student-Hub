@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'hitcount',
     "taggit",
     "resources.flashcards",
-    "django.contrib.humanize"
+    "django.contrib.humanize",
+    'django_filters',
 
 ]
 
@@ -94,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cfgdatabase',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': DBP,
         'HOST': 'localhost',
         'PORT': '3306',
     }

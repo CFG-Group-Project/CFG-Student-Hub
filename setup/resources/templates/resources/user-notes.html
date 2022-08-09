@@ -2,7 +2,6 @@
 {% load bootstrap5 %}
 {% load static %}
 {% load crispy_forms_tags %}
-{%block tinymce%}<script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>{% endblock tinymce%}
 
 
 {% block title %} Resources {% endblock %}
@@ -49,7 +48,6 @@
         </fieldset>
         {% csrf_token %}
         {{form|crispy}}
-
         <div class="form-group">
             <button href="/resources/mynotes" class="btn btn-dark" type="submit">
                 Create

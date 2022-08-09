@@ -3,6 +3,7 @@
 {% load static %}
 
 
+
 {% block body %}
 
 <nav aria-label="breadcrumb">
@@ -21,8 +22,13 @@
 
     <div class="header-res">Admin Dashboard
 </div><br>
-    <form action="" method="POST">
-        {% csrf_token %}
+    <div class="col text-center">
+<a href="/resources/create" class="btn btn-dark" >Would you like to submit a resource?</a>
+</div><br>
+    <form method="get">
+        {{myfilter.form}}
+        <button class="btn btn-dark" type="submit">Filter</button>
+            </form>
     <table class="table">
         <thead class="thead-light">
             <tr>
@@ -46,7 +52,11 @@
                 <td>{{each.lesson}}</td>
                 <td>{{each.program}}</td>
                 <td>
-                    {{ each.show }}
+                    {%if each.show %}
+                    Yes
+                    {% else %}
+                    No
+                    {% endif %}
                 </td>
                 <td>{{each.sub_by}}</td>
                  {% if user.is_staff %}
@@ -61,10 +71,7 @@
     </table>
 
 <br>
-    <button class="btn btn-dark" type="submit">Update Visibility</button>
-</form>
+
     </div>
-<div class="col text-center">
-<a href="/resources/create" class="btn btn-dark" >Would you like to submit a resource?</a>
-</div>
+
 {% endblock %}

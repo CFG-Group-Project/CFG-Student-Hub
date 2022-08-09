@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import get_user_model
+from .filters import MaterialFilter
 
 
 
@@ -97,7 +98,10 @@ def submit_thanks(request):
 @login_required(login_url='/login/')
 @user_passes_test(lambda u: u.is_staff)
 def admin_dash(request):
+
     dashcon = Material.objects.all().order_by('week')
+    myFilter = MaterialFilter(request.GET, queryset=dashcon)
+    dashcon= myFilter.qs
     if request.method == 'POST':
         id_list = request.POST.getlist('boxes')
         for x in id_list:
@@ -108,7 +112,7 @@ def admin_dash(request):
         messages.success(request, "The selected lessons have been updated")
         return render(request, 'resources/admindash.html', {'dashcon': dashcon})
     else:
-        return render(request, 'resources/admindash.html', {'dashcon': dashcon})
+        return render(request, 'resources/admindash.html', {'dashcon': dashcon,'myfilter':myFilter})
 
 
 # https://youtu.be/llbtoQTt4qw?t=2785 update and create options for the dashboard
