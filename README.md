@@ -52,7 +52,14 @@ pip3 install -r requirements.txt
 ```commandline
 cd setup
 ```
-5. Run Server
+
+5. Create tables 
+```commandline
+python manage.py makemigrations
+python manage.py migrate
+```
+
+6. Run Server
 ```commandline
 python manage.py runserver localhost:8080
 ```
