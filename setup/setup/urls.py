@@ -31,6 +31,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path('hitcount/', include('hitcount.urls', namespace='hitcount')),
-    # path('', include('resources.cards.urls')),
+    path('', include('resources.cards.urls')),
 
 ]

@@ -1,0 +1,19 @@
+{% extends "cards/base.html" %}
+
+{% block body %}
+    <div class="header-res">
+        Flashcards
+    </div>
+<div class="row">
+    {% for card in card_list %}
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" style="color:white">{{card}}</h5>
+        <a href="#" class="btn btn-light">Definition</a>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+</div>
+{% endblock %}

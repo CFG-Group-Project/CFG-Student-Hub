@@ -22,5 +22,5 @@ urlpatterns = [
     path('resources/delete/<int:pk>', views.DeleteResource.as_view(), name='resource-delete'),
     path('resources/lesson/<int:pk>', views.LessonDetailView.as_view(), name='lesson-detail'),
     path('resources/admin-dash', views.admin_dash, name='admin-dash'),
-    # path('', include('resources.cards.urls'))
+    path('', include('resources.cards.urls'))
 ]
