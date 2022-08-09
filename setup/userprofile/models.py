@@ -3,10 +3,7 @@ from django.utils.translation import gettext as _
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
-from django.utils.timezone import now
 from tinymce.models import HTMLField
-from hitcount.models import HitCountMixin, HitCount
-from taggit.managers import TaggableManager
 
 # Create your models here.
 from django.db.models.signals import post_save
@@ -34,23 +31,6 @@ class Profile(models.Model):
         verbose_name_plural = _('Profiles')
 
 
-# class Category(models.Model):
-#
-#     title = models.CharField(max_length=100)
-#     slug = models.SlugField(max_length=200, unique=True, blank=True)
-#
-#     def save(self, *args, **kwargs):
-#         if not self.slug:
-#             self.slug = slugify(self.title)
-#         super(Category, self).save(*args, **kwargs)
-#
-#     def __str__(self):
-#         return self.title
-#
-#     class Meta:
-#         verbose_name_plural = 'categories'
-
-
 class Post(models.Model):
     objects = models.Manager()
     title = models.CharField(max_length=200)
@@ -58,6 +38,7 @@ class Post(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     content = HTMLField()
     date = models.DateField(auto_now_add=True)
+    views = models.IntegerField(default=0)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -66,6 +47,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    # update the view count
+    def update_views(self, *args, **kwargs):
+        self.views  =+ 1
+        super(Post, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = 'posts'
