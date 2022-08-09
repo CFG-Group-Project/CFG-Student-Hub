@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="{%static 'study.css' %}"/>
      <script src="{%static 'study.js' %}" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
 
 </head>
 <body>
@@ -35,26 +34,8 @@
 	</label>
 </div>
 <!-- Toggle -->
-<!--Youtube-->
-    <div id="player" style="display: none; visibility: hidden;"></div>
 
-    <!--Player-->
-    <div class="audio-player">
-        <div class="player-controls">
-            <div id="radioIcon"></div>
-            <button id="playAudio"></button>
-            <div id="seekObjContainer">
-                <div id="seekObj">
-                    <div id="percentage"></div>
-                </div>
-            </div>
-            <p id="currentTime">00:00</p>
-        </div>
-    </div>
-<div class="ext">
-    <a href="http://localhost:8080"><i class="fa-solid fa-xmark fa-3x whiteiconcolor"></i></a>
-
-    </div>
 <h2>{{quotes.text}}</h2>
+
 </body>
 </html>
