@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Notes(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
-    content = models.TextField(max_length=1000)
+    content = models.TextField(max_length=10000)
     link = models.URLField(max_length=250, blank=True)
     resolved = models.BooleanField(editable=True, default=False)
 

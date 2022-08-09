@@ -1,0 +1,14 @@
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+{% load humanize %}
+
+
+{% block body %}
+    <h2>🗃 {{ box_number | ordinal }} Box</h2>
+<!--    <mark>{{ object_list | length }}</mark> Card{{ object_list | pluralize }} left in box.-->
+    <hr>
+    {% for card in object_list %}
+        {% include "flashcards/card.html" with card=check_card%}
+    {% endfor %}
+{% endblock %}
