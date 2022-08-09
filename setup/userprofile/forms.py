@@ -43,17 +43,10 @@ class PostForm(forms.ModelForm):
             'placeholder': 'What would you like to ask?',
             'minlength': 5
         })
-        self.fields['categories'].widget.attrs.update({
-            'required': '',
-            'name': 'categories',
-            'id': 'categories',
-            'type': 'text',
-            'maxlength': 16,
-            'minlength': 5
-        })
+
     class Meta:
         model = Post
-        fields = ["title", "content", "categories"]
+        fields = ["title", "content"]
 
 class CommentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):

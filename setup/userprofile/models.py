@@ -34,21 +34,21 @@ class Profile(models.Model):
         verbose_name_plural = _('Profiles')
 
 
-class Category(models.Model):
-
-    title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=200, unique=True, blank=True)
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super(Category, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name_plural = 'categories'
+# class Category(models.Model):
+#
+#     title = models.CharField(max_length=100)
+#     slug = models.SlugField(max_length=200, unique=True, blank=True)
+#
+#     def save(self, *args, **kwargs):
+#         if not self.slug:
+#             self.slug = slugify(self.title)
+#         super(Category, self).save(*args, **kwargs)
+#
+#     def __str__(self):
+#         return self.title
+#
+#     class Meta:
+#         verbose_name_plural = 'categories'
 
 
 class Post(models.Model):
@@ -57,7 +57,6 @@ class Post(models.Model):
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     content = HTMLField()
-    categories = models.ManyToManyField(Category)
     date = models.DateField(auto_now_add=True)
 
     def save(self, *args, **kwargs):

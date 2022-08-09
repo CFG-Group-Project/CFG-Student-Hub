@@ -22,12 +22,8 @@
                 <textarea class="ck-content" name="content" id="editor" placeholder='What would you like to ask?' rows="10"></textarea>
             </div>
             {{form.content.errors}}
-            <label>{{ form.categories.label}}* <span class="categories-text">(Press CTRL or CMD to select multiple)</span></label>
-            <div class="input">
-                {{ form.categories }}
-                {{form.categories.errors}}
 
-            </div>
+
 
             <button id="submit" type="submit" value="submit" name="post-form">SUBMIT</button>
 

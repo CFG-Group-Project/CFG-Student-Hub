@@ -9,7 +9,7 @@ from django.views import View
 from django.core.paginator import Paginator
 
 from .forms import ProfileForm, form_validation_error, PostForm, CommentForm
-from .models import Profile, Category, Post, Comment
+from .models import Profile, Post, Comment
 
 
 # Create your views here.
@@ -47,9 +47,13 @@ class ProfileView(View):
 #  FORUM
 @login_required(login_url='login')
 def forum(request):
-    posts = Post.objects.all()
+    post_list = Post.objects.all()
+    paginator = Paginator(post_list, 6)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
 
-    context = {'posts': posts}
+    context = {'post_list': post_list,
+        'posts': posts,}
     return render(request, 'forum/forum.html', context)
 
 
@@ -137,16 +141,6 @@ class AddCommentLike(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         comment = Comment.objects.get(pk=pk)
 
-        #is_dislike = False
-
-        # for dislike in comment.dislikes.all():
-        #     if dislike == request.user:
-        #         is_dislike = True
-        #         break
-
-        # if is_dislike:
-        #     comment.dislikes.remove(request.user.profile)
-        #
         liked = False
 
         for like in comment.likes.all():

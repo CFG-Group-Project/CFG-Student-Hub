@@ -6,9 +6,12 @@
 }
 
 a{
-    color:#ffffff;
     font-weight: bolder;
     text-decoration: none;
+}
+
+.new-discussion-btn:hover, .myposts-btn:hover{
+    border:1px solid white !important;
 }
 
 a:link {
@@ -21,16 +24,22 @@ h1{
 }
 
 /* Button */
+.new-discussion-btn{
+    position: absolute;
+    right: 0;
+    margin-right:120px;
+}
 
-button{
+.myposts-btn{
+    position: absolute;
+    right:0
+}
 
-  background-color: #f54996;
-  border: none;
-  color: white;
-  position: relative;
-  left: 1200px;
-  border-radius: 25px;
+.btn{
+  background-color: #f54996 !important;
+  color:white !important;
   border: 10px solid #f54996;
+  border-radius: 25px;
 }
 
 .header{
