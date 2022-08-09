@@ -33,7 +33,7 @@
                 <div class="username-content">
                     <div class="username">@{{post.user}}</div>
                     <div class="discussion-content">{{post.content|safe}}</div>
-                     <p class="text-right text-muted"><small>{{ comment.date }}</small></p>
+                     <p class="text-right text-muted"><small>{{ post.date }}</small></p>
                 </div>
             </div>
             <hr>
@@ -42,8 +42,8 @@
         <!--Comments Section-->
      <div class="comments-container">
          <div class="comments-content">
-             {% if post.comments.all %}
-             {% for comment in post.comments.all %}
+             {% if comments %}
+             {% for comment in comments %}
              <div class="comment-structure">
                 <div class="comment-details">
                     <div>
@@ -52,10 +52,19 @@
                     <div class="username-comment-content">
                         <div class="username"><strong>@{{comment.user}}</strong></div>
                         <div class="discussion-content">{{comment.content|safe}}</div>
+                        <p class="text-right text-muted"><small>{{ comment.date }}</small></p>
                     </div>
                 </div>
                  <div class="like-button">
-                    <i class="fa-solid fa-thumbs-up"></i> 2
+                      <form method="POST" action="comment/{{comment.pk}}/like">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                          {% if user.profile in comment.likes.all %}
+                         <button type="submit" class="like-button"><i class="fa-solid fa-thumbs-up" style="color:#F54996;"></i></button><strong>{{comment.likes.all.count}}</strong>
+                         {% else %}
+                         <button type="submit" class="like-button"><i class="fa-solid fa-thumbs-up"></i></button><strong>{{comment.likes.all.count}}</strong>
+                         {% endif %}
+                      </form>
                  </div>
              </div>
                 <hr>
@@ -79,7 +88,7 @@
              {% endif %}
          </div>
      </div>
-      <form id="comment-form-container" action="." method="post">
+      <form id="comment-form-container" method="post">
             {% csrf_token %}
             <div class="comment-area hide" id="comment-area">
                 <textarea class="ck-content" name="content" id="editor" placeholder="comment here ... " rows="10"></textarea>

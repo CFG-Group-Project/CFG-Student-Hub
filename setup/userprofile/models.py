@@ -34,50 +34,21 @@ class Profile(models.Model):
         verbose_name_plural = _('Profiles')
 
 
-class Category(models.Model):
-
-    title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=200, unique=True, blank=True)
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super(Category, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name_plural = 'categories'
-
-
-class Reply(models.Model):
-    objects = models.Manager()
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    content = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.content[:100]
-
-    class Meta:
-        verbose_name_plural = 'replies'
-
-
-class Comment(models.Model):
-    objects = models.Manager()
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    content = models.TextField()
-    likes = models.ManyToManyField(Profile, default=None, blank=True, related_name='likes')
-    date = models.DateTimeField(auto_now_add=True)
-    replies = models.ManyToManyField(Reply, blank=True)
-
-    def __str__(self):
-        return self.content[:100]
-
-    @property
-    def num_likes(self):
-        return self.likes.all().count()
+# class Category(models.Model):
+#
+#     title = models.CharField(max_length=100)
+#     slug = models.SlugField(max_length=200, unique=True, blank=True)
+#
+#     def save(self, *args, **kwargs):
+#         if not self.slug:
+#             self.slug = slugify(self.title)
+#         super(Category, self).save(*args, **kwargs)
+#
+#     def __str__(self):
+#         return self.title
+#
+#     class Meta:
+#         verbose_name_plural = 'categories'
 
 
 class Post(models.Model):
@@ -86,11 +57,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     content = HTMLField()
-    categories = models.ManyToManyField(Category)
-    date = models.DateTimeField(auto_now_add=True)
-    comments = models.ManyToManyField(Comment, blank=True)
-    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
-                                        related_query_name='hit_count_generic_relation')
+    date = models.DateField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -104,14 +71,39 @@ class Post(models.Model):
         verbose_name_plural = 'posts'
 
 
-class Like(models.Model):
-    LIKE_CHOICES = (
-        ('Like', 'Like'),
-        ('unlike', 'unlike'),
-    )
+class Comment(models.Model):
+    objects = models.Manager()
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    value = models.CharField(LIKE_CHOICES,default='Like', max_length=10)
+    content = models.TextField()
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, default=None)
+    likes = models.ManyToManyField(Profile, default=None, blank=True, related_name='likes')
+    created_on = models.DateField(auto_now_add=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='+')
 
     def __str__(self):
-        return str(self.post)
+        return f" {self.user} says '{self.content[:20]}...'"
+
+    @property
+    def children(self):
+        return Comment.objects.filter(parent=self).order_by('-created_on').all()
+
+    @property
+    def is_parent(self):
+        if self.parent is None:
+            return True
+        return False
+
+
+
+
+# class Like(models.Model):
+#     LIKE_CHOICES = (
+#         ('Like', 'Like'),
+#         ('unlike', 'unlike'),
+#     )
+#     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+#     value = models.CharField(LIKE_CHOICES,default='Like', max_length=10)
+#
+#     def __str__(self):
+#         return str(self.post)
