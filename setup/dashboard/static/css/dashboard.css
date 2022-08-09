@@ -34,6 +34,25 @@ background-color:#F54996;
 text-align:center;
 }
 
+a:link{
+text-decoration: none;
+}
+
+.notification-center a{
+text-decoration: none;
+background-color:#F54996;
+color:white;
+}
+.notification-center a:hover{
+color:black;
+}
+
+
+.data strong{
+background-color:#F54996 !important;
+text-decoration:underline;
+}
+
 .dashboard-card{
 width:450px;
 height:250px;
@@ -42,6 +61,7 @@ border-radius:20px;
 background-color:#F54996;
 margin:10px 10px;
 transition: transform .2s;
+text-align:center;
 }
 
 .dashboard-card:hover{
