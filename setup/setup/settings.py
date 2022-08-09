@@ -49,12 +49,11 @@ INSTALLED_APPS = [
     'tinymce',
     'hitcount',
     "taggit",
-    # "resources.cards",
+    "resources.cards",
     "django.contrib.humanize",
     'django_filters',
 
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
