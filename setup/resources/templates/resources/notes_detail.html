@@ -2,8 +2,8 @@
 {% load bootstrap5 %}
 {% load static %}
 
+{% block title %} Resources | My Notes{% endblock %}
 
-{% block title %} Resources {% endblock %}
 
 
 {% block body %}
@@ -19,7 +19,6 @@
     <div class="col text-center">
 <a href="{% url 'resources:notes-update' notes.id %}" class="btn btn-dark">Edit your note</a>
 </div>
-
     <div class="container">
 
         <div class="content-section p-0 mt-5">
@@ -28,17 +27,16 @@
                 <h1>{{notes.title}}</h1>
             </div>
 
-            <hr class="p-0 m-0">
-            <p class="description m-5 p-5">
-                {{notes.content}}
+
+                {{notes.content | safe }}
             <div class="col text-center">
             {% if notes.link %}
 <a href="{{notes.link}}" class="btn btn-dark" target="_blank" rel="noopener noreferrer">External Resource Link</a>
 </div>
             {% endif %}
-
+<hr>
             </p>
-            <hr>
+
         </div>
 
     </div>

@@ -1,6 +1,6 @@
 {% extends 'resources/base-res.html' %}}
 {% load crispy_forms_tags %}
-
+{% block title %} Resources | Course Resources{% endblock %}
 {% block body %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -11,7 +11,11 @@
   </ol>
 </nav>
 <div class="header-res">
-    submit new resource pack
+        {% if material %}
+        Edit Resource Pack
+    {% else %}
+        submit new resource pack
+    {% endif %}
 </div>
 
 

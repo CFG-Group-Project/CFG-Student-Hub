@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import get_user_model
-from .filters import MaterialFilter
+from .filters import MaterialFilter,MaterialFilterStudents
 
 
 
@@ -29,13 +29,13 @@ def usernotes(request):
         form = NotesForm(request.POST)
         if form.is_valid():
             notes = Notes(user=request.user, title=request.POST['title'], content=request.POST['content'],
-                          link=request.POST['link'])
+                          link=request.POST['link']).order_by('title')
             notes.save()
             form = NotesForm()
         messages.success(request, "Your notes have been saved!")
     else:
         form = NotesForm()
-    notes = Notes.objects.filter(user=request.user)
+    notes = Notes.objects.filter(user=request.user).order_by('title')
     context = {'notes': notes, 'form': form}
     return render(request, 'resources/user-notes.html', context)
 
@@ -76,13 +76,15 @@ def programs(request):
 def ClassPage(request, name=None):
     fnd = 'Foundation'
     lessons = Material.objects.filter(show=True).filter(Q(program=name) | Q(program=fnd))
+    myFilter = MaterialFilterStudents(request.GET, queryset=lessons)
+    lessons = myFilter.qs
     if request.method == "POST":
         form = SearchForm(request.POST)
         text = request.POST['text']
         result_list = []
     else:
         form = SearchForm()
-    context = {'search': form, 'lessons': lessons}
+    context = {'search': form, 'lessons': lessons,'myfilter':myFilter}
     return render(request, 'resources/prog-page.html', context)
 
 
@@ -98,7 +100,6 @@ def submit_thanks(request):
 @login_required(login_url='/login/')
 @user_passes_test(lambda u: u.is_staff)
 def admin_dash(request):
-
     dashcon = Material.objects.all().order_by('week')
     myFilter = MaterialFilter(request.GET, queryset=dashcon)
     dashcon= myFilter.qs

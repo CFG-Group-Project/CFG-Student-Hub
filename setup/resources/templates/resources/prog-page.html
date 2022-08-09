@@ -2,7 +2,7 @@
 {% load bootstrap5 %}
 {% load static %}
 {% load crispy_forms_tags %}
-
+{% block title %} Resources | Course Resources{% endblock %}
 
 
 {% block body %}
@@ -13,7 +13,7 @@
     <li class="breadcrumb-item active" aria-current="page">Here</li>
   </ol>
 </nav>
-<div class="header-res">Course Materials
+<div class="header-res">Resource Packs
 </div>
 
 
@@ -21,34 +21,33 @@
 
 
 <section class="container text-center">
+        <form method="get">
+        {{myfilter.form}}
+        <button class="btn btn-dark" type="submit">Filter</button>
+            </form>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Week</th>
+                <th scope="col">Lesson</th>
+                <th scope="col">Program</th>
+                <th scope="col">Topic</th>
 
-{% for lesson in lessons %}
-<a href="{% url 'resources:lesson-detail' lesson.id %}" >
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-md-5">
-                        <img class="img-fluid" src="#" alt="">
+            </tr>
+        </thead>
+        <tbody>
 
-                    </div>
-                    <div class="col-md-7">
-                        <h5 class="p-0 m-0">{{lesson.pathway}}</h5>
-                        <h3 class="p-0 m-0">{{lesson.lesson}}</h3>
-                        <b>
-                            <u>
-                                <h5 class="p-0 m-0">{{lesson.topics}}</h5>
-                            </u>
-                        </b>
-                        <h6 class="p-0 m-1">Week {{lesson.week}}</h6>
-                        <br>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-    <br>
+        {% for lesson in lessons %}
+            <tr>
+                <th scope="row">{{lesson.week}}</th>
+                <td><a href="{% url 'resources:lesson-detail' lesson.id %}" style="color:#F54996">{{lesson.lesson}}</a></td>
+                <td>{{lesson.program}}</td>
+                <td>{{lesson.topics}}</td>
 
-    {% endfor %}
+         </tr>
+        {% endfor %}
+        </tbody>
+    </table>
     {% if user.is_staff %}
     <a href="../admin-dash" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
 

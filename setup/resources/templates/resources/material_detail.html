@@ -3,7 +3,7 @@
 
 
 
-{% block title %} Resources {% endblock %}
+{% block title %} Resources | Course Resources{% endblock %}
 
 
 
@@ -31,9 +31,7 @@
             <p class="description m-1 p-1">
                 {{material.topics}}
             <div class="col text-center">
-
-            <iframe src="{{material.slides}}" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-            <br>
+            {{material.slides | safe }}
             {% if material.rectutorial %}
 <a href="{{material.rectutorial}}" class="btn btn-dark" target="_blank" rel="noopener noreferrer">Recommended Tutorial</a>
 </div>

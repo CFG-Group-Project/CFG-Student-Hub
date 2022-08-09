@@ -60,7 +60,7 @@
                 </td>
                 <td>{{each.sub_by}}</td>
                  {% if user.is_staff %}
-                <td><a href="{% url 'resources:resource-update' each.id %}">Update</a></td>
+                <td><a href="{% url 'resources:resource-update' each.id %}" style="color:#F54996">Update</a></td>
                 {% endif %}
                 {% if user.is_superuser %}
                 <td><a href="{% url 'resources:resource-delete' each.id %}"><i class="fa fa-trash fa-2x" style='color: #000000'></i></a></td>
