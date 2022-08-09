@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'tinymce',
     'hitcount',
     "taggit",
-    "resources.flashcards",
+    # "resources.cards",
     "django.contrib.humanize",
     'django_filters',
 
