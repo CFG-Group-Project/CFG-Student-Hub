@@ -15,18 +15,18 @@ This space is made for students (by students!) and can be utilised on a number o
 There are a number of different features that can be used for effective learning to ensure that students are getting the most while completing the course with Code First Girls. 
 
 ## Features
-1. Login/Registration System
-2. Functional forum  (stackOverflow type of vibe)
-3. Resources page 
-4. Profile Page 
-5. Studyzone (Pomodoro timer with music)
+1. Login/Registration System : With Error handling
+2. Functional forum : [studentRoom](https://www.thestudentroom.co.uk/) type of vibe, Post, Comment and Like!
+3. Resources page: One stop shop for CFG Resourses + Note takinng
+4. Studyzone : Pomodoro timer with music & motivation 
+5. Profile Page : Edit profile details, such as Full name and username etc
 
 ## Getting Started 
 
 ### Technologies
+- Python Django 
 - HTML
 - CSS
-- Python Django 
 - Bootstapp 
 - MySQL
 - JavaScript
@@ -44,9 +44,9 @@ git clone https://github.com/CFG-Group-Project/CFG-Student-Hub.git
 pip3 install -r requirements.txt
 ```
 
-2. Copy contents of setup.sql and run in MySQL WORKBENCH (DONT FORGET to add your password to the query)
+2. Copy contents of setup.sql and run in MySQL WORKBENCH (DONT FORGET to add your password to the query, where it says "Current-Root-Password")
 
-3. Add your password to 'DATABASES' Section in CFG-Student-Hub/setup/setup/settings.py (Where is says password: '')
+3. Add your password to 'DATABASES' Section in CFG-Student-Hub/setup/setup/settings.py (Where is says " password: '' ")
 
 4. Change directory to setup
 ```commandline
