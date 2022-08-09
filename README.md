@@ -37,31 +37,31 @@ There are a number of different features that can be used for effective learning
 git clone https://github.com/CFG-Group-Project/CFG-Student-Hub.git
 ```
 
-1. Create an environment <em>(Optional)</em> - [How to create a virtual Environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
+2. Create an environment <em>(Optional)</em> - [How to create a virtual Environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 
-2. Install Required Packages
+3. Install Required Packages
 ```commandline
 pip3 install -r requirements.txt
 ```
 
-2. Copy contents of setup.sql and run in MySQL WORKBENCH
+4. Copy contents of setup.sql and run in MySQL WORKBENCH
    (DONT FORGET to add your password to the query, where it says "Current-Root-Password")
 
-3. Add your password to 'DATABASES' Section in CFG-Student-Hub/setup/setup/settings.py 
+5. Add your password to 'DATABASES' Section in CFG-Student-Hub/setup/setup/settings.py 
    (Where is says " password: '' ")
 
-4. Change directory to setup
+6. Change directory to setup
 ```commandline
 cd setup
 ```
 
-5. Create tables 
+7. Create tables 
 ```commandline
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-6. Run Server
+8. Run Server
 ```commandline
 python manage.py runserver localhost:8080
 ```
