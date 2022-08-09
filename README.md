@@ -44,7 +44,7 @@ git clone https://github.com/CFG-Group-Project/CFG-Student-Hub.git
 pip3 install -r requirements.txt
 ```
 
-2. Copy contents of setup.sql and run in MySQL WORKBENCH 
+2. Copy contents of setup.sql and run in MySQL WORKBENCH \n
    (DONT FORGET to add your password to the query, where it says "Current-Root-Password")
 
 3. Add your password to 'DATABASES' Section in CFG-Student-Hub/setup/setup/settings.py 
