@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-from .config import DBP
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,27 +31,32 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'userprofile',
+    'contact',
+    'studyzone',
+    'dashboard',
+    'accounts',
+    'resources',
+    "resources.flashcards",
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'userprofile',
-    'contact',
-    'studyzone',
-    'dashboard',
-    'accounts',
+    "django.contrib.humanize",
+    'django_filters',
+
     'bootstrap5',
     'fontawesomefree',
-    'resources',
     'crispy_forms',
     'tinymce',
     'hitcount',
     "taggit",
-    "resources.flashcards",
-    "django.contrib.humanize",
-    'django_filters',
+
+
+
 
 ]
 
@@ -95,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cfgdatabase',
         'USER': 'root',
-        'PASSWORD': DBP,
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306',
     }
