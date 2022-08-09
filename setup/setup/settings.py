@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-
+from .config import DBP
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'tinymce',
     'hitcount',
     "taggit",
+    "resources.flashcards",
+    "django.contrib.humanize",
+    'django_filters',
 
 ]
 
@@ -92,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cfgdatabase',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': DBP,
         'HOST': 'localhost',
         'PORT': '3306',
     }

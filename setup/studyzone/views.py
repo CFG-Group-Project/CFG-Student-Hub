@@ -3,11 +3,6 @@ from .models import timeritem
 # Create your views here.
 import requests
 
-#
-# def study(request):
-#     return render(request, 'studyzone/study.html')
-#     # return render(request, '/study.html')
-
 def study(request):
     url = "https://motivational-quotes1.p.rapidapi.com/motivation"
 

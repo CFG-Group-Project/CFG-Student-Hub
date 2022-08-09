@@ -1,0 +1,13 @@
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+{% load humanize %}
+
+
+{% block body %}
+{% for box in boxes %}
+    <a href="{% url 'resources:flashcards:box' box_num=box.number %}">
+        🗃 {{ box.number | ordinal }} Box <mark>{{ box.card_count }}</mark>
+    </a>
+{% endfor %}
+{% endblock %}

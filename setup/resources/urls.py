@@ -3,6 +3,7 @@ sys.path.append('..')
 
 from django.urls import path
 from . import views
+from django.urls import path, include
 
 
 app_name = 'resources'
@@ -21,9 +22,5 @@ urlpatterns = [
     path('resources/delete/<int:pk>', views.DeleteResource.as_view(), name='resource-delete'),
     path('resources/lesson/<int:pk>', views.LessonDetailView.as_view(), name='lesson-detail'),
     path('resources/admin-dash', views.admin_dash, name='admin-dash'),
-    # path('resources/admin-dash/update/<int:pk>', views.updatedash, name='updatedash'),
-    # path('resources/', KnowledgeBank.as_view(),name='material'),
-    # path('resources/<Program_name>', ProgBank.as_view(),name='program'),
-    # path('resources/<int:bank_id>', views.materials, name='materials'),
-
+    path('', include('resources.flashcards.urls'))
 ]
