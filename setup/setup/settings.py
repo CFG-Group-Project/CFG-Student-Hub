@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'hitcount',
     "taggit",
     "resources.cards",
-    "django.contrib.humanize",
     'django_filters',
 
 ]

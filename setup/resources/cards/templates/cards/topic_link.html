@@ -1,0 +1,5 @@
+{% for box in boxes %}
+    <a href="{% url 'box' box_num=box.number %}">
+        🗃 {{ topic }} <mark>{{ topic.card_count }}</mark>
+    </a>
+{% endfor %}

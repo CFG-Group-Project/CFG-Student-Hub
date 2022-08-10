@@ -1,0 +1,24 @@
+{% extends "cards/base.html" %}
+
+{% block body %}
+{% if user.is_staff %}
+    {% if card %}
+        <div class="header-res">edit Card</div>
+    {% else %}
+        <div class="header-res">create New Card</div>
+    {% endif %}
+{% else %}
+
+    <div class="header-res">create New Card</div>
+    {% endif %}
+       <div style="text-align:center"> {% include "cards/navigation.html" %}</div>
+<hr>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save Card">
+    </form>
+    <a href="{% url 'card-list' %}">
+        Cancel
+    </a>
+{% endblock %}
