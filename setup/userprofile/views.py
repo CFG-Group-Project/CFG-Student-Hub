@@ -51,9 +51,15 @@ def forum(request):
     paginator = Paginator(post_list, 6)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
+    comments = Comment.objects.all()
+
+
+
 
     context = {'post_list': post_list,
-        'posts': posts,}
+                'posts': posts,
+               'comments': comments,
+               }
     return render(request, 'forum/forum.html', context)
 
 
@@ -70,6 +76,8 @@ class PostDetailView(LoginRequiredMixin, View):
                    "comments":comments,
                    "title": "OZONE: " + post.title,
                    }
+        if post:
+            post.update_views()
 
         return render(request, 'forum/discussion.html', context)
 
@@ -84,7 +92,9 @@ class PostDetailView(LoginRequiredMixin, View):
             new_comment.user = author
             new_comment.save()
 
+
         comments = Comment.objects.filter(post=post).order_by('-created_on')
+
 
         context = {
             'post': post,
