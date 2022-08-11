@@ -24,13 +24,13 @@ urlpatterns = [
     path('', include('userprofile.urls')),
     path('', include('contact.urls')),
     path('', include('studyzone.urls')),
-    path('', include('dashboard.urls')),
-    path('', include('resources.urls')),
-    path('', include('accounts.urls')),
+    path('', include('userprofile.dashboard.urls')),
+    path('', include('userprofile.resources.urls')),
+    path('', include('userprofile.accounts.urls')),
     path('', include('django.contrib.auth.urls')),  # Authentication URL's - Built In
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path('hitcount/', include('hitcount.urls', namespace='hitcount')),
-    path('', include('resources.cards.urls')),
+    path('', include('userprofile.resources.cards.urls')),
 
 ]
