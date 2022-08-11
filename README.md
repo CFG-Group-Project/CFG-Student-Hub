@@ -17,9 +17,17 @@ There are a number of different features that can be used for effective learning
 ## Features
 1. Login/Registration System : With Error handling
 2. Functional forum : [studentRoom](https://www.thestudentroom.co.uk/) type of vibe, Post, Comment and Like!
-3. Resources page: One stop shop for CFG Resourses + Note takinng
+3. Resources page: One stop shop for CFG Resourses + Note taking
 4. Studyzone : Pomodoro timer with music & motivation 
 5. Profile Page : Edit profile details, such as Full name and username etc
+
+## Site Images
+![](images/screenshots/dashboard.PNG)
+![](images/screenshots/discussions.PNG)
+![](images/screenshots/forum-discussion.PNG)
+![](images/screenshots/resources.PNG)
+![](images/screenshots/studyzone.png)
+![](images/screenshots/profile.PNG)
 
 ## Getting Started 
 
@@ -48,7 +56,7 @@ pip3 install -r requirements.txt
    (DONT FORGET to add your password to the query, where it says "Current-Root-Password")
 
 5. Add your password to 'DATABASES' Section in CFG-Student-Hub/setup/setup/settings.py 
-   (Where is says " password: '' ")
+   (Where it says " password: '' ")
 
 6. Change directory to setup
 ```commandline
@@ -65,17 +73,18 @@ python manage.py migrate
 ```commandline
 python manage.py runserver localhost:8080
 ```
+
 ## Testing 
 Replace 'app-name' with the name of the app you want to test
 ```commandline
 python manage.py test app-name.tests
-
 ```
 
 ## Acknowledgments 
 Our instructors: 
-- [Carlo]()
-- [Alex]()
+- [Carlo](https://github.com/spartacoos)
+- [Alex](https://github.com/ASim-Null)
+- [Ade](https://github.com/dayoreke)
 
 Thank you for supporting us throughout this whole course! We've had a blast!
 </html>

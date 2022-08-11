@@ -60,8 +60,12 @@
         </div>
       </a>
     </div>
-    </div>    {% if user.is_staff %}
-    <a href="admin-dash" class="btn btn-dark" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
+    </div>
+{% if user.is_staff %}
+<hr>
+<h3 style="text-align:center" >DASHBOARDS</h3>
+    <a href="admin-dash" class="btn btn-dark" role="button" aria-pressed="true">MATERIALS</a>
+    <a href="/resources" class="btn btn-dark" role="button" aria-pressed="true">FLASHCARDS X</a>
 
 {% endif %}
 
