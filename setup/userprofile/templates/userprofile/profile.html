@@ -6,8 +6,11 @@
 
 {% block body %}
 <div class="profile-container">
-    <h2 class="title">Profile information</h2>
-<h6>Please remember to setup your profile to be able to access your dashboard and forum posts</h6>
+    <h2 class="title">Profile information </h2>
+    {% if request.user.profile.stream == '' %}
+<h6>Please remember to setup your profile to be able to access your dashboard and forum posts </h6>
+    {% else %}
+    {% endif %}
 
     <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -43,6 +46,7 @@
                         <input name="email" class="form-control email" id="email" type="email" value="{{ profile.user.email }}" readonly>
                      </div>
 
+
                      <div class="form-group">
                          <label for="phone">Phone</label>
                          <input name="phone" class="form-control" id="phone" type="number" placeholder="+44 123 456 7890" value="{{ profile.phone }}" >
@@ -54,7 +58,13 @@
                      <label for="city">City</label>
                      <input name="city" class="form-control" id="city" type="text" placeholder="Enter your City" value="{{ profile.city|default:'' }}">
                  </div>
+                    <div class="form-group">
+                        <label for="stream">Program</label>
+                        <input name="stream" class="form-control" id="stream" type="text" value="{{request.user.profile.stream}}" readonly>
+                     </div>
                 </div>
+
+
 
                   <div class="upload-avatar">
                          <label class="avatar-title">Update profile photo</label>
@@ -70,7 +80,6 @@
 
                           </div>
                   </div>
-
                  <button type="submit" class="save-all-btn">Save</button>
                  </div>
 

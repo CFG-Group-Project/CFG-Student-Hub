@@ -28,7 +28,6 @@ class ProfileView(View):
 
     def post(self, request):
         form = ProfileForm(request.POST, request.FILES, instance=self.profile)
-
         if form.is_valid():
             profile = form.save()
             profile.user.first_name = form.cleaned_data.get('first_name')
