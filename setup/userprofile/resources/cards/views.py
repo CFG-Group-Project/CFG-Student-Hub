@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
 import random
+from django.contrib.messages.views import SuccessMessageMixin
 from .models import Card
 from .filters import *
+from django.contrib.auth.decorators import login_required
 
 
 def FlashHome(request):
@@ -18,25 +20,25 @@ class CardListView(ListView):
     queryset = Card.objects.all().order_by("-date_created")
 
 
-class CardCreateView(CreateView):
+class CardCreateView(CreateView,SuccessMessageMixin):
     model = Card
     fields = ["question", "answer", "topic"]
     success_url = reverse_lazy("card-create")
+    success_message = "Your message was successfully. It will be visible once it is approved."
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.calculated_field,
+        )
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        form.instance.program = self.request.user.profile.stream
+        return super().form_valid(form)
+
 
 
 class CardUpdateView(CardCreateView, UpdateView):
     success_url = reverse_lazy("card-list")
 
-
-class TopicView(CardListView):
-    template_name = 'cards/topic.html'
-
-    def get_queryset(self):
-        return Card.objects.filter(box=self.kwargs["box_num"])
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["box_number"] = self.kwargs["box_num"]
-        if self.object_list:
-            context["check_card"] = random.choice(self.object_list)
-        return context

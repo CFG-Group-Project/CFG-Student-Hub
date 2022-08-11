@@ -9,11 +9,14 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/resources" style="color:#F54996">Resources</a></li>
-    <li class="breadcrumb-item"><a href="/resources/programs" style="color:#F54996">Programs</a></li>
     <li class="breadcrumb-item active" aria-current="page">Here</li>
   </ol>
 </nav>
 <div class="header-res">Resource Packs
+        {% if user.is_staff %}
+    <a href="../admin-dash" class="btn btn-dark" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
+
+{% endif %}
 </div>
 
 
@@ -48,10 +51,7 @@
         {% endfor %}
         </tbody>
     </table>
-    {% if user.is_staff %}
-    <a href="../admin-dash" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
 
-{% endif %}
 </section>
 
 

@@ -13,8 +13,8 @@
 </nav>
 <div class="header-res">
     resources
+
 </div>
-<section class="container text-center ">
 
  <hr> <br>
   <div class="row">
@@ -35,7 +35,7 @@
     </div>
 
     <div class="col">
-      <a href="/resources/programs">
+      <a href="/resources/programs/{{request.user.profile.stream}}">
         <div class="card">
           <img class="card-img-top" src="/static/images/class-notes.png" alt="Notes image">
           <div class="card-body"style="color:white">
@@ -60,10 +60,12 @@
         </div>
       </a>
     </div>
-    </div>
-    </div>
+    </div>    {% if user.is_staff %}
+    <a href="admin-dash" class="btn btn-dark" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
 
-</section>
+{% endif %}
+
+
 {% endblock %}
 
 

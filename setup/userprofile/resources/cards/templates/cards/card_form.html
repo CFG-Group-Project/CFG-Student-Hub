@@ -1,6 +1,14 @@
 {% extends "cards/base.html" %}
+{% load crispy_forms_tags %}
 
 {% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources"style="color:#F54996">Resources</a></li>
+    <li class="breadcrumb-item"><a href="/resources/flashcards"style="color:#F54996">Flashcards</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
+  </ol>
+</nav>
 {% if user.is_staff %}
     {% if card %}
         <div class="header-res">edit Card</div>
@@ -8,17 +16,17 @@
         <div class="header-res">create New Card</div>
     {% endif %}
 {% else %}
-
     <div class="header-res">create New Card</div>
+<p>You card will appear once it has been approved by an instructor. Thanks for adding to our community resources</p>
     {% endif %}
-       <div style="text-align:center"> {% include "cards/navigation.html" %}</div>
 <hr>
+
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Save Card">
+        {{ form | crispy }}
+        <input class="btn btn-dark" type="submit" value="Save Card">
     </form>
-    <a href="{% url 'card-list' %}">
+    <a class="btn btn-dark" href="{% url 'card-list' %}">
         Cancel
     </a>
 {% endblock %}

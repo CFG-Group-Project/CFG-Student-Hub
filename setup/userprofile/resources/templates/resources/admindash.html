@@ -20,9 +20,10 @@
 {% endfor %}
 {% endif %}
 
-    <div class="header-res">Admin Dashboard
+    <div class="header-res">Materials Admin Dashboard
 </div><br>
     <div class="col text-center">
+            {% if user.is_staff %}
 <a href="/resources/create" class="btn btn-dark" >Would you like to submit a resource?</a>
 </div><br>
     <form method="get">
@@ -71,7 +72,9 @@
     </table>
 
 <br>
-
+    {% else %}
+    You may not be authorised to access this page. Please check you are logged into the right account and try again or contact your site admin.
+    {% endif%}
     </div>
 
 {% endblock %}

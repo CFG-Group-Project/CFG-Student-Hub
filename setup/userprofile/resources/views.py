@@ -8,9 +8,8 @@ from django.views.generic import DetailView, ListView
 from django.contrib import messages
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth import get_user_model
 from .filters import MaterialFilter,MaterialFilterStudents
-
+from ..models import Profile
 
 
 @login_required(login_url='/login/')
@@ -29,13 +28,13 @@ def usernotes(request):
         form = NotesForm(request.POST)
         if form.is_valid():
             notes = Notes(user=request.user, title=request.POST['title'], content=request.POST['content'],
-                          link=request.POST['link']).order_by('title')
+                          link=request.POST['link'])
             notes.save()
             form = NotesForm()
         messages.success(request, "Your notes have been saved!")
     else:
         form = NotesForm()
-    notes = Notes.objects.filter(user=request.user).order_by('title')
+    notes = Notes.objects.filter(user=request.user)
     context = {'notes': notes, 'form': form}
     return render(request, 'resources/user-notes.html', context)
 
@@ -68,12 +67,13 @@ class NotesUpdateView(UpdateView):
 
 
 @login_required(login_url='/login/')
-def programs(request):
+def programs(request,name=None):
     return render(request, 'resources/pathways.html')
 
 
 @login_required(login_url='/login/')
 def ClassPage(request, name=None):
+
     fnd = 'Foundation'
     lessons = Material.objects.filter(show=True).filter(Q(program=name) | Q(program=fnd))
     myFilter = MaterialFilterStudents(request.GET, queryset=lessons)
@@ -84,7 +84,7 @@ def ClassPage(request, name=None):
         result_list = []
     else:
         form = SearchForm()
-    context = {'search': form, 'lessons': lessons,'myfilter':myFilter}
+    context = {'search': form, 'lessons': lessons,'myfilter':myFilter,}
     return render(request, 'resources/prog-page.html', context)
 
 
@@ -93,12 +93,6 @@ class LessonDetailView(DetailView):
 
 
 @login_required(login_url='/login/')
-def submit_thanks(request):
-    return render(request, 'resources/submit-thanks.html')
-
-
-@login_required(login_url='/login/')
-@user_passes_test(lambda u: u.is_staff)
 def admin_dash(request):
     dashcon = Material.objects.all().order_by('week')
     myFilter = MaterialFilter(request.GET, queryset=dashcon)
