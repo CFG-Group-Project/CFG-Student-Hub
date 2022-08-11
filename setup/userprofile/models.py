@@ -4,12 +4,13 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
 from tinymce.models import HTMLField
+from .resources.models import Program
 
 # Create your models here.
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-
+#the use of the Profile model means users need to have completed their profile setup before they can post on the forum
 class Profile(models.Model):
     objects = models.Manager()
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
@@ -17,7 +18,7 @@ class Profile(models.Model):
     birthday = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=32, null=True, blank=True)
     city = models.CharField(max_length=50, null=True, blank=True)
-    # stream = models.CharField(max_length=255, null=True)
+    stream = models.ForeignKey(Program,null=True,default='Foundation',on_delete=models.SET_DEFAULT)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -82,7 +83,8 @@ class Comment(models.Model):
 
 
 
-# class Like(models.Model):
+class Like(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
 #     LIKE_CHOICES = (
 #         ('Like', 'Like'),
 #         ('unlike', 'unlike'),
@@ -93,3 +95,4 @@ class Comment(models.Model):
 #
 #     def __str__(self):
 #         return str(self.post)
+
