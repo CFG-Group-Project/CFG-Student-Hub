@@ -1,0 +1,54 @@
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title %} Resources | My Notes{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources"style="color:#F54996">Resources</a></li>
+      <li class="breadcrumb-item"><a href="/resources/mynotes"style="color:#F54996">My Notes</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
+  </ol>
+</nav>
+<div class="header-res">
+    my notes
+</div>
+
+<form action="{% url 'resources:user-search' %}" method="post">
+        {% csrf_token %}
+
+    <input class="form-control" type="search" placeholder="Enter term here" aria-label="Search" name="searched">
+        <br>
+        <input class="btn btn-dark" type="submit" value="Search">
+    </form><br>
+
+
+ {% if searched %}
+<h4>Here are your notes containing "{{searched}}" </h4>
+
+<div class="container">
+    <div class="row">
+        {% for note in notes %}
+        <div class="col-md-3">
+            <a href="{% url 'resources:notes-detail' note.id %}">
+                <div class="card">
+                    <div class="card-header">{{note.title}}</div>
+                    <div class="card-body white" style="font-color: white">{{note.content|striptags|slice:":20"}}</div>
+                    <div class="card-footer mt-auto"><a href="{% url 'resources:delete_note' note.id %}">
+                        <i class="fa-solid fa-trash" style='color: #000000'></i></a>
+                    </div>
+                </div>
+            </a>
+        </div>
+{% endfor %}
+
+{% else %}
+<h4>Please enter a search term. Single words work best</h4>
+
+{% endif %}
+{% endblock %}
+    </div></div>

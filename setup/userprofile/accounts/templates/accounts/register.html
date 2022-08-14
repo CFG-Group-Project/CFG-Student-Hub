@@ -1,0 +1,66 @@
+{% load static %}
+
+
+
+
+
+{% block content %}
+<head>
+	<meta charset="UFT-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+	<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+	<script src="{% static 'js/modal.js' %}"></script>
+	<title>Register</title>
+</head>
+<body>
+<h1 ><img src="{% static 'images/cfg-logo.png' %}" alt="CodefirstGirls Logo"></h1>
+<div class="content">
+    <div class="row justify-content-center">
+		<form action="" method="POST" class="register_form">
+			{% csrf_token%}
+
+			<label>{{ form.email.label }}</label>
+			<p class="text">Make sure this is the same email address you used when you signed up for your course</p>
+			<div class="input">
+				{{ form.email }}
+			</div>
+
+
+			<label>{{ form.username.label }}</label>
+			<p class="text">16 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+			<div class="input">
+				{{ form.username }}
+			</div>
+
+
+
+			<label>{{ form.password1.label }}</label>
+			<div class="input password-sec">
+				{{ form.password1 }}<span id="infoIcon"><i class="fa-solid fa-circle-info"></i></span>
+				<div id="modal" class="modal">
+				  <div class="modal-content">
+					<p>
+						- must contain at least 8 characters.<br>
+						- can’t be entirely numeric.<br>
+					</p>
+				  </div>
+				</div>
+			</div>
+
+			<label>{{ form.password2.label }}</label>
+			<div class="input">
+				{{ form.password2 }}
+			</div>
+			{% if messages %}
+				{% for message in messages %}
+					<p class="message">{{ message }}</p><br>
+				{% endfor %}
+			{% endif %}
+
+			<input type="submit" value="CREATE ACCOUNT" class="register-btn">
+		</form>
+		<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+    </div>
+</div>
+</body>
+{% endblock content %}

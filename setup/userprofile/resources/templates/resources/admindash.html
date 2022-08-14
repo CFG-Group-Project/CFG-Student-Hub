@@ -1,0 +1,80 @@
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+
+
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources" style="color:#F54996">Resources</a></li>
+      <li class="breadcrumb-item"><a href="/resources/programs"style="color:#F54996">Pathways</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
+  </ol>
+</nav>
+<div class="body">
+{% if messages %}
+    {% for msg in messages %}
+<div class="alert alert-{{msg.tags}}">{{msg}}</div>
+{% endfor %}
+{% endif %}
+
+    <div class="header-res">Materials Admin Dashboard
+</div><br>
+    <div class="col text-center">
+            {% if user.is_staff %}
+<a href="/resources/create" class="btn btn-dark" >Would you like to submit a resource?</a>
+</div><br>
+    <form method="get">
+        {{myfilter.form}}
+        <button class="btn btn-dark" type="submit">Filter</button>
+            </form>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Week</th>
+                <th scope="col">Lesson</th>
+                <th scope="col">Pathway</th>
+                <th scope="col">Visible</th>
+                <th scope="col">Submitted By</th>
+                {% if user.is_staff %}
+                <th scope="col">Update</th> {% endif %}
+                {% if user.is_superuser %}
+                <th scope="col">Delete</th> {% endif %}
+
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for each in dashcon %}
+            <tr>
+                <th scope="row">{{each.week}}</th>
+                <td>{{each.lesson}}</td>
+                <td>{{each.program}}</td>
+                <td>
+                    {%if each.show %}
+                    Yes
+                    {% else %}
+                    No
+                    {% endif %}
+                </td>
+                <td>{{each.sub_by}}</td>
+                 {% if user.is_staff %}
+                <td><a href="{% url 'resources:resource-update' each.id %}" style="color:#F54996">Update</a></td>
+                {% endif %}
+                {% if user.is_superuser %}
+                <td><a href="{% url 'resources:resource-delete' each.id %}"><i class="fa fa-trash fa-2x" style='color: #000000'></i></a></td>
+                {% endif %}
+         </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+<br>
+    {% else %}
+    You may not be authorised to access this page. Please check you are logged into the right account and try again or contact your site admin.
+    {% endif%}
+    </div>
+
+{% endblock %}

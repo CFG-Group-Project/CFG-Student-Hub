@@ -1,0 +1,65 @@
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Resources | Course Resources{% endblock %}
+
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources" style="color:#F54996">Resources</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
+  </ol>
+</nav>
+<div class="header-res">Resource Packs
+        {% if user.is_staff %}
+    <a href="../admin-dash" class="btn btn-dark" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
+
+{% endif %}
+</div>
+
+
+<body>
+
+
+<section class="container text-center">
+        <form method="get">
+        {{myfilter.form}}
+        <button class="btn btn-dark" type="submit">Filter</button>
+            </form>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Week</th>
+                <th scope="col">Lesson</th>
+                <th scope="col">Program</th>
+                <th scope="col">Topic</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for lesson in lessons %}
+            <tr>
+                <th scope="row">{{lesson.week}}</th>
+                <td><a href="{% url 'resources:lesson-detail' lesson.id %}" style="color:#F54996">{{lesson.lesson}}</a></td>
+                <td>{{lesson.program}}</td>
+                <td>{{lesson.topics}}</td>
+
+         </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</section>
+
+
+    {% endblock %}
+
+
+
+</body>
+
+
+</html>

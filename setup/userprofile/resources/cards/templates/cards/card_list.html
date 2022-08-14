@@ -1,0 +1,24 @@
+{% extends "cards/base.html" %}
+
+{% block body %}
+
+<div class="container" style="text-align:center">
+    <div class="header-res">
+        Flashcards
+    </div>
+        {% include "cards/navigation.html" %}
+    <a href="{% url 'card-create' %}" role="button">
+        ✨ Create New Card
+    </a>
+<div class="row">
+    {% for card in card_list %}
+  <div class="col-sm-4">
+    <div class="card">
+            {% include "cards/card.html" %}
+        <a href="#">Definition</a>
+    </div><br>
+  </div>
+<!--    {% include "cards/card.html" %}-->
+    {% endfor %}
+</div></div>
+{% endblock %}

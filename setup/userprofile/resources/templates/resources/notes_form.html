@@ -1,0 +1,34 @@
+{% extends 'resources/base-res.html' %}}
+{% load crispy_forms_tags %}
+
+{% block title %} Resources | My Notes {% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources" style="color:#F54996">Resources</a></li>
+    <li class="breadcrumb-item"><a href="/resources/mynotes"style="color:#F54996">My Notes</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
+  </ol>
+</nav>
+
+
+
+<div class="container">
+    <h1>Edit your note</h1>
+
+    <form method="POST">
+        <fieldset class="form-group">
+        </fieldset>
+        {% csrf_token %}
+        {{form|crispy}}
+        <div class="form-group"><br>
+            <button href="/resources/mynotes" class="btn btn-dark" type="submit">
+                Update
+            </button>
+        </div>
+    </form>
+</div>
+    </div>
+</div>
+{% endblock %}

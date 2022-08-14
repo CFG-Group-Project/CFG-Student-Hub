@@ -1,0 +1,64 @@
+{% extends 'resources/base-res.html' %}}
+{% load crispy_forms_tags %}
+{% block title %} Resources | Course Resources{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources" style="color:#F54996">Resources</a></li>
+      <li class="breadcrumb-item"><a href="/resources/programs"style="color:#F54996">Pathways</a></li>
+      <li class="breadcrumb-item"><a href="/resources/admin-dash"style="color:#F54996">Admin Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
+  </ol>
+</nav>
+<div class="header-res">
+    Delete resource pack
+</div>
+
+
+<div class="container">
+    {% if user.is_staff %}
+    <form method="POST">
+        <fieldset class="form-group">
+        </fieldset>
+        {% csrf_token %}
+        <h2 class="text-center">Are you sure you want to delete this resource pack?<br><br></h2>
+        <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Week</th>
+                <th scope="col">Lesson</th>
+                <th scope="col">Pathway</th>
+                <th scope="col">Visible</th>
+                <th scope="col">Submitted By</th>
+
+            </tr>
+        </thead>
+
+            <tbody>
+            <tr>
+                <th scope="row">{{material.week}}</th>
+                <td>{{material.lesson}}</td>
+                <td>{{material.program}}</td>
+                <td>
+                    {{ material.show }}
+                </td>
+                <td>{{material.sub_by}}</td>
+         </tr>
+        </tbody>
+    </table>
+        <h3 class="text-center">{{material}}</h3><br>
+        <div class="col text-center">
+        <div class="form-group">
+            <button href="/resources/admin-dash" class="btn btn-dark" type="submit">
+                Permanently Delete
+            </button>
+        </div></div>
+    </form>
+    {% else %}
+    You may not be authorised to access this page. Please check your details or contact your site admin and try again.
+    {% endif%}
+</div>
+    </div>
+</div>
+{% endblock %}

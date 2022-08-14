@@ -1,0 +1,36 @@
+{% load static %}
+
+
+
+
+
+{% block content %}
+<head>
+	<meta charset="UFT-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+	<title>Login</title>
+</head>
+<body>
+	<div class="content">
+		<div class="row justify-content-center">
+			<h1><img src="{% static 'images/cfg-logo.png' %}" alt="CodefirstGirls Logo" srcset=""></h1>
+			<form action="" method="POST" class="login_form">
+				{% csrf_token%}
+				<label for="username">Username</label>
+				<input type="text" name="username" id="username" placeholder="Enter your Username">
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password" placeholder="Enter your password">
+				<a href="" class="forgotten-pw">Forgotten your username or password?</a>
+				{% if messages %}
+						{% for message in messages %}
+							<p class="message">{{ message }}</p>
+						{% endfor %}
+					{% endif %}
+				<input type="submit" value="LOGIN" class="login-btn">
+				<p class="or-txt line"><span>OR</span></p>
+				<a href="/register" class="signup-btn">SIGN UP <span class="cfg-student-txt">(CFG Students Only)</span></a>
+			</form>
+		</div>
+	</div>
+</body>
+{% endblock content %}

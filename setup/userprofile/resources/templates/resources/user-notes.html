@@ -1,0 +1,83 @@
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title %} Resources | My Notes{% endblock %}
+
+
+{% block body %}
+
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+    });
+  </script>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources" style="color:#F54996">Resources</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
+  </ol>
+</nav>
+<div class="header-res">
+    my notes
+</div>
+<div class="container">
+    <div class="row p-3">
+        <a href="mynotes/search" class="btn btn-dark" role="button">Search Through Your Notes</a></div>
+{% if messages %}
+    {% for msg in messages %}
+<div class="alert alert-{{msg.tags}}">{{msg}}</div>
+{% endfor %}
+{% endif %}
+
+    <div class="row">
+        {% for note in notes %}
+        <div class="col-md-3">
+            <a href="{% url 'resources:notes-detail' note.id %}">
+                <div class="card">
+                    <div class="card-header">{{note.title}}</div>
+                    <div class="card-body white" style="font-color: white">{{note.content|striptags|slice:":20"}}</div>
+                    <div class="card-footer mt-auto"><a href="{% url 'resources:delete_note' note.id %}">
+                        <i class="fa-solid fa-trash" style='color: #000000'></i></a>
+                    </div>
+                </div>
+            </a>
+        </div>
+{% endfor %}
+        <br><br>
+        <div class="form-group">
+<div class="container">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create Notes</legend>
+        </fieldset>
+
+        <form  action="" method="post">
+            {% csrf_token %}
+            <label>{{ form.title.label }}*</label>
+            <div class="title-input">
+                {{ form.title }}
+            </div>
+            <label>{{ form.content.label }}*</label>
+            <div class="content-section">
+                <textarea class="ck-content" name="content" id="editor" placeholder='Throw down some thoughts' rows="10"></textarea>
+            </div>
+            <label>Useful Link</label>
+            <div class="url-input">
+                {{ form.link }}
+            </div>
+
+
+<button href="/resources/mynotes" class="btn btn-dark" type="submit">Save</button>
+
+        </form>
+    </div>
+
+
+
+{% endblock body%}

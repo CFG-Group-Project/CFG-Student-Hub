@@ -1,0 +1,36 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">{% endblock css%}
+
+{% block body %}
+<div class="dashboard-container">
+    {% if user.get_short_name %}
+    <h1 class="header">Welcome back, {{ user.get_short_name }}!</h1>
+    {% else %}
+    <h1 class="header">Welcome back, {{ user.get_username }}!</h1>
+    {% endif %}
+
+
+    <div class="card-container">
+        <div class="dashboard-card notification-center">
+            <h3>Notification Center</h3><hr>
+            <a href="/forum/my-posts"><span class="data"><strong>{{posts}}</strong></span> Post{{posts | pluralize:"s" }} <i class="fa-solid fa-clipboard" style="background-color:#F54996;"></i></a><hr>
+            <a href=""><span class="data"><strong>{{comments}}</strong></span> Comment{{comments | pluralize:"s" }} <i class="fa-solid fa-comment-dots" style="background-color:#F54996;"></i></a><hr>
+            <a href=""><span class="data"><strong>{{likes}}</strong></span> Like{{likes | pluralize:"s" }} <i class="fa-solid fa-thumbs-up" style="background-color:#F54996;"></i></a>
+        </div>
+        <a href="/forum/create-post"><div class="dashboard-card">
+            <h3 class="post-title">Create New Post</h3>
+            <i class="fa-solid fa-8x fa-plus" style="background-color:#F54996;"></i>
+        </div></a>
+        <a href="resources/mynotes"><div class="dashboard-card">
+            <h3 class="notes-title">Create A Note</h3>
+            <i class="fa-solid fa-8x fa-pencil" style="background-color:#F54996;"></i>
+        </div></a>
+        <a href="/contact-us"><div class="dashboard-card">
+            <h3 class="feedback-title">Give us feedback!🤗</h3>
+            <i class="fa-solid fa-8x fa-comment-dots" style="background-color:#F54996;"></i>
+        </div></a>
+    </div>
+</div>
+
+{% endblock body %}

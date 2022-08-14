@@ -1,0 +1,50 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/forum.css' %}">{% endblock css%}
+
+{% block body %}
+<h1>CFG Discussions</h1>
+<a href="create-post" class="new-discussion-btn btn">Create New Discussion! </a>
+<a href="my-posts" class="myposts-btn btn">See My Posts </a>
+<br>
+<br>
+        <!--Posts table-->
+        <div class="posts-table">
+            <div class="table-head">
+                <div class="Topic">Topic</div>
+                <div class="comments">Views</div>
+                <div class="started">Started</div>
+            </div>
+            <span class="line"></span>
+            {% if post_list.all %}
+                {% for post in posts %}
+                <div class="table-row">
+                    <div class="Topic">
+                    <a href="{{post.id}}" class="post-title"><p>{{post.title}}</p></a>
+                    </div>
+                    <div class="comments">
+                        {{post.views}}
+                    </div>
+                    <div class="started">
+                        {{post.date}}
+                    </div>
+                </div>
+                <span class="line"></span>
+                {% endfor %}
+            {% else %}
+            <p class="m-5" style="text-align:center;">There are no posts! Be the first to create one! <a href="/forum/create-post" style="color:#F54996; text-decoration:underline;" >here</a></p>
+            {% endif %}
+
+            <div class="posts-pagination" style="text-align:center; margin-top:20px; ">
+            {% if posts.has_previous%}
+            <a class="pag-link" href="?page=1">&laquo First</a>
+            <a  class="pag-link" href="?page={{posts.previous_page_number}}">Previous</a>
+             {%endif %}
+            Page {{posts.number}} of {{posts.paginator.num_pages}}
+            {% if posts.has_next%}
+            <a class="pag-link" href="?page={{posts.next_page_number}}">Next</a>
+            <a class="pag-link" href="?page={{posts.paginator.num_pages}}">Last &raquo</a>
+             {%endif %}
+            </div>
+    </div>
+{% endblock body %}

@@ -1,0 +1,16 @@
+{% load static %}
+
+<head>
+	<meta charset="UFT-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+	<title>Register</title>
+</head>
+<body>
+	<div class="content">
+		<div class="row justify-content-center">
+			<h1><img src="{% static 'images/cfg-logo.png' %}" alt="CodefirstGirls Logo" srcset=""></h1>
+            <p>Account Created!<br>Please check your email for confirmation</p>
+			<p>Click here to <a href="{% url 'login' %}">sign in</a></p>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,49 @@
+{% extends 'resources/base-res.html' %}}
+
+
+
+
+{% block title %} Resources | Course Resources{% endblock %}
+
+
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/resources"style="color:#F54996">Resources</a></li>
+    <li class="breadcrumb-item"><a href="/resources/programs"style="color:#F54996">Programs</a></li>
+      <li class="breadcrumb-item"><a href="/resources/programs/{{material.program}}" style="color:#F54996">{{material.program}}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Here</li>
+  </ol>
+</nav>
+
+<section class='text-center container'>
+
+    <div class="container">
+
+        <div class="content-section p-0 mt-1">
+
+            <div class="m-3">
+                <h1>{{material.lesson}}</h1>
+            </div>
+
+            <hr class="p-0 m-0">
+            <p class="description m-1 p-1">
+                {{material.topics}}
+            <div class="col text-center">
+            {{material.slides | safe }}
+            {% if material.rectutorial %}
+<a href="{{material.rectutorial}}" class="btn btn-dark" target="_blank" rel="noopener noreferrer">Recommended Tutorial</a>
+</div>
+            {% endif %}
+
+            <hr>
+        </div>
+
+    </div>
+    {% if user.is_staff %}
+    <a href="../admin-dash" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">ADMIN DASHBOARD</a>
+
+{% endif %}
+</section>
+{% endblock %}

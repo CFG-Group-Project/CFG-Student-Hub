@@ -1,0 +1,75 @@
+{% extends 'resources/base-res.html' %}}
+{% load bootstrap5 %}
+{% load static %}
+
+
+{% block title %} Resources {% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Resources</li>
+  </ol>
+</nav>
+<div class="header-res">
+    resources
+
+</div>
+
+ <hr> <br>
+  <div class="row">
+    <div class="col">
+      <a href="/resources/mynotes">
+        <div class="card">
+          <img class="card-img-top" src="/static/images/my-notes.png" alt="data image">
+          <div class="card-body"style="color:white">
+            <h5 class="card-title ">
+              Personal Notes
+            </h5>
+            Just For
+            You
+
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="/resources/programs/{{request.user.profile.stream}}">
+        <div class="card">
+          <img class="card-img-top" src="/static/images/class-notes.png" alt="Notes image">
+          <div class="card-body"style="color:white">
+            <h5 class="card-title ">
+              Class Resources
+            </h5>
+            For Everyone<br>
+          </div>
+        </div>
+      </a>
+    </div>
+        <div class="col">
+      <a href="/resources/flashcards">
+        <div class="card">
+          <img class="card-img-top" src="/static/images/flashcards.png" alt="Notes image">
+          <div class="card-body"style="color:white">
+            <h5 class="card-title ">
+              Knowledge Tests
+            </h5>
+            Community Submissions
+          </div>
+        </div>
+      </a>
+    </div>
+    </div>
+{% if user.is_staff %}
+<hr>
+<h3 style="text-align:center" >DASHBOARDS</h3>
+    <a href="admin-dash" class="btn btn-dark" role="button" aria-pressed="true">MATERIALS</a>
+    <a href="/resources" class="btn btn-dark" role="button" aria-pressed="true">FLASHCARDS X</a>
+
+{% endif %}
+
+
+{% endblock %}
+
+

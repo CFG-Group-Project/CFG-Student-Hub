@@ -1,0 +1,43 @@
+{% extends 'dashboard/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{%block css%}<link rel="stylesheet" type="text/css" href="{% static 'css/create-post.css' %}">{% endblock css%}
+{%block tinymce%}<script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>{% endblock tinymce%}
+{% block body %}
+<div class="body">
+<h1 style="text-align:center; color:white;">Create Post</h1>
+<hr>
+    <section class='text-center container'>
+
+    <div class="container">
+        <form id="new-discussion" action="" method="post">
+            {% csrf_token %}
+            <label>{{ form.title.label }}*</label>
+            <div class="title-input">
+                {{ form.title }}
+                {{form.title.errors}}
+            </div>
+            <label>{{ form.content.label }}*</label>
+            <div class="content-section">
+                <textarea class="ck-content" name="content" id="editor" placeholder='What would you like to ask?' rows="10"></textarea>
+            </div>
+            {{form.content.errors}}
+
+
+
+            <button id="submit" type="submit" value="submit" name="post-form">SUBMIT</button>
+
+        </form>
+    </div>
+
+<!--<form id="new-discussion" action="" method="post">-->
+<!--    {% csrf_token %}-->
+<!--    <label>{{ form.title.label }}</label>-->
+<!--    {{form|crispy}}-->
+<!--    <input type="submit" value="Save"  style="margin-block:50px;">-->
+<!--</form>-->
+
+</section>
+<script src="{% static 'js/forum.js' %}"></script>
+</div>
+    {% endblock body%}
