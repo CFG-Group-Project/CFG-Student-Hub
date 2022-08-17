@@ -40,5 +40,5 @@ class CardCreateView(CreateView,SuccessMessageMixin):
 
 
 class CardUpdateView(CardCreateView, UpdateView):
-    success_url = reverse_lazy("card-list")
+    success_url = reverse_lazy("card-home")
 
